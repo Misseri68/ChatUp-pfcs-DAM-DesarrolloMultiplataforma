@@ -7,13 +7,7 @@ import {AuthComponent} from "./auth/auth/auth.component";
   standalone: true,
   imports: [RouterOutlet, AuthComponent],
   template: `
-    <main>
-      <header class="brand-name">
-        <img class="brand-logo " src="./assets/logoemptywhite.svg" alt="logo">
-        {{title}}
-      </header>
-    </main>
-    <app-auth></app-auth>
+    <router-outlet></router-outlet>
   `,
 
 

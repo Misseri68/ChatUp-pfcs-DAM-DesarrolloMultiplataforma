@@ -1,1 +1,58 @@
-<p>home works!</p>
+<div id="div-component">
+<!-- div barra opciones -->
+<div class="bg-dark option-bar">
+  <!-- Botón toggle de modo oscuro -->
+    <button>
+      <i class="icon-dark-mode">boton</i>
+    </button>
+    <button>
+      <i class="icon-notifications">boton2</i>
+    </button>
+    <button>
+      <i>boton3</i>
+    </button>
+    <button>
+      <i>boton4</i>
+    </button>
+  </div>
+
+
+
+  <div id="div-sibling1" class="w-100">
+
+    <header class="brand-name">
+      <img class="brand-logo " src="./assets/logoemptywhite.svg" alt="logo">
+      Chat-Up
+    </header>
+
+    <div id="div-sibling2" >
+
+      <!-- div listado de chats -->
+      <div id="chat-list" class="justify-content-center">
+        <label>Messages</label>
+        <br>
+        <div *ngFor="let chat of user.chats">
+          <div class="row align-items-center py-2">
+            <div class="col-auto">
+              <div class="circle-icon">{{chat.}}</div>
+            </div>
+            <div class="col">
+              <div class="d-flex justify-content-between">
+                <div>
+                  <div class="font-weight-bold">Nombre</div>
+                  <div>Hola</div>
+                </div>
+                <div class="text-muted">10:00</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--div Chat con mensajes-->
+      <div id="messages-div">
+        <app-chat></app-chat>
+      </div>
+     </div>
+  </div>
+</div>
