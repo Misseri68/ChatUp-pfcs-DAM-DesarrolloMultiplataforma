@@ -1,0 +1,29 @@
+.option-bar{
+  background-color: #03071c;
+  border-right: solid 1px;
+  border-color: #00FF8CFF;
+  position:sticky;
+  left:0;
+  height:100vh;
+  width:42px;
+  display:flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.option-bar button {
+  background-color: #03071c;
+  border:solid 1px;
+  border-color: #022a1b;
+  border-radius: 3px 10px 3px 10px;
+  width: 40px;
+  height:40px;
+}
+
+.option-bar button:hover {
+  background-color: #050b26;
+  border-radius: 3px 10px 3px 10px;
+  border: 1px solid rgb(219, 0, 255);
+  width: 40px;
+  height:40px;
+}

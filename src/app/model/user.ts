@@ -1,8 +1,13 @@
 import {Chat} from "./chat";
+import {UserOptions} from "./useroptions";
 
 export interface User {
-  user_id: string;
   username: string;
-  tag: number;
-  chats : Chat [];
+  description: string;
+  status: boolean;
+  userOptions?: UserOptions;
+  profilePicture?: string;
+  chats?: Chat [];
+  friends?: string[];
+  pendingRequests?: string[];
 }

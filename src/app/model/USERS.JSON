@@ -1,0 +1,142 @@
+[
+  {
+    "username": "user1",
+    "description": "User 1 description here",
+    "status": true,
+    "photo": "url_to_photo1.jpg",
+    "profilePicture": "url_to_profile_picture1.jpg",
+    "userOptions": {},
+    "chats": [
+      {
+        "id_chat": "chat1",
+        "chatName": "Team Alpha",
+        "isDM": false,
+        "participants": ["user1", "user2"],
+        "unreadMessages": 5,
+        "lastMessage": {
+          "message_id": "PRUEBA1" ,
+          "isMedia": false,
+          "media": "",
+          "text": "pene1",
+          "sender": "user2",
+          "date": "18-01-2000"
+        }
+      },
+      {
+        "id_chat": "chat2",
+        "chatName": "Direct Chat with User3",
+        "isDM": true,
+        "participants": ["user1", "user3"],
+        "unreadMessages": 12,
+        "lastMessage": {
+          "message_id": "PRUEBA2" ,
+          "isMedia": false,
+          "media": "",
+          "text": "pene2",
+          "sender": "user3",
+          "date": "11-02-2005"
+        }
+      },
+      {
+        "id_chat": "chat3",
+        "chatName": "Budget Discussion",
+        "isDM": false,
+        "participants": ["user1","user2", "user3"],
+        "unreadMessages": 0,
+        "lastMessage": {
+          "message_id": "PRUEBA3" ,
+          "isMedia": false,
+          "media": "",
+          "text": "pene3",
+          "sender": "user1",
+          "date": "10-03-2010"
+        }
+      }
+    ]
+  ,
+    "friends": ["user2", "user3"],
+    "pendingRequests": []
+  },
+  {
+    "username": "user2",
+    "description": "User 2 description here",
+    "status": false,
+    "photo": "url_to_photo2.jpg",
+    "profilePicture": "url_to_profile_picture2.jpg",
+    "userOptions": {},
+    "chats": [
+      {
+        "id_chat": "chat1",
+        "chatName": "Team Alpha",
+        "isDM": false,
+        "participants": ["user1", "user2"],
+        "unreadMessages": 5,
+        "lastMessage": {
+          "message_id": "PRUEBA1" ,
+          "isMedia": false,
+          "media": "",
+          "text": "pene1",
+          "sender": "user2",
+          "date": "18-01-2000"
+        }
+    },
+      {
+        "id_chat": "chat3",
+        "chatName": "Budget Discussion",
+        "isDM": false,
+        "participants": ["user1","user2", "user3"],
+        "unreadMessages": 1,
+        "lastMessage": {
+          "message_id": "PRUEBA3" ,
+          "isMedia": false,
+          "media": "",
+          "text": "pene3",
+          "sender": "user1",
+          "date": "10-03-2010"
+        }
+      }],
+    "friends": ["user1"],
+    "pendingRequests": []
+  },
+  {
+    "username": "user3",
+    "description": "User 3 description here",
+    "status": true,
+    "profilePicture": "url_to_profile_picture3.jpg",
+    "userOptions": {},
+    "chats": [
+      {
+        "id_chat": "chat2",
+        "chatName": "Direct Chat with User3",
+        "isDM": true,
+        "participants": ["user1", "user3"],
+        "unreadMessages": 10,
+        "lastMessage": {
+          "message_id": "PRUEBA2" ,
+          "isMedia": false,
+          "media": "",
+          "text": "pene2",
+          "sender": "user3",
+          "date": "11-02-2005"
+        }
+      },
+      {
+        "id_chat": "chat3",
+        "chatName": "Budget Discussion",
+        "isDM": false,
+        "participants": ["user1","user2", "user3"],
+        "unreadMessages": 99,
+        "lastMessage": {
+          "message_id": "PRUEBA3" ,
+          "isMedia": false,
+          "media": "",
+          "text": "pene3",
+          "sender": "user1",
+          "date": "10-03-2010"
+        }
+      }
+    ],
+    "friends": ["user1" ],
+    "pendingRequests": ["user2"]
+  }
+]

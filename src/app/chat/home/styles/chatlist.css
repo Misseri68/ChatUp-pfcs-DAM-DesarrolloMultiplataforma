@@ -1,0 +1,67 @@
+#chat-list{
+  font-size: smaller;
+  width:450px;
+  background: #080f2d;
+  color:white;
+  max-height: 100vh; /* Ajusta a la altura deseada */
+  overflow-y: auto; /* Habilita el desplazamiento vertical cuando sea necesario */
+}
+
+#chat-item{
+  position: relative;
+  overflow: hidden; /* Esconde los bordes del gradiente */
+}
+#chat-item:hover{
+  background: rgba(43, 191, 255, 0.43);
+}
+
+#chat-item::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(159deg, rgba(0, 255, 140, 0.25) 0%, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0) 70%, rgba(221, 0, 255, 0.30)  100%);
+}
+
+.circle-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden; /* esconde cualquier parte de la imagen que exceda el círculo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid 1px #DB00FFFF;
+  margin-right:-1em;
+}
+
+.circle-icon img {
+  width: 100%;
+  height: auto;
+}
+
+.antioverflow{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  width:200px;
+
+}
+
+.unread-message{
+  font-size:xx-small;
+}
+
+.roundednotif{
+  background-color: rgb(0, 23, 98);
+  border: solid 2px #00FFA5FF;
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  vertical-align:center;
+  color:white;
+}

@@ -1,25 +1,22 @@
 <div id="div-component">
 <!-- div barra opciones -->
-<div class="bg-dark option-bar">
+<div class="option-bar">
   <!-- Botón toggle de modo oscuro -->
     <button>
-      <i class="icon-dark-mode">boton</i>
+      <i class="icon-dark-mode"></i>
     </button>
     <button>
-      <i class="icon-notifications">boton2</i>
+      <i class="icon-notifications"></i>
     </button>
     <button>
-      <i>boton3</i>
+      <i></i>
     </button>
     <button>
-      <i>boton4</i>
+      <i></i>
     </button>
   </div>
 
-
-
-  <div id="div-sibling1" class="w-100">
-
+  <div  class="w-100">
     <header class="brand-name">
       <img class="brand-logo " src="./assets/logoemptywhite.svg" alt="logo">
       Chat-Up
@@ -29,20 +26,27 @@
 
       <!-- div listado de chats -->
       <div id="chat-list" class="justify-content-center">
-        <label>Messages</label>
-        <br>
-        <div *ngFor="let chat of user.chats">
-          <div class="row align-items-center py-2">
-            <div class="col-auto">
-              <div class="circle-icon">{{chat.}}</div>
+        <h4 class="text-lg-center p-3">Messages</h4>
+        <!-- cada elemento chat del usuario-->
+        <div *ngFor="let chat of user.chats" id="chat-item" >
+          <div class="row align-items-center py-2" (click)="displayChat(chat)" >
+            <div class="col-auto ms-3">
+              <div class="circle-icon">
+                <img  src="{{displayChatPhoto(chat)}}">
+              </div>
             </div>
             <div class="col">
-              <div class="d-flex justify-content-between">
-                <div>
-                  <div class="font-weight-bold">Nombre</div>
-                  <div>Hola</div>
+              <div>
+                <div class="fw-bold antioverflow">{{chat.chatName}}</div>
+                <div class="text-lg-start d-flex justify-content-between me-3  ms-1 ">
+                  <div class="antioverflow">{{displayLastMessage(chat.lastMessage)}}</div>
+                  <!-- Si tiene mensajes sin leer, no se visualizará la hora, se visualizará en cambio un icono con la cuantía de mensajes sin leer, en la etiqueta "ng-template"-->
+                  <div class="unread-message" *ngIf="chat.unreadMessages==0; else unreadMessagesTemplate">
+                    {{displayTime(chat.lastMessage.date)}} </div>
+                  <ng-template #unreadMessagesTemplate>
+                    <div class="roundednotif">{{displayUnreadNumber(chat.unreadMessages)}}</div>
+                  </ng-template>
                 </div>
-                <div class="text-muted">10:00</div>
               </div>
             </div>
           </div>
@@ -50,7 +54,7 @@
       </div>
 
       <!--div Chat con mensajes-->
-      <div id="messages-div">
+      <div id="chatbox">
         <app-chat></app-chat>
       </div>
      </div>
