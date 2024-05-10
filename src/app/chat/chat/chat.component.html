@@ -6,8 +6,24 @@
   </div>
 
 } @else {
-  <div class="chat-header w-100 bg-black">a</div>
-  <div class="chat-content w-100 bg-dark">
+  <div class="chat-header ">{{chat.chatName}}</div>
+  <div class="chat-content w-100">
+
+  @for (message of chat.messages; track message){
+    <div *ngIf="message.sender.toLowerCase() === currentUser.username.toLowerCase(); else notOwnMessage" class="own-message message">
+      <!-- Si el mensaje ha sido enviado por el usuario que está viendo la pantalla:-->
+      <div>
+        <h5>{{message.sender}}</h5>
+        {{message.text}}
+      </div>
+    </div>
+    <ng-template #notOwnMessage>
+      <div  class="not-own-message message">
+        <h5>{{message.sender}}</h5>
+        <div>{{message.text}}</div>
+      </div>
+    </ng-template>
+  }
   </div>
 }
 

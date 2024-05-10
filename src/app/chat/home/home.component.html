@@ -23,39 +23,43 @@
     </header>
 
     <div id="div-sibling2" >
-
       <!-- div listado de chats -->
       <div id="chat-list" class="justify-content-center">
         <h4 class="text-lg-center p-3">Messages</h4>
         <!-- cada elemento chat del usuario-->
-        <div *ngFor="let chat of user.chats" id="chat-item" >
-          <div class="row align-items-center py-2" (click)="displayChat(chat)" >
-            <div class="col-auto ms-3">
-              <div class="circle-icon">
-                <img  src="{{displayChatPhoto(chat)}}">
+        @if(user.chats && user.chats.length>0){
+          <div *ngFor="let chat of user.chats" class="chat-item"  (click)="selectChat(chat)">
+            <div class="row align-items-center py-2">
+              <div class="col-auto ms-3">
+                <div class="circle-icon">
+                  <img  src="{{displayChatPhoto(chat)}}">
+                </div>
               </div>
-            </div>
-            <div class="col">
-              <div>
-                <div class="fw-bold antioverflow">{{chat.chatName}}</div>
-                <div class="text-lg-start d-flex justify-content-between me-3  ms-1 ">
-                  <div class="antioverflow">{{displayLastMessage(chat.lastMessage)}}</div>
-                  <!-- Si tiene mensajes sin leer, no se visualizará la hora, se visualizará en cambio un icono con la cuantía de mensajes sin leer, en la etiqueta "ng-template"-->
-                  <div class="unread-message" *ngIf="chat.unreadMessages==0; else unreadMessagesTemplate">
-                    {{displayTime(chat.lastMessage.date)}} </div>
-                  <ng-template #unreadMessagesTemplate>
-                    <div class="roundednotif">{{displayUnreadNumber(chat.unreadMessages)}}</div>
-                  </ng-template>
+              <div class="col">
+                <div>
+                  <div class="fw-bold antioverflow">{{chat.chatName}}</div>
+                  <div class="text-lg-start d-flex justify-content-between me-3  ms-1 ">
+                    <div class="antioverflow">{{displayLastMessage(chat.lastMessage)}}</div>
+                    <!-- Si tiene mensajes sin leer, no se visualizará la hora, se visualizará en cambio un icono con la cuantía de mensajes sin leer, en la etiqueta "ng-template"-->
+                    <div class="unread-message" *ngIf="chat.unreadMessages==0; else unreadMessagesTemplate">
+                      {{displayTime(chat.lastMessage.date)}} </div>
+                    <ng-template #unreadMessagesTemplate>
+                      <div class="roundednotif"><p>{{displayUnreadNumber(chat.unreadMessages)}}</p></div>
+                    </ng-template>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        }
+        @else{
+          <h5>It looks like there are no chats yet... Add a friend and start to type!</h5>
+        }
       </div>
 
       <!--div Chat con mensajes-->
       <div id="chatbox">
-        <app-chat></app-chat>
+        <app-chat [chat]="selectedChat" [currentUser]="user"></app-chat>
       </div>
      </div>
   </div>

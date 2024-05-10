@@ -11,324 +11,739 @@ export class UserService {
   USERS : User[] = [
     {
       "username": "user1",
-      "description": "User 1 description here",
+      "description": "User 1's description here",
       "status": true,
-      "profilePicture": "../../assets/pictures/default_pfp.png",
-      "userOptions": {},
+      "profilePicture": "http://example.com/user1.jpg",
       "chats": [
         {
           "id_chat": "chat1",
-          "chatName": "Team Alpha",
+          "chatName": "Project Alpha",
+          "photo": 'assets/pictures/default_pfp.png',
           "isDM": false,
-          "participants": ["user1", "user2"],
-          "unreadMessages": 1000,
-          "photo": "../../assets/pictures/default_pfp.png",
+          "participants": ["user1", "user2", "user3"],
+          "unreadMessages": 100,
           "lastMessage": {
-            "message_id": "PRUEBA1" ,
+            "message_id": "msg3",
             "isMedia": false,
-            "media": "",
-            "text": "pene1",
-            "sender": "user2",
-            "date": new Date('2022-03-08T15:45:00Z')
-          }
+            "text": "Reminder: Meeting at 3 PM today.",
+            "sender": "user1",
+            "date": new Date("2024-05-10T08:45:00Z")
+          },
+          "messages": [
+            { message_id: "msg1", isMedia: false, text: "Hola, ¿cómo estás?", sender: "user1", date: new Date("2024-01-01T09:00:00") },
+            { message_id: "msg2", isMedia: true, media: "http://example.com/image1.jpg", text: "", sender: "user2", date: new Date("2024-01-01T09:05:00") },
+            { message_id: "msg3", isMedia: false, text: "Estoy bien, gracias por preguntar.", sender: "user1", date: new Date("2024-01-01T09:10:00") },
+            { message_id: "msg4", isMedia: true, media: "http://example.com/image2.jpg", text: "", sender: "user3", date: new Date("2024-01-01T09:15:00") },
+            { message_id: "msg5", isMedia: false, text: "¿Vamos al cine esta noche?", sender: "user2", date: new Date("2024-01-01T09:20:00") },
+            { message_id: "msg6", isMedia: false, text: "Claro, ¿a qué hora?", sender: "user1", date: new Date("2024-01-01T09:25:00") },
+            { message_id: "msg7", isMedia: true, media: "http://example.com/image3.jpg", text: "", sender: "user3", date: new Date("2024-01-01T09:30:00") },
+            { message_id: "msg8", isMedia: false, text: "A las 8 estaría perfecto.", sender: "user2", date: new Date("2024-01-01T09:35:00") },
+            { message_id: "msg9", isMedia: false, text: "Allí nos vemos.", sender: "user1", date: new Date("2024-01-01T09:40:00") },
+            { message_id: "msg10", isMedia: true, media: "http://example.com/image4.jpg", text: "", sender: "user3", date: new Date("2024-01-01T09:45:00") },
+            { message_id: "msg11", isMedia: false, text: "Perfecto, he reservado las entradas.", sender: "user2", date: new Date("2024-01-01T09:50:00") },
+            { message_id: "msg12", isMedia: true, media: "http://example.com/image5.jpg", text: "", sender: "user1", date: new Date("2024-01-01T09:55:00") },
+            { message_id: "msg13", isMedia: false, text: "Genial, gracias.", sender: "user3", date: new Date("2024-01-01T10:00:00") },
+            { message_id: "msg14", isMedia: false, text: "¿Alguien quiere palomitas?", sender: "user1", date: new Date("2024-01-01T10:05:00") },
+            { message_id: "msg15", isMedia: true, media: "http://example.com/image6.jpg", text: "", sender: "user2", date: new Date("2024-01-01T10:10:00") },
+            { message_id: "msg16", isMedia: false, text: "Yo quiero de caramelo.", sender: "user3", date: new Date("2024-01-01T10:15:00") },
+            { message_id: "msg17", isMedia: true, media: "http://example.com/image7.jpg", text: "", sender: "user1", date: new Date("2024-01-01T10:20:00") },
+            { message_id: "msg18", isMedia: false, text: "Yo paso de palomitas esta vez.", sender: "user2", date: new Date("2024-01-01T10:25:00") },
+            { message_id: "msg1", isMedia: false, text: "Hola, ¿cómo estás?", sender: "user1", date: new Date("2024-01-01T09:00:00") },
+            { message_id: "msg2", isMedia: true, media: "http://example.com/image1.jpg", text: "", sender: "user2", date: new Date("2024-01-01T09:05:00") },
+            { message_id: "msg3", isMedia: false, text: "Estoy bien, gracias por preguntar.", sender: "user1", date: new Date("2024-01-01T09:10:00") },
+            { message_id: "msg4", isMedia: true, media: "http://example.com/image2.jpg", text: "", sender: "user3", date: new Date("2024-01-01T09:15:00") },
+            { message_id: "msg5", isMedia: false, text: "¿Vamos al cine esta noche?", sender: "user2", date: new Date("2024-01-01T09:20:00") },
+            { message_id: "msg6", isMedia: false, text: "Claro, ¿a qué hora?", sender: "user1", date: new Date("2024-01-01T09:25:00") },
+            { message_id: "msg7", isMedia: true, media: "http://example.com/image3.jpg", text: "", sender: "user3", date: new Date("2024-01-01T09:30:00") },
+            { message_id: "msg8", isMedia: false, text: "A las 8 estaría perfecto.", sender: "user2", date: new Date("2024-01-01T09:35:00") },
+            { message_id: "msg9", isMedia: false, text: "Allí nos vemos.", sender: "user1", date: new Date("2024-01-01T09:40:00") },
+            { message_id: "msg10", isMedia: true, media: "http://example.com/image4.jpg", text: "", sender: "user3", date: new Date("2024-01-01T09:45:00") },
+            { message_id: "msg11", isMedia: false, text: "Perfecto, he reservado las entradas.", sender: "user2", date: new Date("2024-01-01T09:50:00") },
+            { message_id: "msg12", isMedia: true, media: "http://example.com/image5.jpg", text: "", sender: "user1", date: new Date("2024-01-01T09:55:00") },
+            { message_id: "msg13", isMedia: false, text: "Genial, gracias.", sender: "user3", date: new Date("2024-01-01T10:00:00") },
+            { message_id: "msg14", isMedia: false, text: "¿Alguien quiere palomitas?", sender: "user1", date: new Date("2024-01-01T10:05:00") },
+            { message_id: "msg15", isMedia: true, media: "http://example.com/image6.jpg", text: "", sender: "user2", date: new Date("2024-01-01T10:10:00") },
+            { message_id: "msg16", isMedia: false, text: "Yo quiero de caramelo.", sender: "user3", date: new Date("2024-01-01T10:15:00") },
+            { message_id: "msg17", isMedia: true, media: "http://example.com/image7.jpg", text: "", sender: "user1", date: new Date("2024-01-01T10:20:00") },
+            { message_id: "msg18", isMedia: false, text: "Yo paso de palomitas esta vez.", sender: "user2", date: new Date("2024-01-01T10:25:00") },
+            { message_id: "msg1", isMedia: false, text: "Hola, ¿cómo estás?", sender: "user1", date: new Date("2024-01-01T09:00:00") },
+            { message_id: "msg2", isMedia: true, media: "http://example.com/image1.jpg", text: "", sender: "user2", date: new Date("2024-01-01T09:05:00") },
+            { message_id: "msg3", isMedia: false, text: "Estoy bien, gracias por preguntar.", sender: "user1", date: new Date("2024-01-01T09:10:00") },
+            { message_id: "msg4", isMedia: true, media: "http://example.com/image2.jpg", text: "", sender: "user3", date: new Date("2024-01-01T09:15:00") },
+            { message_id: "msg5", isMedia: false, text: "¿Vamos al cine esta noche?", sender: "user2", date: new Date("2024-01-01T09:20:00") },
+            { message_id: "msg6", isMedia: false, text: "Claro, ¿a qué hora?", sender: "user1", date: new Date("2024-01-01T09:25:00") },
+            { message_id: "msg7", isMedia: true, media: "http://example.com/image3.jpg", text: "", sender: "user3", date: new Date("2024-01-01T09:30:00") },
+            { message_id: "msg8", isMedia: false, text: "A las 8 estaría perfecto.", sender: "user2", date: new Date("2024-01-01T09:35:00") },
+            { message_id: "msg9", isMedia: false, text: "Allí nos vemos.", sender: "user1", date: new Date("2024-01-01T09:40:00") },
+            { message_id: "msg10", isMedia: true, media: "http://example.com/image4.jpg", text: "", sender: "user3", date: new Date("2024-01-01T09:45:00") },
+            { message_id: "msg11", isMedia: false, text: "Perfecto, he reservado las entradas.", sender: "user2", date: new Date("2024-01-01T09:50:00") },
+            { message_id: "msg12", isMedia: true, media: "http://example.com/image5.jpg", text: "", sender: "user1", date: new Date("2024-01-01T09:55:00") },
+            { message_id: "msg13", isMedia: false, text: "Genial, gracias.", sender: "user3", date: new Date("2024-01-01T10:00:00") },
+            { message_id: "msg14", isMedia: false, text: "¿Alguien quiere palomitas?", sender: "user1", date: new Date("2024-01-01T10:05:00") },
+            { message_id: "msg15", isMedia: true, media: "http://example.com/image6.jpg", text: "", sender: "user2", date: new Date("2024-01-01T10:10:00") },
+            { message_id: "msg16", isMedia: false, text: "Yo quiero de caramelo.", sender: "user3", date: new Date("2024-01-01T10:15:00") },
+            { message_id: "msg17", isMedia: true, media: "http://example.com/image7.jpg", text: "", sender: "user1", date: new Date("2024-01-01T10:20:00") },
+            { message_id: "msg18", isMedia: false, text: "Yo paso de palomitas esta vez.", sender: "user2", date: new Date("2024-01-01T10:25:00") },
+            { message_id: "msg1", isMedia: false, text: "Hola, ¿cómo estás?", sender: "user1", date: new Date("2024-01-01T09:00:00") },
+            { message_id: "msg2", isMedia: true, media: "http://example.com/image1.jpg", text: "", sender: "user2", date: new Date("2024-01-01T09:05:00") },
+            { message_id: "msg3", isMedia: false, text: "Estoy bien, gracias por preguntar.", sender: "user1", date: new Date("2024-01-01T09:10:00") },
+            { message_id: "msg4", isMedia: true, media: "http://example.com/image2.jpg", text: "", sender: "user3", date: new Date("2024-01-01T09:15:00") },
+            { message_id: "msg5", isMedia: false, text: "¿Vamos al cine esta noche?", sender: "user2", date: new Date("2024-01-01T09:20:00") },
+            { message_id: "msg6", isMedia: false, text: "Claro, ¿a qué hora?", sender: "user1", date: new Date("2024-01-01T09:25:00") },
+            { message_id: "msg7", isMedia: true, media: "http://example.com/image3.jpg", text: "", sender: "user3", date: new Date("2024-01-01T09:30:00") },
+            { message_id: "msg8", isMedia: false, text: "A las 8 estaría perfecto.", sender: "user2", date: new Date("2024-01-01T09:35:00") },
+            { message_id: "msg9", isMedia: false, text: "Allí nos vemos.", sender: "user1", date: new Date("2024-01-01T09:40:00") },
+            { message_id: "msg10", isMedia: true, media: "http://example.com/image4.jpg", text: "", sender: "user3", date: new Date("2024-01-01T09:45:00") },
+            { message_id: "msg11", isMedia: false, text: "Perfecto, he reservado las entradas.", sender: "user2", date: new Date("2024-01-01T09:50:00") },
+            { message_id: "msg12", isMedia: true, media: "http://example.com/image5.jpg", text: "", sender: "user1", date: new Date("2024-01-01T09:55:00") },
+            { message_id: "msg13", isMedia: false, text: "Genial, gracias.", sender: "user3", date: new Date("2024-01-01T10:00:00") },
+            { message_id: "msg14", isMedia: false, text: "¿Alguien quiere palomitas?", sender: "user1", date: new Date("2024-01-01T10:05:00") },
+            { message_id: "msg15", isMedia: true, media: "http://example.com/image6.jpg", text: "", sender: "user2", date: new Date("2024-01-01T10:10:00") },
+            { message_id: "msg16", isMedia: false, text: "Yo quiero de caramelo.", sender: "user3", date: new Date("2024-01-01T10:15:00") },
+            { message_id: "msg17", isMedia: true, media: "http://example.com/image7.jpg", text: "", sender: "user1", date: new Date("2024-01-01T10:20:00") },
+            { message_id: "msg18", isMedia: false, text: "Yo paso de palomitas esta vez.", sender: "user2", date: new Date("2024-01-01T10:25:00") },  { message_id: "msg1", isMedia: false, text: "Hola, ¿cómo estás?", sender: "user1", date: new Date("2024-01-01T09:00:00") },
+            { message_id: "msg2", isMedia: true, media: "http://example.com/image1.jpg", text: "", sender: "user2", date: new Date("2024-01-01T09:05:00") },
+            { message_id: "msg3", isMedia: false, text: "Estoy bien, gracias por preguntar.", sender: "user1", date: new Date("2024-01-01T09:10:00") },
+            { message_id: "msg4", isMedia: true, media: "http://example.com/image2.jpg", text: "", sender: "user3", date: new Date("2024-01-01T09:15:00") },
+            { message_id: "msg5", isMedia: false, text: "¿Vamos al cine esta noche?", sender: "user2", date: new Date("2024-01-01T09:20:00") },
+            { message_id: "msg6", isMedia: false, text: "Claro, ¿a qué hora?", sender: "user1", date: new Date("2024-01-01T09:25:00") },
+            { message_id: "msg7", isMedia: true, media: "http://example.com/image3.jpg", text: "", sender: "user3", date: new Date("2024-01-01T09:30:00") },
+            { message_id: "msg8", isMedia: false, text: "A las 8 estaría perfecto.", sender: "user2", date: new Date("2024-01-01T09:35:00") },
+            { message_id: "msg9", isMedia: false, text: "Allí nos vemos.", sender: "user1", date: new Date("2024-01-01T09:40:00") },
+            { message_id: "msg10", isMedia: true, media: "http://example.com/image4.jpg", text: "", sender: "user3", date: new Date("2024-01-01T09:45:00") },
+            { message_id: "msg11", isMedia: false, text: "Perfecto, he reservado las entradas.", sender: "user2", date: new Date("2024-01-01T09:50:00") },
+            { message_id: "msg12", isMedia: true, media: "http://example.com/image5.jpg", text: "", sender: "user1", date: new Date("2024-01-01T09:55:00") },
+            { message_id: "msg13", isMedia: false, text: "Genial, gracias.", sender: "user3", date: new Date("2024-01-01T10:00:00") },
+            { message_id: "msg14", isMedia: false, text: "¿Alguien quiere palomitas?", sender: "user1", date: new Date("2024-01-01T10:05:00") },
+            { message_id: "msg15", isMedia: true, media: "http://example.com/image6.jpg", text: "", sender: "user2", date: new Date("2024-01-01T10:10:00") },
+            { message_id: "msg16", isMedia: false, text: "Yo quiero de caramelo.", sender: "user3", date: new Date("2024-01-01T10:15:00") },
+            { message_id: "msg17", isMedia: true, media: "http://example.com/image7.jpg", text: "", sender: "user1", date: new Date("2024-01-01T10:20:00") },
+            { message_id: "msg18", isMedia: false, text: "Yo paso de palomitas esta vez.", sender: "user2", date: new Date("2024-01-01T10:25:00") },
+            { message_id: "msg1", isMedia: false, text: "Hola, ¿cómo estás?", sender: "user1", date: new Date("2024-01-01T09:00:00") },
+            { message_id: "msg2", isMedia: true, media: "http://example.com/image1.jpg", text: "", sender: "user2", date: new Date("2024-01-01T09:05:00") },
+            { message_id: "msg3", isMedia: false, text: "Estoy bien, gracias por preguntar.", sender: "user1", date: new Date("2024-01-01T09:10:00") },
+            { message_id: "msg4", isMedia: true, media: "http://example.com/image2.jpg", text: "", sender: "user3", date: new Date("2024-01-01T09:15:00") },
+            { message_id: "msg5", isMedia: false, text: "¿Vamos al cine esta noche?", sender: "user2", date: new Date("2024-01-01T09:20:00") },
+            { message_id: "msg6", isMedia: false, text: "Claro, ¿a qué hora?", sender: "user1", date: new Date("2024-01-01T09:25:00") },
+            { message_id: "msg7", isMedia: true, media: "http://example.com/image3.jpg", text: "", sender: "user3", date: new Date("2024-01-01T09:30:00") },
+            { message_id: "msg8", isMedia: false, text: "A las 8 estaría perfecto.", sender: "user2", date: new Date("2024-01-01T09:35:00") },
+            { message_id: "msg9", isMedia: false, text: "Allí nos vemos.", sender: "user1", date: new Date("2024-01-01T09:40:00") },
+            { message_id: "msg10", isMedia: true, media: "http://example.com/image4.jpg", text: "", sender: "user3", date: new Date("2024-01-01T09:45:00") },
+            { message_id: "msg11", isMedia: false, text: "Perfecto, he reservado las entradas.", sender: "user2", date: new Date("2024-01-01T09:50:00") },
+            { message_id: "msg12", isMedia: true, media: "http://example.com/image5.jpg", text: "", sender: "user1", date: new Date("2024-01-01T09:55:00") },
+            { message_id: "msg13", isMedia: false, text: "Genial, gracias.", sender: "user3", date: new Date("2024-01-01T10:00:00") },
+            { message_id: "msg14", isMedia: false, text: "¿Alguien quiere palomitas?", sender: "user1", date: new Date("2024-01-01T10:05:00") },
+            { message_id: "msg15", isMedia: true, media: "http://example.com/image6.jpg", text: "", sender: "user2", date: new Date("2024-01-01T10:10:00") },
+            { message_id: "msg16", isMedia: false, text: "Yo quiero de caramelo.", sender: "user3", date: new Date("2024-01-01T10:15:00") },
+            { message_id: "msg17", isMedia: true, media: "http://example.com/image7.jpg", text: "", sender: "user1", date: new Date("2024-01-01T10:20:00") },
+            { message_id: "msg18", isMedia: false, text: "Yo paso de palomitas esta vez.", sender: "user2", date: new Date("2024-01-01T10:25:00") }
+
+          ]
         },
         {
           "id_chat": "chat2",
-          "chatName": "Direct Chat with User3eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          "chatName": "Direct with User3",
           "isDM": true,
           "participants": ["user1", "user3"],
-          "unreadMessages": 12,
+          "unreadMessages": 1,
           "lastMessage": {
-            "message_id": "PRUEBA2" ,
-            "isMedia": false,
-            "media": "",
-            "text": "pene2eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "message_id": "msg6",
+            "isMedia": true,
+            "media": "http://example.com/image.jpg",
+            "text": "Here's the design mockup.",
             "sender": "user3",
-            "date": new Date('2024-05-09T08:20:00Z')
-          }
-        },
-        {
-          "id_chat": "chat3",
-          "chatName": "Budget Discussion",
-          "isDM": false,
-          "participants": ["user1","user2", "user3"],
-          "unreadMessages": 0,
-          "lastMessage": {
-            "message_id": "PRUEBA3" ,
-            "isMedia": false,
-            "media": "",
-            "text": "pene3",
-            "sender": "user1",
-            "date": new Date('2024-11-23T23:30:00Z')
-          }
+            "date": new Date("2024-05-10T09:00:00Z")
+          },
+          "messages": [
+            {
+              "message_id": "msg4",
+              "isMedia": false,
+              "text": "Could you send over the latest UI designs?",
+              "sender": "user1",
+              "date": new Date("2024-05-10T08:50:00Z")
+            },
+            {
+              "message_id": "msg5",
+              "isMedia": true,
+              "media": "http://example.com/sketch.png",
+              "text": "Just sketching some ideas.",
+              "sender": "user1",
+              "date": new Date("2024-05-10T08:55:00Z")
+            },
+            {
+              "message_id": "msg6",
+              "isMedia": true,
+              "media": "http://example.com/image.jpg",
+              "text": "Here's the design mockup.",
+              "sender": "user3",
+              "date": new Date("2024-05-10T09:00:00Z")
+            }
+          ]
         },
         {
           "id_chat": "chat1",
-          "chatName": "Team Alpha",
+          "chatName": "Project Alpha",
+          "photo": 'assets/pictures/default_pfp.png',
           "isDM": false,
-          "participants": ["user1", "user2"],
-          "unreadMessages": 5,
+          "participants": ["user1", "user2", "user3"],
+          "unreadMessages": 0,
           "lastMessage": {
-            "message_id": "PRUEBA1" ,
+            "message_id": "msg3",
             "isMedia": false,
-            "media": "",
-            "text": "pene1",
-            "sender": "user2",
-            "date": new Date('2022-03-08T15:45:00Z')
-          }
+            "text": "Reminder: Meeting at 3 PM today.",
+            "sender": "user1",
+            "date": new Date("2024-05-10T08:45:00Z")
+          },
+          "messages": [
+            {
+              "message_id": "msg1",
+              "isMedia": false,
+              "text": "Hi team, are we ready for today's sprint review?",
+              "sender": "user1",
+              "date": new Date("2024-05-10T07:30:00Z")
+            },
+            {
+              "message_id": "msg2",
+              "isMedia": false,
+              "text": "I've updated the Trello board with the latest tasks.",
+              "sender": "user2",
+              "date": new Date("2024-05-10T07:45:00Z")
+            },
+            {
+              "message_id": "msg3",
+              "isMedia": false,
+              "text": "Reminder: Meeting at 3 PM today.",
+              "sender": "user1",
+              "date": new Date("2024-05-10T08:45:00Z")
+            }
+          ]
         },
         {
           "id_chat": "chat2",
-          "chatName": "Direct Chat with User3eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          "chatName": "Direct with User3",
           "isDM": true,
           "participants": ["user1", "user3"],
-          "unreadMessages": 12,
+          "unreadMessages": 1,
           "lastMessage": {
-            "message_id": "PRUEBA2" ,
-            "isMedia": false,
-            "media": "",
-            "text": "pene2eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "message_id": "msg6",
+            "isMedia": true,
+            "media": "http://example.com/image.jpg",
+            "text": "Here's the design mockup.",
             "sender": "user3",
-            "date": new Date('2024-05-09T08:20:00Z')
-          }
-        },
-        {
-          "id_chat": "chat3",
-          "chatName": "Budget Discussion",
-          "isDM": false,
-          "participants": ["user1","user2", "user3"],
-          "unreadMessages": 0,
-          "lastMessage": {
-            "message_id": "PRUEBA3" ,
-            "isMedia": false,
-            "media": "",
-            "text": "pene3",
-            "sender": "user1",
-            "date": new Date('2024-11-23T23:30:00Z')
-          }
+            "date": new Date("2024-05-10T09:00:00Z")
+          },
+          "messages": [
+            {
+              "message_id": "msg4",
+              "isMedia": false,
+              "text": "Could you send over the latest UI designs?",
+              "sender": "user1",
+              "date": new Date("2024-05-10T08:50:00Z")
+            },
+            {
+              "message_id": "msg5",
+              "isMedia": true,
+              "media": "http://example.com/sketch.png",
+              "text": "Just sketching some ideas.",
+              "sender": "user1",
+              "date": new Date("2024-05-10T08:55:00Z")
+            },
+            {
+              "message_id": "msg6",
+              "isMedia": true,
+              "media": "http://example.com/image.jpg",
+              "text": "Here's the design mockup.",
+              "sender": "user3",
+              "date": new Date("2024-05-10T09:00:00Z")
+            }
+          ]
         },
         {
           "id_chat": "chat1",
-          "chatName": "Team Alpha",
+          "chatName": "Project Beta",
+          "photo": 'assets/pictures/default_pfp.png',
           "isDM": false,
-          "participants": ["user1", "user2"],
-          "unreadMessages": 5,
+          "participants": ["user1", "user2", "user3"],
+          "unreadMessages": 0,
           "lastMessage": {
-            "message_id": "PRUEBA1" ,
+            "message_id": "msg3",
             "isMedia": false,
-            "media": "",
-            "text": "pene1",
-            "sender": "user2",
-            "date": new Date('2022-03-08T15:45:00Z')
-          }
+            "text": "Reminder: Meeting at 3 PM today.",
+            "sender": "user1",
+            "date": new Date("2024-05-09T08:45:00Z")
+          },
+          "messages": [
+            {
+              "message_id": "msg1",
+              "isMedia": false,
+              "text": "Hi team, are we ready for today's sprint review?",
+              "sender": "user1",
+              "date": new Date("2024-05-05T07:30:00Z")
+            },
+            {
+              "message_id": "msg2",
+              "isMedia": false,
+              "text": "I've updated the Trello board with the latest tasks.",
+              "sender": "user2",
+              "date": new Date("2024-05-10T07:45:00Z")
+            },
+            {
+              "message_id": "msg3",
+              "isMedia": false,
+              "text": "Reminder: Meeting at 3 PM today.",
+              "sender": "user1",
+              "date": new Date("2024-05-09T08:45:00Z")
+            }
+          ]
         },
         {
           "id_chat": "chat2",
-          "chatName": "Direct Chat with User3eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          "chatName": "Direct with User3",
           "isDM": true,
           "participants": ["user1", "user3"],
-          "unreadMessages": 12,
-          "lastMessage": {
-            "message_id": "PRUEBA2" ,
-            "isMedia": false,
-            "media": "",
-            "text": "pene2eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
-            "sender": "user3",
-            "date": new Date('2024-05-09T08:20:00Z')
-          }
-        },
-        {
-          "id_chat": "chat3",
-          "chatName": "Budget Discussion",
-          "isDM": false,
-          "participants": ["user1","user2", "user3"],
           "unreadMessages": 0,
           "lastMessage": {
-            "message_id": "PRUEBA3" ,
+            "message_id": "msg6",
+            "isMedia": true,
+            "media": "http://example.com/image.jpg",
+            "text": "Here's the design mockup.",
+            "sender": "user3",
+            "date": new Date("2024-05-10T09:00:00Z")
+          },
+          "messages": [
+            {
+              "message_id": "msg4",
+              "isMedia": false,
+              "text": "Could you send over the latest UI designs?",
+              "sender": "user1",
+              "date": new Date("2024-05-10T08:50:00Z")
+            },
+            {
+              "message_id": "msg5",
+              "isMedia": true,
+              "media": "http://example.com/sketch.png",
+              "text": "Just sketching some ideas.",
+              "sender": "user1",
+              "date": new Date("2024-05-10T08:55:00Z")
+            },
+            {
+              "message_id": "msg6",
+              "isMedia": true,
+              "media": "http://example.com/image.jpg",
+              "text": "Here's the design mockup.",
+              "sender": "user3",
+              "date": new Date("2024-05-10T09:00:00Z")
+            }
+          ]
+        },{
+          "id_chat": "chat1",
+          "chatName": "Project Alpha",
+          "photo": 'assets/pictures/default_pfp.png',
+          "isDM": false,
+          "participants": ["user1", "user2", "user3"],
+          "unreadMessages": 2,
+          "lastMessage": {
+            "message_id": "msg3",
             "isMedia": false,
-            "media": "",
-            "text": "pene3",
+            "text": "Reminder: Meeting at 3 PM today.",
             "sender": "user1",
-            "date": new Date('2024-11-23T23:30:00Z')
-          }
+            "date": new Date("2024-05-10T08:45:00Z")
+          },
+          "messages": [
+            {
+              "message_id": "msg1",
+              "isMedia": false,
+              "text": "Hi team, are we ready for today's sprint review?",
+              "sender": "user1",
+              "date": new Date("2024-05-10T07:30:00Z")
+            },
+            {
+              "message_id": "msg2",
+              "isMedia": false,
+              "text": "I've updated the Trello board with the latest tasks.",
+              "sender": "user2",
+              "date": new Date("2024-05-10T07:45:00Z")
+            },
+            {
+              "message_id": "msg3",
+              "isMedia": false,
+              "text": "Reminder: Meeting at 3 PM today.",
+              "sender": "user1",
+              "date": new Date("2024-05-10T08:45:00Z")
+            }
+          ]
+        },
+        {
+          "id_chat": "chat2",
+          "chatName": "Direct with User3",
+          "isDM": true,
+          "participants": ["user1", "user3"],
+          "unreadMessages": 1,
+          "lastMessage": {
+            "message_id": "msg6",
+            "isMedia": true,
+            "media": "http://example.com/image.jpg",
+            "text": "Here's the design mockup.",
+            "sender": "user3",
+            "date": new Date("2024-05-10T09:00:00Z")
+          },
+          "messages": [
+            {
+              "message_id": "msg4",
+              "isMedia": false,
+              "text": "Could you send over the latest UI designs?",
+              "sender": "user1",
+              "date": new Date("2024-05-10T08:50:00Z")
+            },
+            {
+              "message_id": "msg5",
+              "isMedia": true,
+              "media": "http://example.com/sketch.png",
+              "text": "Just sketching some ideas.",
+              "sender": "user1",
+              "date": new Date("2024-05-10T08:55:00Z")
+            },
+            {
+              "message_id": "msg6",
+              "isMedia": true,
+              "media": "http://example.com/image.jpg",
+              "text": "Here's the design mockup.",
+              "sender": "user3",
+              "date": new Date("2024-05-10T09:00:00Z")
+            }
+          ]
         },
         {
           "id_chat": "chat1",
-          "chatName": "Team Alpha",
+          "chatName": "Project Alpha",
+          "photo": 'assets/pictures/default_pfp.png',
           "isDM": false,
-          "participants": ["user1", "user2"],
-          "unreadMessages": 5,
+          "participants": ["user1", "user2", "user3"],
+          "unreadMessages": 2,
           "lastMessage": {
-            "message_id": "PRUEBA1" ,
+            "message_id": "msg3",
             "isMedia": false,
-            "media": "",
-            "text": "pene1",
-            "sender": "user2",
-            "date": new Date('2022-03-08T15:45:00Z')
-          }
+            "text": "Reminder: Meeting at 3 PM today.",
+            "sender": "user1",
+            "date": new Date("2024-05-10T08:45:00Z")
+          },
+          "messages": [
+            {
+              "message_id": "msg1",
+              "isMedia": false,
+              "text": "Hi team, are we ready for today's sprint review?",
+              "sender": "user1",
+              "date": new Date("2024-05-10T07:30:00Z")
+            },
+            {
+              "message_id": "msg2",
+              "isMedia": false,
+              "text": "I've updated the Trello board with the latest tasks.",
+              "sender": "user2",
+              "date": new Date("2024-05-10T07:45:00Z")
+            },
+            {
+              "message_id": "msg3",
+              "isMedia": false,
+              "text": "Reminder: Meeting at 3 PM today.",
+              "sender": "user1",
+              "date": new Date("2024-05-10T08:45:00Z")
+            }
+          ]
         },
         {
           "id_chat": "chat2",
-          "chatName": "Direct Chat with User3eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          "chatName": "Direct with User3",
           "isDM": true,
           "participants": ["user1", "user3"],
-          "unreadMessages": 12,
+          "unreadMessages": 1,
           "lastMessage": {
-            "message_id": "PRUEBA2" ,
-            "isMedia": false,
-            "media": "",
-            "text": "pene2eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "message_id": "msg6",
+            "isMedia": true,
+            "media": "http://example.com/image.jpg",
+            "text": "Here's the design mockup.",
             "sender": "user3",
-            "date": new Date('2024-05-09T08:20:00Z')
-          }
+            "date": new Date("2024-05-10T09:00:00Z")
+          },
+          "messages": [
+            {
+              "message_id": "msg4",
+              "isMedia": false,
+              "text": "Could you send over the latest UI designs?",
+              "sender": "user1",
+              "date": new Date("2024-05-10T08:50:00Z")
+            },
+            {
+              "message_id": "msg5",
+              "isMedia": true,
+              "media": "http://example.com/sketch.png",
+              "text": "Just sketching some ideas.",
+              "sender": "user1",
+              "date": new Date("2024-05-10T08:55:00Z")
+            },
+            {
+              "message_id": "msg6",
+              "isMedia": true,
+              "media": "http://example.com/image.jpg",
+              "text": "Here's the design mockup.",
+              "sender": "user3",
+              "date": new Date("2024-05-10T09:00:00Z")
+            }
+          ]
         },
         {
-          "id_chat": "chat3",
-          "chatName": "Budget Discussion",
+          "id_chat": "chat1",
+          "chatName": "Project Alpha",
+          "photo": 'assets/pictures/default_pfp.png',
           "isDM": false,
-          "participants": ["user1","user2", "user3"],
-          "unreadMessages": 0,
+          "participants": ["user1", "user2", "user3"],
+          "unreadMessages": 2,
           "lastMessage": {
-            "message_id": "PRUEBA3" ,
+            "message_id": "msg3",
             "isMedia": false,
-            "media": "",
-            "text": "pene3",
+            "text": "Reminder: Meeting at 3 PM today.",
             "sender": "user1",
-            "date": new Date('2024-11-23T23:30:00Z')
-          }
+            "date": new Date("2024-05-10T08:45:00Z")
+          },
+          "messages": [
+            {
+              "message_id": "msg1",
+              "isMedia": false,
+              "text": "Hi team, are we ready for today's sprint review?",
+              "sender": "user1",
+              "date": new Date("2024-05-10T07:30:00Z")
+            },
+            {
+              "message_id": "msg2",
+              "isMedia": false,
+              "text": "I've updated the Trello board with the latest tasks.",
+              "sender": "user2",
+              "date": new Date("2024-05-10T07:45:00Z")
+            },
+            {
+              "message_id": "msg3",
+              "isMedia": false,
+              "text": "Reminder: Meeting at 3 PM today.",
+              "sender": "user1",
+              "date": new Date("2024-05-10T08:45:00Z")
+            }
+          ]
+        },
+        {
+          "id_chat": "chat2",
+          "chatName": "Direct with User3",
+          "isDM": true,
+          "participants": ["user1", "user3"],
+          "unreadMessages": 1,
+          "lastMessage": {
+            "message_id": "msg6",
+            "isMedia": true,
+            "media": "http://example.com/image.jpg",
+            "text": "Here's the design mockup.",
+            "sender": "user3",
+            "date": new Date("2024-05-10T09:00:00Z")
+          },
+          "messages": [
+            {
+              "message_id": "msg4",
+              "isMedia": false,
+              "text": "Could you send over the latest UI designs?",
+              "sender": "user1",
+              "date": new Date("2024-05-10T08:50:00Z")
+            },
+            {
+              "message_id": "msg5",
+              "isMedia": true,
+              "media": "http://example.com/sketch.png",
+              "text": "Just sketching some ideas.",
+              "sender": "user1",
+              "date": new Date("2024-05-10T08:55:00Z")
+            },
+            {
+              "message_id": "msg6",
+              "isMedia": true,
+              "media": "http://example.com/image.jpg",
+              "text": "Here's the design mockup.",
+              "sender": "user3",
+              "date": new Date("2024-05-10T09:00:00Z")
+            }
+          ]
+        },
+        {
+          "id_chat": "chat1",
+          "chatName": "Project Alpha",
+          "photo": 'assets/pictures/default_pfp.png',
+          "isDM": false,
+          "participants": ["user1", "user2", "user3"],
+          "unreadMessages": 2,
+          "lastMessage": {
+            "message_id": "msg3",
+            "isMedia": false,
+            "text": "Reminder: Meeting at 3 PM today.",
+            "sender": "user1",
+            "date": new Date("2024-05-10T08:45:00Z")
+          },
+          "messages": [
+            {
+              "message_id": "msg1",
+              "isMedia": false,
+              "text": "Hi team, are we ready for today's sprint review?",
+              "sender": "user1",
+              "date": new Date("2024-05-10T07:30:00Z")
+            },
+            {
+              "message_id": "msg2",
+              "isMedia": false,
+              "text": "I've updated the Trello board with the latest tasks.",
+              "sender": "user2",
+              "date": new Date("2024-05-10T07:45:00Z")
+            },
+            {
+              "message_id": "msg3",
+              "isMedia": false,
+              "text": "Reminder: Meeting at 3 PM today.",
+              "sender": "user1",
+              "date": new Date("2024-05-10T08:45:00Z")
+            }
+          ]
+        },
+        {
+          "id_chat": "chat2",
+          "chatName": "Direct with User3",
+          "isDM": true,
+          "participants": ["user1", "user3"],
+          "unreadMessages": 1,
+          "lastMessage": {
+            "message_id": "msg6",
+            "isMedia": true,
+            "media": "http://example.com/image.jpg",
+            "text": "Here's the design mockup.",
+            "sender": "user3",
+            "date": new Date("2024-05-10T09:00:00Z")
+          },
+          "messages": [
+            {
+              "message_id": "msg4",
+              "isMedia": false,
+              "text": "Could you send over the latest UI designs?",
+              "sender": "user1",
+              "date": new Date("2024-05-10T08:50:00Z")
+            },
+            {
+              "message_id": "msg5",
+              "isMedia": true,
+              "media": "http://example.com/sketch.png",
+              "text": "Just sketching some ideas.",
+              "sender": "user1",
+              "date": new Date("2024-05-10T08:55:00Z")
+            },
+            {
+              "message_id": "msg6",
+              "isMedia": true,
+              "media": "http://example.com/image.jpg",
+              "text": "Here's the design mockup.",
+              "sender": "user3",
+              "date": new Date("2024-05-10T09:00:00Z")
+            }
+          ]
         }
-        ,
-        {
-          "id_chat": "chat1",
-          "chatName": "Team Alpha",
-          "isDM": false,
-          "participants": ["user1", "user2"],
-          "unreadMessages": 5,
-          "lastMessage": {
-            "message_id": "PRUEBA1" ,
-            "isMedia": false,
-            "media": "",
-            "text": "pene1",
-            "sender": "user2",
-            "date": new Date('2022-03-08T15:45:00Z')
-          }
-        },
-        {
-          "id_chat": "chat2",
-          "chatName": "Direct Chat with User3eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
-          "isDM": true,
-          "participants": ["user1", "user3"],
-          "unreadMessages": 12,
-          "lastMessage": {
-            "message_id": "PRUEBA2" ,
-            "isMedia": false,
-            "media": "",
-            "text": "pene2eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
-            "sender": "user3",
-            "date": new Date('2024-05-09T08:20:00Z')
-          }
-        },
-        {
-          "id_chat": "chat3",
-          "chatName": "Budget Discussion",
-          "isDM": false,
-          "participants": ["user1","user2", "user3"],
-          "unreadMessages": 0,
-          "lastMessage": {
-            "message_id": "PRUEBA3" ,
-            "isMedia": false,
-            "media": "",
-            "text": "pene3",
-            "sender": "user1",
-            "date": new Date('2024-11-23T23:30:00Z')
-          }
-        }
-      ]
-      ,
+
+      ],
       "friends": ["user2", "user3"],
       "pendingRequests": []
     },
     {
       "username": "user2",
-      "description": "User 2 description here",
+      "description": "User 2's description here",
       "status": false,
-      "profilePicture": "url_to_profile_picture2.jpg",
-      "userOptions": {},
+      "profilePicture": "http://example.com/user2.jpg",
       "chats": [
         {
           "id_chat": "chat1",
-          "chatName": "Team Alpha",
+          "chatName": "Project Alpha",
+          "photo": 'assets/pictures/default_pfp.png',
           "isDM": false,
-          "participants": ["user1", "user2"],
-          "unreadMessages": 5,
+          "participants": ["user1", "user2", "user3"],
+          "unreadMessages": 0,
           "lastMessage": {
-            "message_id": "PRUEBA1" ,
+            "message_id": "msg3",
             "isMedia": false,
-            "media": "",
-            "text": "pene1",
-            "sender": "user2",
-            "date": new Date('2024-03-08T15:45:00Z')
-          }
-        },
-        {
-          "id_chat": "chat3",
-          "chatName": "Budget Discussion",
-          "isDM": false,
-          "participants": ["user1","user2", "user3"],
-          "unreadMessages": 1,
-          "lastMessage": {
-            "message_id": "PRUEBA3" ,
-            "isMedia": false,
-            "media": "",
-            "text": "pene3",
+            "text": "Reminder: Meeting at 3 PM today.",
             "sender": "user1",
-            "date": new Date('2024-11-23T23:30:00Z')
-          }
-        }],
-      "friends": ["user1"],
+            "date": new Date("2024-05-10T08:45:00Z")
+          },
+          "messages": [
+            {
+              "message_id": "msg1",
+              "isMedia": false,
+              "text": "Hi team, are we ready for today's sprint review?",
+              "sender": "user1",
+              "date":  new Date("2024-05-10T07:30:00Z")
+            },
+            {
+              "message_id": "msg2",
+              "isMedia": false,
+              "text": "I've updated the Trello board with the latest tasks.",
+              "sender": "user2",
+              "date": new Date("2024-05-10T07:45:00Z")
+            }
+          ]
+        }
+      ],
+      "friends": ["user1", "user3"],
       "pendingRequests": []
     },
     {
       "username": "user3",
-      "description": "User 3 description here",
+      "description": "User 3's description here",
       "status": true,
-      "profilePicture": "url_to_profile_picture3.jpg",
-      "userOptions": {},
+      "profilePicture": "http://example.com/user3.jpg",
       "chats": [
         {
           "id_chat": "chat2",
-          "chatName": "Direct Chat with User3",
+          "chatName": "Direct with User3",
           "isDM": true,
           "participants": ["user1", "user3"],
-          "unreadMessages": 10,
+          "unreadMessages": 1,
           "lastMessage": {
-            "message_id": "PRUEBA2" ,
-            "isMedia": false,
-            "media": "",
-            "text": "pene2",
+            "message_id": "msg6",
+            "isMedia": true,
+            "media": "http://example.com/image.jpg",
+            "text": "Here's the design mockup.",
             "sender": "user3",
-            "date": new Date('2024-07-15T08:20:00Z')
-          }
-        },
-        {
-          "id_chat": "chat3",
-          "chatName": "Budget Discussion",
-          "isDM": false,
-          "participants": ["user1","user2", "user3"],
-          "unreadMessages": 99,
-          "lastMessage": {
-            "message_id": "PRUEBA3" ,
-            "isMedia": false,
-            "media": "",
-            "text": "pene3",
-            "sender": "user1",
-            "date": new Date('2024-11-23T23:30:00Z')
-          }
+            "date": new Date("2024-05-10T09:00:00Z")
+          },
+          "messages": [
+            {
+              "message_id": "msg4",
+              "isMedia": false,
+              "text": "Could you send over the latest UI designs?",
+              "sender": "user1",
+              "date": new Date("2024-05-10T08:50:00Z")
+            },
+            {
+              "message_id": "msg5",
+              "isMedia": true,
+              "media": "http://example.com/sketch.png",
+              "text": "Just sketching some ideas.",
+              "sender": "user1",
+              "date":  new Date("2024-05-10T08:55:00Z")
+            },
+            {
+              "message_id": "msg6",
+              "isMedia": true,
+              "media": "http://example.com/image.jpg",
+              "text": "Here's the design mockup.",
+              "sender": "user3",
+              "date": new Date("2024-05-10T09:00:00Z")
+            }
+          ]
         }
       ],
-      "friends": ["user1" ],
-      "pendingRequests": ["user2"]
+      "friends": ["user1", "user2"],
+      "pendingRequests": []
     }
+
   ];
 
 

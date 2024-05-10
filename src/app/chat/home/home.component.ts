@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {User} from "../../model/user";
 import {CommonModule, NgFor} from "@angular/common";
 import {ChatComponent} from "../chat/chat.component";
-import {Router} from "@angular/router";
+import {Router, RouterOutlet} from "@angular/router";
 import {UserService} from "../../services/user.service";
 import {Chat} from "../../model/chat";
 import {Message} from "../../model/message";
@@ -10,15 +10,16 @@ import {Message} from "../../model/message";
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, NgFor, ChatComponent],
+  imports: [CommonModule, NgFor, ChatComponent, RouterOutlet],
   templateUrl: './home.component.html',
-  styleUrl: './styles/home.component.css'
+  styleUrls: ['./styles/home.component.css']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
   constructor(private router: Router, private userService: UserService) {}
 
   user! : User ;
+  selectedChat! : Chat | undefined;
 
   ngOnInit(): void {
     try {
@@ -29,8 +30,23 @@ export class HomeComponent {
     }
   }
 
-  displayChat(chat: Chat)  {
+  selectChat(chat: Chat)  {
+    this.selectedChat = chat;
+    console.log(this.selectedChat);
   }
+
+
+  //Al presionar escape el chat seleccionado vuelve a undefined.
+  @HostListener('document:keydown', ['$event']) onKeydownHandler(event: KeyboardEvent) {
+    if (event.key === "Escape") {
+      if(this.selectedChat!=undefined){
+        this.selectedChat = undefined;
+      }
+    }
+  }
+
+
+                //Lógica para el listado de chats:
 
   displayLastMessage(message: Message):string {
     let sender: string;
@@ -38,15 +54,11 @@ export class HomeComponent {
     else sender = message.sender + ': ';
     return sender + message.text
   }
-
-
   // Método que comprueba si el chat tiene foto, y si no le asigna la foto por defecto.
   displayChatPhoto(chat: Chat): string{
     if (chat.photo) return chat.photo
     return 'assets/pictures/default_pfp2.png';
   }
-
-
   /*Método que devolverá un String con la fecha que se pondrá en cada chat del listado de Chats del usuario.
    *  return: 'hh:MM' si el último menasje fue enviado el mismo día que el día actual.
    *  return: 'yesterday' si el último mensaje fue enviado el dia anterior al día actual.
@@ -63,7 +75,7 @@ export class HomeComponent {
       return `${messageDate.getHours().toString().padStart(2, '0')}:${messageDate.getMinutes().toString().padStart(2, '0')}`;
     } //comprueba si la fecha del mensaje es ayer
     else if (messageDate.getFullYear() === yesterday.getFullYear() && messageDate.getMonth() === yesterday.getMonth() && messageDate.getDate() === yesterday.getDate()) {
-      return 'Yesterday';
+      return 'Yest.';
     } else {       //Si no es ni hoy ni ayer:
                    //Si es del mismo año:
       if(messageDate.getFullYear() === today.getFullYear()){
@@ -76,9 +88,10 @@ export class HomeComponent {
       }
     }
   }
-
   displayUnreadNumber(unreads: number): string{
     if(unreads>99) return '99⁺';
     else return '' + unreads;
   }
+
+  protected readonly console = console;
 }

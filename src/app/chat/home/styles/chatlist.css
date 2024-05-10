@@ -7,15 +7,16 @@
   overflow-y: auto; /* Habilita el desplazamiento vertical cuando sea necesario */
 }
 
-#chat-item{
+.chat-item{
   position: relative;
   overflow: hidden; /* Esconde los bordes del gradiente */
 }
-#chat-item:hover{
+.chat-item:hover{
   background: rgba(43, 191, 255, 0.43);
+  cursor: pointer;
 }
 
-#chat-item::after {
+.chat-item::after {
   content: "";
   position: absolute;
   top: 0;
@@ -59,9 +60,12 @@
   background-color: rgb(0, 23, 98);
   border: solid 2px #00FFA5FF;
   border-radius: 100%;
-  width: 30px;
-  height: 30px;
+  width: 26px;
+  height: 26px;
   text-align: center;
   vertical-align:center;
   color:white;
+}
+.roundednotif p{
+  padding-top:1px;
 }

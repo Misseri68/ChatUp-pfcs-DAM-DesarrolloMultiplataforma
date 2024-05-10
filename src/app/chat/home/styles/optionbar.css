@@ -1,7 +1,7 @@
 .option-bar{
   background-color: #03071c;
-  border-right: solid 1px;
-  border-color: #00FF8CFF;
+  border-right: solid 1px #00FF8CFF;
+  border-left: solid 1px #00FF8CFF;
   position:sticky;
   left:0;
   height:100vh;
@@ -12,9 +12,8 @@
 }
 
 .option-bar button {
-  background-color: #03071c;
-  border:solid 1px;
-  border-color: #022a1b;
+  background-color: #030c23;
+  border: 1px solid #022a1b;
   border-radius: 3px 10px 3px 10px;
   width: 40px;
   height:40px;

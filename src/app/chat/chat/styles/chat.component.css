@@ -1,0 +1,58 @@
+@import './scrollbar.css';
+
+.chat-header{
+  border: solid 1px #3700ff;
+}
+
+.chat-content{
+  display:flex;
+  flex-direction: column;
+  width:100%;
+  max-height: calc(100vh - 56px); /* Ajusta a la altura deseada */
+  overflow-y: auto; /* Habilita el desplazamiento vertical cuando sea necesario */
+}
+
+.own-message{
+  align-self: flex-end;
+  background: linear-gradient(159deg, rgba(0, 255, 140, 0.25) 0%, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0) 70%, rgba(221, 0, 255, 0.30)  100%);
+
+}
+
+.not-own-message{
+  align-self:flex-start;
+  background: linear-gradient(159deg, rgba(221, 0, 255, 0.30)  0% , rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0) 70%, rgba(0, 255, 140, 0.25) 100%);
+
+}
+
+.message {
+  padding: 8px 12px;
+  margin: 4px;
+  border-radius: 8px;
+  color: white;
+  max-width: 80%;
+}
+
+
+.message-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.message {
+  padding: 8px 12px;
+  margin: 4px;
+  border-radius: 8px;
+  color: white;
+  max-width: 80%;
+}
+
+.align-left {
+  align-self: flex-start;
+  background-color: #4CAF50; /* Green background for others */
+}
+
+.align-right {
+  align-self: flex-end;
+  background-color: #0084FF; /* Blue background for self */
+}
