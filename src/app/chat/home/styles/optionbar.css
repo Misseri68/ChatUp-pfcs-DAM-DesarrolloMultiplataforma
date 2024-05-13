@@ -8,15 +8,26 @@
   width:42px;
   display:flex;
   flex-direction: column;
-  justify-content: end;
+  justify-content: space-between;
 }
 
+.top-buttons{
+  top:0;
+  margin-top:-2px;
+
+}
+
+.bottom-buttons{
+bottom:0;
+}
 .option-bar button {
   background-color: #030c23;
   border: 1px solid #022a1b;
   border-radius: 3px 10px 3px 10px;
   width: 40px;
   height:40px;
+  display:flex;
+  justify-content: center;
 }
 
 .option-bar button:hover {
@@ -25,4 +36,13 @@
   border: 1px solid rgb(219, 0, 255);
   width: 40px;
   height:40px;
+}
+
+.pfp img{
+  height:40px;
+  width: 40px;
+}
+
+.option-bar i {
+  padding-top:10px;
 }

@@ -7,6 +7,7 @@ import {AuthComponent} from "./auth/auth/auth.component";
   standalone: true,
   imports: [RouterOutlet, AuthComponent],
   template: `
+
     <router-outlet></router-outlet>
   `,
 

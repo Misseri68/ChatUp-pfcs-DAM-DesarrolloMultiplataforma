@@ -1,22 +1,26 @@
+
 <div id="div-component">
 <!-- div barra opciones -->
 <div class="option-bar">
   <!-- Botón toggle de modo oscuro -->
-    <button>
-      <i class="icon-dark-mode"></i>
-    </button>
-    <button>
-      <i class="icon-notifications"></i>
-    </button>
-    <button>
-      <i></i>
-    </button>
-    <button>
-      <i></i>
+  <div class="top-buttons">
+    <button class="pfp">
+      <img src="{{user.profilePicture}}" >
     </button>
   </div>
+    <div class="bottom-buttons">
+      <button>
+        <i class="fa-solid fa-person-circle-question text-white"></i>    </button>
+      <button>
+        <i class="fa-regular fa-moon text-white" ></i>
+      </button>
+      <button>
+        <i class="fa-solid fa-gears text-white"></i>
+      </button>
+    </div>
+  </div>
 
-  <div  class="w-100">
+  <div class="w-100">
     <header class="brand-name">
       <img class="brand-logo " src="./assets/logoemptywhite.svg" alt="logo">
       Chat-Up

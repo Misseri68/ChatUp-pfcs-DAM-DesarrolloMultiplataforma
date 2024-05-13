@@ -6,7 +6,7 @@
   </div>
 
 } @else {
-  <div class="chat-header ">{{chat.chatName}}</div>
+  <div class="chat-header">{{chat.chatName}}</div>
   <div class="chat-content w-100">
 
   @for (message of chat.messages; track message){
@@ -25,6 +25,21 @@
     </ng-template>
   }
   </div>
+
+  <div class="typebar-container">
+    <div class="typebar">
+      <span class="icon-media">
+        <i class="fa-solid fa-paperclip ms-4 mt-3"></i>
+      </span>
+      <textarea class="messages-input mx-3 mt-2"></textarea>
+      <span class="icon-send">
+        <i class="fa-solid fa-paper-plane me-4 mt-3"></i>
+      </span>
+
+    </div>
+  </div>
+
+
 }
 
 

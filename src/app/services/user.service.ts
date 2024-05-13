@@ -13,7 +13,7 @@ export class UserService {
       "username": "user1",
       "description": "User 1's description here",
       "status": true,
-      "profilePicture": "http://example.com/user1.jpg",
+      "profilePicture": "assets/pictures/default_pfp.png",
       "chats": [
         {
           "id_chat": "chat1",

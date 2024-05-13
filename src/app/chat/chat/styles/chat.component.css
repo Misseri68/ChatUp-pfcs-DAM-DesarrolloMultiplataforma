@@ -1,15 +1,18 @@
 @import './scrollbar.css';
+@import './scrollbar-textarea.css';
 
 .chat-header{
-  border: solid 1px #3700ff;
+  height:60px;
+  border: solid 1px #7300ff;
 }
 
 .chat-content{
   display:flex;
   flex-direction: column;
   width:100%;
-  max-height: calc(100vh - 56px); /* Ajusta a la altura deseada */
+  height: calc(100vh - 170px); /* Ajusta a la altura deseada */
   overflow-y: auto; /* Habilita el desplazamiento vertical cuando sea necesario */
+  padding: 2em 1em 3em;
 }
 
 .own-message{
@@ -33,26 +36,43 @@
 }
 
 
-.message-container {
+.typebar-container{
+  min-height: 40px;
+  padding-top:20px;
+  padding-bottom:10px;
+}
+
+.typebar {
+  height:45px;
+  background: #030d1a;
+  position: sticky;
+  bottom: 0;
+  border-radius: 50px;
+  border: 1px solid #7300ff;
+  margin-left: 3em;
+  margin-right: 3em;
   display: flex;
-  flex-direction: column;
-  width: 100%;
 }
 
-.message {
-  padding: 8px 12px;
-  margin: 4px;
+.messages-input{
+  flex-grow: 1;
+  border: none;
   border-radius: 8px;
+  outline: none;
   color: white;
-  max-width: 80%;
+  font-size: 16px;
+  background-color:  #030d1a;
 }
 
-.align-left {
-  align-self: flex-start;
-  background-color: #4CAF50; /* Green background for others */
+textarea{
+  width:100%;
+  resize:none;
+  box-sizing: border-box;
+  min-height: 15px;
 }
 
-.align-right {
-  align-self: flex-end;
-  background-color: #0084FF; /* Blue background for self */
+
+i{
+
+  color: #00FF8CFF;
 }
