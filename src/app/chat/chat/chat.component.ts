@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Chat} from "../../model/chat";
-import {Message} from "../../model/message";
 import {NgForOf, NgIf} from "@angular/common";
 import {User} from "../../model/user";
 

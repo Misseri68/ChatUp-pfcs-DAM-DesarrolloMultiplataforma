@@ -50,9 +50,12 @@ export class HomeComponent implements OnInit {
 
   displayLastMessage(message: Message):string {
     let sender: string;
-    if(message.sender.toLowerCase() === this.user.username.toLowerCase()) sender = 'You: ';
-    else sender = message.sender + ': ';
-    return sender + message.text
+    if(message!= null || message != undefined){
+      if(message.sender.toLowerCase() === this.user.username.toLowerCase()) sender = 'You: ';
+      else sender = message.sender + ': ';
+      return sender + message.text
+    }
+   return "There are no messages yet."
   }
   // Método que comprueba si el chat tiene foto, y si no le asigna la foto por defecto.
   displayChatPhoto(chat: Chat): string{
@@ -65,6 +68,7 @@ export class HomeComponent implements OnInit {
    *  return: 'dd/MM' si el último mensaje fue anterior al dia anterior del anterior al actual.
    */
   displayTime(messageDate: Date): string{
+
     const today = new Date();
     const yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);

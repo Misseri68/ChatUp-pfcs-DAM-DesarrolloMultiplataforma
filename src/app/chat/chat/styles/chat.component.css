@@ -6,6 +6,11 @@
   border: solid 1px #7300ff;
 }
 
+.entrada{
+  margin-top: 4em;
+  color: #5cffb6;
+}
+
 .chat-content{
   display:flex;
   flex-direction: column;
@@ -51,6 +56,7 @@
   border: 1px solid #7300ff;
   margin-left: 3em;
   margin-right: 3em;
+  margin-bottom:1px;
   display: flex;
 }
 
@@ -66,13 +72,12 @@
 
 textarea{
   width:100%;
-  resize:none;
   box-sizing: border-box;
-  min-height: 15px;
+  resize: none;
 }
 
 
 i{
-
+  margin-top: 15px;
   color: #00FF8CFF;
 }

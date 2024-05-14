@@ -9,5 +9,5 @@ export interface Chat {
   isDM: boolean;
   participants: string[]
   unreadMessages: number;
-  lastMessage: Message;
+  lastMessage?: Message;
 }

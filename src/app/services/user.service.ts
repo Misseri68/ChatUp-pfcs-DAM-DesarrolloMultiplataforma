@@ -20,7 +20,7 @@ export class UserService {
           "chatName": "Project Alpha",
           "photo": 'assets/pictures/default_pfp.png',
           "isDM": false,
-          "participants": ["user1", "user2", "user3"],
+          "participants": ["user1", "user2", "user333"],
           "unreadMessages": 100,
           "lastMessage": {
             "message_id": "msg3",
@@ -33,108 +33,108 @@ export class UserService {
             { message_id: "msg1", isMedia: false, text: "Hola, ¿cómo estás?", sender: "user1", date: new Date("2024-01-01T09:00:00") },
             { message_id: "msg2", isMedia: true, media: "http://example.com/image1.jpg", text: "", sender: "user2", date: new Date("2024-01-01T09:05:00") },
             { message_id: "msg3", isMedia: false, text: "Estoy bien, gracias por preguntar.", sender: "user1", date: new Date("2024-01-01T09:10:00") },
-            { message_id: "msg4", isMedia: true, media: "http://example.com/image2.jpg", text: "", sender: "user3", date: new Date("2024-01-01T09:15:00") },
+            { message_id: "msg4", isMedia: true, media: "http://example.com/image2.jpg", text: "", sender: "user33", date: new Date("2024-01-01T09:15:00") },
             { message_id: "msg5", isMedia: false, text: "¿Vamos al cine esta noche?", sender: "user2", date: new Date("2024-01-01T09:20:00") },
             { message_id: "msg6", isMedia: false, text: "Claro, ¿a qué hora?", sender: "user1", date: new Date("2024-01-01T09:25:00") },
-            { message_id: "msg7", isMedia: true, media: "http://example.com/image3.jpg", text: "", sender: "user3", date: new Date("2024-01-01T09:30:00") },
+            { message_id: "msg7", isMedia: true, media: "http://example.com/image3.jpg", text: "", sender: "user33", date: new Date("2024-01-01T09:30:00") },
             { message_id: "msg8", isMedia: false, text: "A las 8 estaría perfecto.", sender: "user2", date: new Date("2024-01-01T09:35:00") },
             { message_id: "msg9", isMedia: false, text: "Allí nos vemos.", sender: "user1", date: new Date("2024-01-01T09:40:00") },
-            { message_id: "msg10", isMedia: true, media: "http://example.com/image4.jpg", text: "", sender: "user3", date: new Date("2024-01-01T09:45:00") },
+            { message_id: "msg10", isMedia: true, media: "http://example.com/image4.jpg", text: "", sender: "user33", date: new Date("2024-01-01T09:45:00") },
             { message_id: "msg11", isMedia: false, text: "Perfecto, he reservado las entradas.", sender: "user2", date: new Date("2024-01-01T09:50:00") },
             { message_id: "msg12", isMedia: true, media: "http://example.com/image5.jpg", text: "", sender: "user1", date: new Date("2024-01-01T09:55:00") },
-            { message_id: "msg13", isMedia: false, text: "Genial, gracias.", sender: "user3", date: new Date("2024-01-01T10:00:00") },
+            { message_id: "msg13", isMedia: false, text: "Genial, gracias.", sender: "user33", date: new Date("2024-01-01T10:00:00") },
             { message_id: "msg14", isMedia: false, text: "¿Alguien quiere palomitas?", sender: "user1", date: new Date("2024-01-01T10:05:00") },
             { message_id: "msg15", isMedia: true, media: "http://example.com/image6.jpg", text: "", sender: "user2", date: new Date("2024-01-01T10:10:00") },
-            { message_id: "msg16", isMedia: false, text: "Yo quiero de caramelo.", sender: "user3", date: new Date("2024-01-01T10:15:00") },
+            { message_id: "msg16", isMedia: false, text: "Yo quiero de caramelo.", sender: "user33", date: new Date("2024-01-01T10:15:00") },
             { message_id: "msg17", isMedia: true, media: "http://example.com/image7.jpg", text: "", sender: "user1", date: new Date("2024-01-01T10:20:00") },
             { message_id: "msg18", isMedia: false, text: "Yo paso de palomitas esta vez.", sender: "user2", date: new Date("2024-01-01T10:25:00") },
             { message_id: "msg1", isMedia: false, text: "Hola, ¿cómo estás?", sender: "user1", date: new Date("2024-01-01T09:00:00") },
             { message_id: "msg2", isMedia: true, media: "http://example.com/image1.jpg", text: "", sender: "user2", date: new Date("2024-01-01T09:05:00") },
             { message_id: "msg3", isMedia: false, text: "Estoy bien, gracias por preguntar.", sender: "user1", date: new Date("2024-01-01T09:10:00") },
-            { message_id: "msg4", isMedia: true, media: "http://example.com/image2.jpg", text: "", sender: "user3", date: new Date("2024-01-01T09:15:00") },
+            { message_id: "msg4", isMedia: true, media: "http://example.com/image2.jpg", text: "", sender: "user33", date: new Date("2024-01-01T09:15:00") },
             { message_id: "msg5", isMedia: false, text: "¿Vamos al cine esta noche?", sender: "user2", date: new Date("2024-01-01T09:20:00") },
             { message_id: "msg6", isMedia: false, text: "Claro, ¿a qué hora?", sender: "user1", date: new Date("2024-01-01T09:25:00") },
-            { message_id: "msg7", isMedia: true, media: "http://example.com/image3.jpg", text: "", sender: "user3", date: new Date("2024-01-01T09:30:00") },
+            { message_id: "msg7", isMedia: true, media: "http://example.com/image3.jpg", text: "", sender: "user33", date: new Date("2024-01-01T09:30:00") },
             { message_id: "msg8", isMedia: false, text: "A las 8 estaría perfecto.", sender: "user2", date: new Date("2024-01-01T09:35:00") },
             { message_id: "msg9", isMedia: false, text: "Allí nos vemos.", sender: "user1", date: new Date("2024-01-01T09:40:00") },
-            { message_id: "msg10", isMedia: true, media: "http://example.com/image4.jpg", text: "", sender: "user3", date: new Date("2024-01-01T09:45:00") },
+            { message_id: "msg10", isMedia: true, media: "http://example.com/image4.jpg", text: "", sender: "user33", date: new Date("2024-01-01T09:45:00") },
             { message_id: "msg11", isMedia: false, text: "Perfecto, he reservado las entradas.", sender: "user2", date: new Date("2024-01-01T09:50:00") },
             { message_id: "msg12", isMedia: true, media: "http://example.com/image5.jpg", text: "", sender: "user1", date: new Date("2024-01-01T09:55:00") },
-            { message_id: "msg13", isMedia: false, text: "Genial, gracias.", sender: "user3", date: new Date("2024-01-01T10:00:00") },
+            { message_id: "msg13", isMedia: false, text: "Genial, gracias.", sender: "user33", date: new Date("2024-01-01T10:00:00") },
             { message_id: "msg14", isMedia: false, text: "¿Alguien quiere palomitas?", sender: "user1", date: new Date("2024-01-01T10:05:00") },
             { message_id: "msg15", isMedia: true, media: "http://example.com/image6.jpg", text: "", sender: "user2", date: new Date("2024-01-01T10:10:00") },
-            { message_id: "msg16", isMedia: false, text: "Yo quiero de caramelo.", sender: "user3", date: new Date("2024-01-01T10:15:00") },
+            { message_id: "msg16", isMedia: false, text: "Yo quiero de caramelo.", sender: "user33", date: new Date("2024-01-01T10:15:00") },
             { message_id: "msg17", isMedia: true, media: "http://example.com/image7.jpg", text: "", sender: "user1", date: new Date("2024-01-01T10:20:00") },
             { message_id: "msg18", isMedia: false, text: "Yo paso de palomitas esta vez.", sender: "user2", date: new Date("2024-01-01T10:25:00") },
             { message_id: "msg1", isMedia: false, text: "Hola, ¿cómo estás?", sender: "user1", date: new Date("2024-01-01T09:00:00") },
             { message_id: "msg2", isMedia: true, media: "http://example.com/image1.jpg", text: "", sender: "user2", date: new Date("2024-01-01T09:05:00") },
             { message_id: "msg3", isMedia: false, text: "Estoy bien, gracias por preguntar.", sender: "user1", date: new Date("2024-01-01T09:10:00") },
-            { message_id: "msg4", isMedia: true, media: "http://example.com/image2.jpg", text: "", sender: "user3", date: new Date("2024-01-01T09:15:00") },
+            { message_id: "msg4", isMedia: true, media: "http://example.com/image2.jpg", text: "", sender: "user33", date: new Date("2024-01-01T09:15:00") },
             { message_id: "msg5", isMedia: false, text: "¿Vamos al cine esta noche?", sender: "user2", date: new Date("2024-01-01T09:20:00") },
             { message_id: "msg6", isMedia: false, text: "Claro, ¿a qué hora?", sender: "user1", date: new Date("2024-01-01T09:25:00") },
-            { message_id: "msg7", isMedia: true, media: "http://example.com/image3.jpg", text: "", sender: "user3", date: new Date("2024-01-01T09:30:00") },
+            { message_id: "msg7", isMedia: true, media: "http://example.com/image3.jpg", text: "", sender: "user33", date: new Date("2024-01-01T09:30:00") },
             { message_id: "msg8", isMedia: false, text: "A las 8 estaría perfecto.", sender: "user2", date: new Date("2024-01-01T09:35:00") },
             { message_id: "msg9", isMedia: false, text: "Allí nos vemos.", sender: "user1", date: new Date("2024-01-01T09:40:00") },
-            { message_id: "msg10", isMedia: true, media: "http://example.com/image4.jpg", text: "", sender: "user3", date: new Date("2024-01-01T09:45:00") },
+            { message_id: "msg10", isMedia: true, media: "http://example.com/image4.jpg", text: "", sender: "user33", date: new Date("2024-01-01T09:45:00") },
             { message_id: "msg11", isMedia: false, text: "Perfecto, he reservado las entradas.", sender: "user2", date: new Date("2024-01-01T09:50:00") },
             { message_id: "msg12", isMedia: true, media: "http://example.com/image5.jpg", text: "", sender: "user1", date: new Date("2024-01-01T09:55:00") },
-            { message_id: "msg13", isMedia: false, text: "Genial, gracias.", sender: "user3", date: new Date("2024-01-01T10:00:00") },
+            { message_id: "msg13", isMedia: false, text: "Genial, gracias.", sender: "user33", date: new Date("2024-01-01T10:00:00") },
             { message_id: "msg14", isMedia: false, text: "¿Alguien quiere palomitas?", sender: "user1", date: new Date("2024-01-01T10:05:00") },
             { message_id: "msg15", isMedia: true, media: "http://example.com/image6.jpg", text: "", sender: "user2", date: new Date("2024-01-01T10:10:00") },
-            { message_id: "msg16", isMedia: false, text: "Yo quiero de caramelo.", sender: "user3", date: new Date("2024-01-01T10:15:00") },
+            { message_id: "msg16", isMedia: false, text: "Yo quiero de caramelo.", sender: "user33", date: new Date("2024-01-01T10:15:00") },
             { message_id: "msg17", isMedia: true, media: "http://example.com/image7.jpg", text: "", sender: "user1", date: new Date("2024-01-01T10:20:00") },
             { message_id: "msg18", isMedia: false, text: "Yo paso de palomitas esta vez.", sender: "user2", date: new Date("2024-01-01T10:25:00") },
             { message_id: "msg1", isMedia: false, text: "Hola, ¿cómo estás?", sender: "user1", date: new Date("2024-01-01T09:00:00") },
             { message_id: "msg2", isMedia: true, media: "http://example.com/image1.jpg", text: "", sender: "user2", date: new Date("2024-01-01T09:05:00") },
             { message_id: "msg3", isMedia: false, text: "Estoy bien, gracias por preguntar.", sender: "user1", date: new Date("2024-01-01T09:10:00") },
-            { message_id: "msg4", isMedia: true, media: "http://example.com/image2.jpg", text: "", sender: "user3", date: new Date("2024-01-01T09:15:00") },
+            { message_id: "msg4", isMedia: true, media: "http://example.com/image2.jpg", text: "", sender: "user33", date: new Date("2024-01-01T09:15:00") },
             { message_id: "msg5", isMedia: false, text: "¿Vamos al cine esta noche?", sender: "user2", date: new Date("2024-01-01T09:20:00") },
             { message_id: "msg6", isMedia: false, text: "Claro, ¿a qué hora?", sender: "user1", date: new Date("2024-01-01T09:25:00") },
-            { message_id: "msg7", isMedia: true, media: "http://example.com/image3.jpg", text: "", sender: "user3", date: new Date("2024-01-01T09:30:00") },
+            { message_id: "msg7", isMedia: true, media: "http://example.com/image3.jpg", text: "", sender: "user33", date: new Date("2024-01-01T09:30:00") },
             { message_id: "msg8", isMedia: false, text: "A las 8 estaría perfecto.", sender: "user2", date: new Date("2024-01-01T09:35:00") },
             { message_id: "msg9", isMedia: false, text: "Allí nos vemos.", sender: "user1", date: new Date("2024-01-01T09:40:00") },
-            { message_id: "msg10", isMedia: true, media: "http://example.com/image4.jpg", text: "", sender: "user3", date: new Date("2024-01-01T09:45:00") },
+            { message_id: "msg10", isMedia: true, media: "http://example.com/image4.jpg", text: "", sender: "user33", date: new Date("2024-01-01T09:45:00") },
             { message_id: "msg11", isMedia: false, text: "Perfecto, he reservado las entradas.", sender: "user2", date: new Date("2024-01-01T09:50:00") },
             { message_id: "msg12", isMedia: true, media: "http://example.com/image5.jpg", text: "", sender: "user1", date: new Date("2024-01-01T09:55:00") },
-            { message_id: "msg13", isMedia: false, text: "Genial, gracias.", sender: "user3", date: new Date("2024-01-01T10:00:00") },
+            { message_id: "msg13", isMedia: false, text: "Genial, gracias.", sender: "user33", date: new Date("2024-01-01T10:00:00") },
             { message_id: "msg14", isMedia: false, text: "¿Alguien quiere palomitas?", sender: "user1", date: new Date("2024-01-01T10:05:00") },
             { message_id: "msg15", isMedia: true, media: "http://example.com/image6.jpg", text: "", sender: "user2", date: new Date("2024-01-01T10:10:00") },
-            { message_id: "msg16", isMedia: false, text: "Yo quiero de caramelo.", sender: "user3", date: new Date("2024-01-01T10:15:00") },
+            { message_id: "msg16", isMedia: false, text: "Yo quiero de caramelo.", sender: "user33", date: new Date("2024-01-01T10:15:00") },
             { message_id: "msg17", isMedia: true, media: "http://example.com/image7.jpg", text: "", sender: "user1", date: new Date("2024-01-01T10:20:00") },
             { message_id: "msg18", isMedia: false, text: "Yo paso de palomitas esta vez.", sender: "user2", date: new Date("2024-01-01T10:25:00") },  { message_id: "msg1", isMedia: false, text: "Hola, ¿cómo estás?", sender: "user1", date: new Date("2024-01-01T09:00:00") },
             { message_id: "msg2", isMedia: true, media: "http://example.com/image1.jpg", text: "", sender: "user2", date: new Date("2024-01-01T09:05:00") },
             { message_id: "msg3", isMedia: false, text: "Estoy bien, gracias por preguntar.", sender: "user1", date: new Date("2024-01-01T09:10:00") },
-            { message_id: "msg4", isMedia: true, media: "http://example.com/image2.jpg", text: "", sender: "user3", date: new Date("2024-01-01T09:15:00") },
+            { message_id: "msg4", isMedia: true, media: "http://example.com/image2.jpg", text: "", sender: "user33", date: new Date("2024-01-01T09:15:00") },
             { message_id: "msg5", isMedia: false, text: "¿Vamos al cine esta noche?", sender: "user2", date: new Date("2024-01-01T09:20:00") },
             { message_id: "msg6", isMedia: false, text: "Claro, ¿a qué hora?", sender: "user1", date: new Date("2024-01-01T09:25:00") },
-            { message_id: "msg7", isMedia: true, media: "http://example.com/image3.jpg", text: "", sender: "user3", date: new Date("2024-01-01T09:30:00") },
+            { message_id: "msg7", isMedia: true, media: "http://example.com/image3.jpg", text: "", sender: "user33", date: new Date("2024-01-01T09:30:00") },
             { message_id: "msg8", isMedia: false, text: "A las 8 estaría perfecto.", sender: "user2", date: new Date("2024-01-01T09:35:00") },
             { message_id: "msg9", isMedia: false, text: "Allí nos vemos.", sender: "user1", date: new Date("2024-01-01T09:40:00") },
-            { message_id: "msg10", isMedia: true, media: "http://example.com/image4.jpg", text: "", sender: "user3", date: new Date("2024-01-01T09:45:00") },
+            { message_id: "msg10", isMedia: true, media: "http://example.com/image4.jpg", text: "", sender: "user33", date: new Date("2024-01-01T09:45:00") },
             { message_id: "msg11", isMedia: false, text: "Perfecto, he reservado las entradas.", sender: "user2", date: new Date("2024-01-01T09:50:00") },
             { message_id: "msg12", isMedia: true, media: "http://example.com/image5.jpg", text: "", sender: "user1", date: new Date("2024-01-01T09:55:00") },
-            { message_id: "msg13", isMedia: false, text: "Genial, gracias.", sender: "user3", date: new Date("2024-01-01T10:00:00") },
+            { message_id: "msg13", isMedia: false, text: "Genial, gracias.", sender: "user33", date: new Date("2024-01-01T10:00:00") },
             { message_id: "msg14", isMedia: false, text: "¿Alguien quiere palomitas?", sender: "user1", date: new Date("2024-01-01T10:05:00") },
             { message_id: "msg15", isMedia: true, media: "http://example.com/image6.jpg", text: "", sender: "user2", date: new Date("2024-01-01T10:10:00") },
-            { message_id: "msg16", isMedia: false, text: "Yo quiero de caramelo.", sender: "user3", date: new Date("2024-01-01T10:15:00") },
+            { message_id: "msg16", isMedia: false, text: "Yo quiero de caramelo.", sender: "user33", date: new Date("2024-01-01T10:15:00") },
             { message_id: "msg17", isMedia: true, media: "http://example.com/image7.jpg", text: "", sender: "user1", date: new Date("2024-01-01T10:20:00") },
             { message_id: "msg18", isMedia: false, text: "Yo paso de palomitas esta vez.", sender: "user2", date: new Date("2024-01-01T10:25:00") },
             { message_id: "msg1", isMedia: false, text: "Hola, ¿cómo estás?", sender: "user1", date: new Date("2024-01-01T09:00:00") },
             { message_id: "msg2", isMedia: true, media: "http://example.com/image1.jpg", text: "", sender: "user2", date: new Date("2024-01-01T09:05:00") },
             { message_id: "msg3", isMedia: false, text: "Estoy bien, gracias por preguntar.", sender: "user1", date: new Date("2024-01-01T09:10:00") },
-            { message_id: "msg4", isMedia: true, media: "http://example.com/image2.jpg", text: "", sender: "user3", date: new Date("2024-01-01T09:15:00") },
+            { message_id: "msg4", isMedia: true, media: "http://example.com/image2.jpg", text: "", sender: "user33", date: new Date("2024-01-01T09:15:00") },
             { message_id: "msg5", isMedia: false, text: "¿Vamos al cine esta noche?", sender: "user2", date: new Date("2024-01-01T09:20:00") },
             { message_id: "msg6", isMedia: false, text: "Claro, ¿a qué hora?", sender: "user1", date: new Date("2024-01-01T09:25:00") },
-            { message_id: "msg7", isMedia: true, media: "http://example.com/image3.jpg", text: "", sender: "user3", date: new Date("2024-01-01T09:30:00") },
+            { message_id: "msg7", isMedia: true, media: "http://example.com/image3.jpg", text: "", sender: "user33", date: new Date("2024-01-01T09:30:00") },
             { message_id: "msg8", isMedia: false, text: "A las 8 estaría perfecto.", sender: "user2", date: new Date("2024-01-01T09:35:00") },
             { message_id: "msg9", isMedia: false, text: "Allí nos vemos.", sender: "user1", date: new Date("2024-01-01T09:40:00") },
-            { message_id: "msg10", isMedia: true, media: "http://example.com/image4.jpg", text: "", sender: "user3", date: new Date("2024-01-01T09:45:00") },
+            { message_id: "msg10", isMedia: true, media: "http://example.com/image4.jpg", text: "", sender: "user33", date: new Date("2024-01-01T09:45:00") },
             { message_id: "msg11", isMedia: false, text: "Perfecto, he reservado las entradas.", sender: "user2", date: new Date("2024-01-01T09:50:00") },
             { message_id: "msg12", isMedia: true, media: "http://example.com/image5.jpg", text: "", sender: "user1", date: new Date("2024-01-01T09:55:00") },
-            { message_id: "msg13", isMedia: false, text: "Genial, gracias.", sender: "user3", date: new Date("2024-01-01T10:00:00") },
+            { message_id: "msg13", isMedia: false, text: "Genial, gracias.", sender: "user33", date: new Date("2024-01-01T10:00:00") },
             { message_id: "msg14", isMedia: false, text: "¿Alguien quiere palomitas?", sender: "user1", date: new Date("2024-01-01T10:05:00") },
             { message_id: "msg15", isMedia: true, media: "http://example.com/image6.jpg", text: "", sender: "user2", date: new Date("2024-01-01T10:10:00") },
-            { message_id: "msg16", isMedia: false, text: "Yo quiero de caramelo.", sender: "user3", date: new Date("2024-01-01T10:15:00") },
+            { message_id: "msg16", isMedia: false, text: "Yo quiero de caramelo.", sender: "user33", date: new Date("2024-01-01T10:15:00") },
             { message_id: "msg17", isMedia: true, media: "http://example.com/image7.jpg", text: "", sender: "user1", date: new Date("2024-01-01T10:20:00") },
             { message_id: "msg18", isMedia: false, text: "Yo paso de palomitas esta vez.", sender: "user2", date: new Date("2024-01-01T10:25:00") }
 
@@ -142,16 +142,16 @@ export class UserService {
         },
         {
           "id_chat": "chat2",
-          "chatName": "Direct with User3",
+          "chatName": "Direct with user33",
           "isDM": true,
-          "participants": ["user1", "user3"],
+          "participants": ["user1", "user33"],
           "unreadMessages": 1,
           "lastMessage": {
             "message_id": "msg6",
             "isMedia": true,
             "media": "http://example.com/image.jpg",
             "text": "Here's the design mockup.",
-            "sender": "user3",
+            "sender": "user33",
             "date": new Date("2024-05-10T09:00:00Z")
           },
           "messages": [
@@ -175,7 +175,7 @@ export class UserService {
               "isMedia": true,
               "media": "http://example.com/image.jpg",
               "text": "Here's the design mockup.",
-              "sender": "user3",
+              "sender": "user33",
               "date": new Date("2024-05-10T09:00:00Z")
             }
           ]
@@ -185,7 +185,7 @@ export class UserService {
           "chatName": "Project Alpha",
           "photo": 'assets/pictures/default_pfp.png',
           "isDM": false,
-          "participants": ["user1", "user2", "user3"],
+          "participants": ["user1", "user2", "user33"],
           "unreadMessages": 0,
           "lastMessage": {
             "message_id": "msg3",
@@ -220,16 +220,16 @@ export class UserService {
         },
         {
           "id_chat": "chat2",
-          "chatName": "Direct with User3",
+          "chatName": "Direct with user33",
           "isDM": true,
-          "participants": ["user1", "user3"],
+          "participants": ["user1", "user33"],
           "unreadMessages": 1,
           "lastMessage": {
             "message_id": "msg6",
             "isMedia": true,
             "media": "http://example.com/image.jpg",
             "text": "Here's the design mockup.",
-            "sender": "user3",
+            "sender": "user33",
             "date": new Date("2024-05-10T09:00:00Z")
           },
           "messages": [
@@ -253,7 +253,7 @@ export class UserService {
               "isMedia": true,
               "media": "http://example.com/image.jpg",
               "text": "Here's the design mockup.",
-              "sender": "user3",
+              "sender": "user33",
               "date": new Date("2024-05-10T09:00:00Z")
             }
           ]
@@ -263,7 +263,7 @@ export class UserService {
           "chatName": "Project Beta",
           "photo": 'assets/pictures/default_pfp.png',
           "isDM": false,
-          "participants": ["user1", "user2", "user3"],
+          "participants": ["user1", "user2", "user33"],
           "unreadMessages": 0,
           "lastMessage": {
             "message_id": "msg3",
@@ -298,16 +298,16 @@ export class UserService {
         },
         {
           "id_chat": "chat2",
-          "chatName": "Direct with User3",
+          "chatName": "Direct with user33",
           "isDM": true,
-          "participants": ["user1", "user3"],
+          "participants": ["user1", "user33"],
           "unreadMessages": 0,
           "lastMessage": {
             "message_id": "msg6",
             "isMedia": true,
             "media": "http://example.com/image.jpg",
             "text": "Here's the design mockup.",
-            "sender": "user3",
+            "sender": "user33",
             "date": new Date("2024-05-10T09:00:00Z")
           },
           "messages": [
@@ -331,7 +331,7 @@ export class UserService {
               "isMedia": true,
               "media": "http://example.com/image.jpg",
               "text": "Here's the design mockup.",
-              "sender": "user3",
+              "sender": "user33",
               "date": new Date("2024-05-10T09:00:00Z")
             }
           ]
@@ -340,7 +340,7 @@ export class UserService {
           "chatName": "Project Alpha",
           "photo": 'assets/pictures/default_pfp.png',
           "isDM": false,
-          "participants": ["user1", "user2", "user3"],
+          "participants": ["user1", "user2", "user33"],
           "unreadMessages": 2,
           "lastMessage": {
             "message_id": "msg3",
@@ -375,16 +375,16 @@ export class UserService {
         },
         {
           "id_chat": "chat2",
-          "chatName": "Direct with User3",
+          "chatName": "Direct with user33",
           "isDM": true,
-          "participants": ["user1", "user3"],
+          "participants": ["user1", "user33"],
           "unreadMessages": 1,
           "lastMessage": {
             "message_id": "msg6",
             "isMedia": true,
             "media": "http://example.com/image.jpg",
             "text": "Here's the design mockup.",
-            "sender": "user3",
+            "sender": "user33",
             "date": new Date("2024-05-10T09:00:00Z")
           },
           "messages": [
@@ -408,7 +408,7 @@ export class UserService {
               "isMedia": true,
               "media": "http://example.com/image.jpg",
               "text": "Here's the design mockup.",
-              "sender": "user3",
+              "sender": "user33",
               "date": new Date("2024-05-10T09:00:00Z")
             }
           ]
@@ -418,7 +418,7 @@ export class UserService {
           "chatName": "Project Alpha",
           "photo": 'assets/pictures/default_pfp.png',
           "isDM": false,
-          "participants": ["user1", "user2", "user3"],
+          "participants": ["user1", "user2", "user33"],
           "unreadMessages": 2,
           "lastMessage": {
             "message_id": "msg3",
@@ -453,16 +453,16 @@ export class UserService {
         },
         {
           "id_chat": "chat2",
-          "chatName": "Direct with User3",
+          "chatName": "Direct with user33",
           "isDM": true,
-          "participants": ["user1", "user3"],
+          "participants": ["user1", "user33"],
           "unreadMessages": 1,
           "lastMessage": {
             "message_id": "msg6",
             "isMedia": true,
             "media": "http://example.com/image.jpg",
             "text": "Here's the design mockup.",
-            "sender": "user3",
+            "sender": "user33",
             "date": new Date("2024-05-10T09:00:00Z")
           },
           "messages": [
@@ -486,7 +486,7 @@ export class UserService {
               "isMedia": true,
               "media": "http://example.com/image.jpg",
               "text": "Here's the design mockup.",
-              "sender": "user3",
+              "sender": "user33",
               "date": new Date("2024-05-10T09:00:00Z")
             }
           ]
@@ -496,7 +496,7 @@ export class UserService {
           "chatName": "Project Alpha",
           "photo": 'assets/pictures/default_pfp.png',
           "isDM": false,
-          "participants": ["user1", "user2", "user3"],
+          "participants": ["user1", "user2", "user33"],
           "unreadMessages": 2,
           "lastMessage": {
             "message_id": "msg3",
@@ -531,16 +531,16 @@ export class UserService {
         },
         {
           "id_chat": "chat2",
-          "chatName": "Direct with User3",
+          "chatName": "Direct with user33",
           "isDM": true,
-          "participants": ["user1", "user3"],
+          "participants": ["user1", "user33"],
           "unreadMessages": 1,
           "lastMessage": {
             "message_id": "msg6",
             "isMedia": true,
             "media": "http://example.com/image.jpg",
             "text": "Here's the design mockup.",
-            "sender": "user3",
+            "sender": "user33",
             "date": new Date("2024-05-10T09:00:00Z")
           },
           "messages": [
@@ -564,7 +564,7 @@ export class UserService {
               "isMedia": true,
               "media": "http://example.com/image.jpg",
               "text": "Here's the design mockup.",
-              "sender": "user3",
+              "sender": "user33",
               "date": new Date("2024-05-10T09:00:00Z")
             }
           ]
@@ -574,7 +574,7 @@ export class UserService {
           "chatName": "Project Alpha",
           "photo": 'assets/pictures/default_pfp.png',
           "isDM": false,
-          "participants": ["user1", "user2", "user3"],
+          "participants": ["user1", "user2", "user33"],
           "unreadMessages": 2,
           "lastMessage": {
             "message_id": "msg3",
@@ -609,16 +609,16 @@ export class UserService {
         },
         {
           "id_chat": "chat2",
-          "chatName": "Direct with User3",
+          "chatName": "Direct with user33",
           "isDM": true,
-          "participants": ["user1", "user3"],
+          "participants": ["user1", "user33"],
           "unreadMessages": 1,
           "lastMessage": {
             "message_id": "msg6",
             "isMedia": true,
             "media": "http://example.com/image.jpg",
             "text": "Here's the design mockup.",
-            "sender": "user3",
+            "sender": "user33",
             "date": new Date("2024-05-10T09:00:00Z")
           },
           "messages": [
@@ -642,14 +642,14 @@ export class UserService {
               "isMedia": true,
               "media": "http://example.com/image.jpg",
               "text": "Here's the design mockup.",
-              "sender": "user3",
+              "sender": "user33",
               "date": new Date("2024-05-10T09:00:00Z")
             }
           ]
         }
 
       ],
-      "friends": ["user2", "user3"],
+      "friends": ["user2", "user33"],
       "pendingRequests": []
     },
     {
@@ -663,7 +663,7 @@ export class UserService {
           "chatName": "Project Alpha",
           "photo": 'assets/pictures/default_pfp.png',
           "isDM": false,
-          "participants": ["user1", "user2", "user3"],
+          "participants": ["user1", "user2", "user33"],
           "unreadMessages": 0,
           "lastMessage": {
             "message_id": "msg3",
@@ -690,27 +690,27 @@ export class UserService {
           ]
         }
       ],
-      "friends": ["user1", "user3"],
+      "friends": ["user1", "user33"],
       "pendingRequests": []
     },
     {
-      "username": "user3",
+      "username": "user33",
       "description": "User 3's description here",
       "status": true,
-      "profilePicture": "http://example.com/user3.jpg",
+      "profilePicture": "http://example.com/user33.jpg",
       "chats": [
         {
           "id_chat": "chat2",
-          "chatName": "Direct with User3",
+          "chatName": "Direct with user33",
           "isDM": true,
-          "participants": ["user1", "user3"],
+          "participants": ["user1", "user33"],
           "unreadMessages": 1,
           "lastMessage": {
             "message_id": "msg6",
             "isMedia": true,
             "media": "http://example.com/image.jpg",
             "text": "Here's the design mockup.",
-            "sender": "user3",
+            "sender": "user33",
             "date": new Date("2024-05-10T09:00:00Z")
           },
           "messages": [
@@ -734,7 +734,7 @@ export class UserService {
               "isMedia": true,
               "media": "http://example.com/image.jpg",
               "text": "Here's the design mockup.",
-              "sender": "user3",
+              "sender": "user33",
               "date": new Date("2024-05-10T09:00:00Z")
             }
           ]

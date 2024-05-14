@@ -1,8 +1,8 @@
 @if(!chat){
-  <div class="d-flex flex-column m-auto justify-content-center">
-    <h1 class> Welcome back!</h1>
-    <h2> Please select a chat to start typing</h2>
-    <h3> Or add new friends to start a new chat!</h3>
+  <div class="entrada text-center ">
+    <h1 class="mb-3"> Welcome back!</h1>
+    <h3 class="mb-3 fw-light"> Please select a chat to start typing</h3>
+    <h5 class="mb-2 fst-italic fw-lighter"> Or add new friends to start a new chat!</h5>
   </div>
 
 } @else {
@@ -29,13 +29,22 @@
   <div class="typebar-container">
     <div class="typebar">
       <span class="icon-media">
-        <i class="fa-solid fa-paperclip ms-4 mt-3"></i>
+        <i class="fa-solid fa-paperclip ms-3"></i>
       </span>
-      <textarea class="messages-input mx-3 mt-2"></textarea>
-      <span class="icon-send">
-        <i class="fa-solid fa-paper-plane me-4 mt-3"></i>
-      </span>
+      <textarea id="expandable-textarea" class="messages-input mx-3 mt-2"></textarea>
+      <script>
+        const textarea = document.getElementById('expandable-textarea');
 
+        textarea.addEventListener('input', autoResize, false);
+
+        function autoResize() {
+          this.style.height = 'auto';
+          this.style.height = (this.scrollHeight) + 'px';
+        }
+      </script>
+      <span class="icon-send">
+        <i class="fa-solid fa-paper-plane me-3"></i>
+      </span>
     </div>
   </div>
 
