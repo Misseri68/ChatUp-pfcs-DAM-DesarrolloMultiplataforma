@@ -1,0 +1,90 @@
+.background {
+  background-color: #04092c;
+  height: 100vh;
+  width:100%;
+  display:flex;
+
+}
+
+.login-container {
+  margin: auto;
+  width: 500px;
+  padding: 50px;
+  border: solid 1px #7300ff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(11, 0, 53, 0.2);
+  text-align: center;
+  background: linear-gradient(180deg, rgba(0, 42, 211, 0.3) 0%, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 0) 70%, rgba(183, 0, 255, 0.12) 100%);
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #bf1eff;
+  text-align: center;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #5cffb6;
+  border-radius: 10px;
+  background-color: #0B003533;
+  color: #5cffb6;
+}
+
+.login-button, .google-login-button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.login-button {
+  background-color: #7300ff;
+  color: white;
+}
+
+.google-login-button {
+  background-color: #3600f8;
+  color: white;
+}
+
+.register-link {
+  display: block;
+  color: #5cffb6;
+  text-decoration: none;
+}
+
+.register-link:hover {
+  text-decoration: underline;
+}
+
+small {
+  color: rgb(191, 0, 255);
+  font-size: 11px;
+  text-align: center;
+}
+
+br {
+  font-size: 2px;
+}
+
+h2{
+  color: #5cffb6;
+}

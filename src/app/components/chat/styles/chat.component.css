@@ -18,6 +18,7 @@
   height: calc(100vh - 170px); /* Ajusta a la altura deseada */
   overflow-y: auto; /* Habilita el desplazamiento vertical cuando sea necesario */
   padding: 2em 1em 3em;
+
 }
 
 .own-message{

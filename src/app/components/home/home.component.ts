@@ -22,13 +22,9 @@ export class HomeComponent implements OnInit {
   selectedChat! : Chat | undefined;
 
   ngOnInit(): void {
-    try {
-      this.user = this.userService.getUserByUsername('user1');
-    } catch (error) {
-      console.error(error);
-      this.router.navigate(['/auth']);
-    }
+    if(!this.user) this.router.navigate(['/auth']);
   }
+
 
   selectChat(chat: Chat)  {
     this.selectedChat = chat;

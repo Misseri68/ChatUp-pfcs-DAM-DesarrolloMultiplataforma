@@ -1,5 +1,8 @@
 {
   "projects": {
     "default": "chat-up-iie"
-  }
+  },
+  "targets": {},
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
 }
