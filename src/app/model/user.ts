@@ -6,7 +6,7 @@ export interface User {
   email: string;
   description: string;
   status: boolean;
-  userOptions?: UserOptions;
+  userOptions: UserOptions;
   profilePicture?: string;
   chats?: Chat [];
   friends?: string[];

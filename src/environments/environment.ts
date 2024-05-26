@@ -1,3 +1,4 @@
+
 export const environment = {
   production:false,
   firebaseConfig: {
@@ -9,6 +10,6 @@ export const environment = {
     messagingSenderId: "270963464166",
     appId: "1:270963464166:web:87a572283b8be56b85a827",
     measurementId: "G-6M4XBPBY4V"
-}
+  }
 };
 

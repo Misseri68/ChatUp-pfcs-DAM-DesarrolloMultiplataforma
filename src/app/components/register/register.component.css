@@ -54,11 +54,17 @@ input {
   border-radius: 10px;
   cursor: pointer;
   font-size: 16px;
-}
-
-.login-button {
   background-color: #7300ff;
   color: white;
+}
+
+
+/* Estilos para el botón cuando está deshabilitado */
+.disabled-button {
+  background-color: #5d8e93; /* Color de fondo cuando está deshabilitado */
+  color: #666666; /* Color del texto cuando está deshabilitado */
+  cursor: not-allowed; /* Cambiar el cursor a no permitido */
+  opacity: 0.6; /* Hacer el botón un poco translúcido */
 }
 
 .register-link {

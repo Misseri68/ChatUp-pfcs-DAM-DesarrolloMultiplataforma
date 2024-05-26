@@ -1,52 +1,71 @@
 import { Injectable } from '@angular/core';
 import {User} from "../model/user";
-import {Firestore} from "@angular/fire/firestore";
-import {AngularFirestore} from "@angular/fire/compat/firestore";
-import {Observable} from "rxjs";
+import {from, Observable} from "rxjs";
+import { Firestore, collection, doc, docData, getDoc, setDoc, updateDoc, deleteDoc, collectionData, query, where, getDocs, CollectionReference, DocumentData } from "@angular/fire/firestore";
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  private usersCollection: CollectionReference<DocumentData>;
 
-  constructor(private firestore:  AngularFirestore) { }
 
-  // Crear usuario
+  constructor(private firestore: Firestore) {
+    this.usersCollection = collection(this.firestore, 'users');
+
+  }
+
+  // Crear un nuevo usuario
   createUser(user: User): Promise<void> {
-    return this.firestore.collection('users').doc(user.username).set(user);
+    const userDoc = doc(this.firestore, `users/${user.username}`);
+    return setDoc(userDoc, user);
   }
 
-  // Leer usuario
-  getUser(username: string): Observable<User | undefined> {
-    return this.firestore.collection('users').doc<User>(username).valueChanges();
+  // Leer un usuario por username
+  getUserByUsername(username: string): Observable<User> {
+    const userDoc = doc(this.firestore, `users/${username}`);
+    return docData(userDoc, { idField: 'username' }) as Observable<User>;
   }
-  getUserByEmail(email: string): Observable<User | undefined> {
-    return this.firestore.collection('users').doc<User>(email).valueChanges();
+
+  // Leer un usuario por email
+  getUserByEmail(email: string): Observable<User> {
+    const userDoc = doc(this.firestore, `users/${email}`);
+    return docData(userDoc, { idField: 'email' }) as Observable<User>;
+  }
+
+
+  // Verificar si un usuario existe por username
+  async checkUserExistsByUsername(username: string): Promise<boolean> {
+    const userDoc = doc(this.firestore, `users/${username}`);
+    const userSnap = await getDoc(userDoc);
+    return userSnap.exists();
+  }
+
+  // Verificar si un usuario existe por email
+  async checkUserExistsByEmail(email: string): Promise<boolean> {
+    const q = query(this.usersCollection, where('email', '==', email));
+    const querySnapshot = await getDocs(q);
+    return !querySnapshot.empty;
   }
 
   // Leer todos los usuarios
-  getUsers(): Observable<User[]> {
-    return this.firestore.collection<User>('users').valueChanges();
+  getAllUsers(): Observable<User[]> {
+    return collectionData(this.usersCollection, { idField: 'username' }) as Observable<User[]>;
   }
 
-  // Actualizar usuario
-  updateUser(user: User): Promise<void> {
-    return this.firestore.collection('users').doc(user.username).update(user);
+
+  // Actualizar un usuario
+  updateUser(username: string, user: Partial<User>): Promise<void> {
+    const userDoc = doc(this.firestore, `users/${username}`);
+    return updateDoc(userDoc, user);
   }
 
-  // Borrar usuario
+  // Borrar un usuario
   deleteUser(username: string): Promise<void> {
-    return this.firestore.collection('users').doc(username).delete();
+    const userDoc = doc(this.firestore, `users/${username}`);
+    return deleteDoc(userDoc);
   }
-
-
-  /*getUserByUsername(username: string): User {
-    const user = this.USERS.find(user => user.username.toLowerCase() === username.toLowerCase());
-    if (!user) {
-      throw new Error(`User not found for username: ${username}`);
-    }
-    return user;
-  }*/
 
   formatDate(date: Date) {
     const day = date.getDate().toString().padStart(2, '0'); // Asegura dos dígitos
