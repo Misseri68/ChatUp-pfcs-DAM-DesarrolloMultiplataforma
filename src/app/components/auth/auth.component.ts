@@ -34,7 +34,6 @@ export class AuthComponent {
     // Lógica de inicio de sesión con email y contraseña
     if (this.loginForm.valid) {
       const {username, password} = this.loginForm.value;
-      console.log('Username:', username, 'Password:', password);
 
       try {
         const user = await this.authService.login(username, password);

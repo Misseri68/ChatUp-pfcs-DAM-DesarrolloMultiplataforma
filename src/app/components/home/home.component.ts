@@ -7,30 +7,31 @@ import {Chat} from "../../model/chat";
 import {Message} from "../../model/message";
 import {AuthService} from "../../services/auth.service";
 import {Observable, Subscription} from "rxjs";
+import {FriendsComponent} from "../Popups/friends/friends.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, NgFor, ChatComponent, RouterOutlet],
+  imports: [CommonModule, NgFor, ChatComponent, RouterOutlet, FriendsComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./styles/home.component.css']
 })
 export class HomeComponent implements OnInit {
+  showMyInfo: boolean = false;
+  showFriendInfo: boolean = false;
+  showFriends: boolean = false;
 
   user: User | null = null;
-  private userSubscription: Subscription;
-
+  user$ : Observable<User | null> = this.authService.currentUser$
   selectedChat! : Chat | undefined;
 
 
   constructor(private router: Router, private authService: AuthService) {
-    this.userSubscription = this.authService.currentUser$.subscribe(userObserved => {
+    this.authService.currentUser$.subscribe(userObserved => {
       this.user = userObserved;
-      console.log('Current user:', this.user);
     });
-  }
 
-  user$ : Observable<User | null> = this.authService.currentUser$
+  }
 
 
   ngOnInit(): void {
@@ -39,7 +40,6 @@ export class HomeComponent implements OnInit {
         this.router.navigate(['/auth']);
       }else{
         this.user$.subscribe(user => {
-          console.log('Current user:', user);
         });
       }
     });
@@ -47,7 +47,6 @@ export class HomeComponent implements OnInit {
 
   selectChat(chat: Chat)  {
     this.selectedChat = chat;
-    console.log(this.selectedChat);
   }
 
 
@@ -111,8 +110,20 @@ export class HomeComponent implements OnInit {
     if(unreads>99) return '99⁺';
     else return '' + unreads;
   }
-
   logout() {
     this.authService.logout();
   }
+
+  toggleFriends() {
+    this.showFriends = !this.showFriends;
+  }
+
+  toggleFriendInfo() {
+    this.showFriendInfo = !this.showFriendInfo;
+  }
+
+  toggleMyInfo() {
+    this.showMyInfo = !this.showMyInfo;
+  }
+
 }

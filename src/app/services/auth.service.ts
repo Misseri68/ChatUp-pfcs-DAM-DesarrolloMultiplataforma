@@ -57,11 +57,9 @@ export class AuthService {
       const storedUsername = JSON.parse(storedUsernameJSON).username;
       const q = query(this.usersCollection, where('username', '==', storedUsername));
       const querySnapshot = await getDocs(q);
-
       if (!querySnapshot.empty) {
         const userDoc = querySnapshot.docs[0];
         const currentUser = userDoc.data() as User
-        console.log(querySnapshot)
         // Emite el usuario adquirido del documento, casteado a User, emitiéndoselo a todos los suscriptores de su observable correspondiente.
         this.currentUserSubject.next(currentUser);
         this.router.navigate(['/home']);

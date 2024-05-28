@@ -1,0 +1,32 @@
+<div class="popup">
+  <button (click)="onClose()" class="close-button"><i class="fa-solid fa-xmark"></i></button>
+  <h3 class="text-center">Friends</h3>
+  <p>You can search and add friends here</p>
+  <div id="friendSearch">
+    <input type="text" #friendInput>
+    <button (click)="searchFriend(friendInput.value)" ><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+    <br class="fs-1">
+    <small>{{searchFriendResponse}}</small>
+  </div>
+
+  <div *ngIf=" user && user?.pendingRequests">
+    <h5>Pending friend requests</h5>
+    <div  *ngFor="let request of user?.pendingRequests">
+      {{request}}
+      <button><i class="fa-solid fa-plus" (click)="acceptFriend(request)"></i></button>
+      <button><i class="fa-solid fa-xmark" (click)="rejectFriend(request)"></i></button>
+    </div>
+  </div>
+
+  @if(friendList.length > 0){
+    <div class="friendList">
+      <h5>Friend list</h5>
+      <div *ngFor="let friend of user?.friends">
+        {{friend}}
+        <button><i class="fa-regular fa-comment" (click)="goToChat(friend)"></i></button>
+      </div>
+    </div>
+  }@else{
+    <p>It looks like you don't have any friends yet... Use the search bar above to add some!</p>
+  }
+</div>

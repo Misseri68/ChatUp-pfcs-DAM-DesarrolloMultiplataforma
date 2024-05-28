@@ -10,16 +10,16 @@
   </div>
     <div class="bottom-buttons">
       <button>
-        <i class="fa-solid fa-person-circle-question text-white"></i>    </button>
+        <i class="fa-solid fa-person-circle-question text-white" (click)="toggleFriends()"></i>
+      </button>
       <button>
-        <i class="fa-regular fa-moon text-white" ></i>
+        <i class="fa-regular fa-moon text-white"></i>
       </button>
       <button>
         <i class="fa-solid fa-gears text-white"></i>
       </button>
       <button>
         <i class="fa-solid fa-arrow-right-from-bracket" (click)="logout()">
-
         </i>
       </button>
     </div>
@@ -87,3 +87,12 @@
      </div>
   </div>
 </div>
+
+<ng-container *ngIf="user$ | async as user">
+
+<app-friends *ngIf="showFriends" (closePopup)="toggleFriends()"></app-friends>
+<app-friends *ngIf="showFriendInfo" (closePopup)="toggleFriendInfo()"></app-friends>
+<app-friends *ngIf="showFriendInfo" (closePopup)="toggleFriendInfo()"></app-friends>
+</ng-container>
+
+

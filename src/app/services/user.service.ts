@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {User} from "../model/user";
-import {from, Observable} from "rxjs";
+import {from, Observable, take} from "rxjs";
 import { Firestore, collection, doc, docData, getDoc, setDoc, updateDoc, deleteDoc, collectionData, query, where, getDocs, CollectionReference, DocumentData } from "@angular/fire/firestore";
 
 
@@ -26,7 +26,7 @@ export class UserService {
   // Leer un usuario por username
   getUserByUsername(username: string): Observable<User> {
     const userDoc = doc(this.firestore, `users/${username}`);
-    return docData(userDoc, { idField: 'username' }) as Observable<User>;
+    return docData(userDoc, {idField: 'username'}) as Observable<User>;
   }
 
   // Verificar si un usuario existe por username
@@ -42,8 +42,6 @@ export class UserService {
     const querySnapshot = await getDocs(q);
     return !querySnapshot.empty;
   }
-
-
 
   // Actualizar un usuario
   updateUser(username: string, user: Partial<User>): Promise<void> {
@@ -66,8 +64,5 @@ export class UserService {
 
     return `${day}-${month}-${year} ${hours}:${minutes}`;
   }
-
-
-
 
 }
