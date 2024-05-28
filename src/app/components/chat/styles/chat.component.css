@@ -6,11 +6,6 @@
   border: solid 1px #7300ff;
 }
 
-.entrada{
-  margin-top: 4em;
-  color: #5cffb6;
-}
-
 .chat-content{
   display:flex;
   flex-direction: column;

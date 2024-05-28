@@ -7,6 +7,7 @@ import { Firestore, collection, doc, docData, getDoc, setDoc, updateDoc, deleteD
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserService {
   private usersCollection: CollectionReference<DocumentData>;
 
@@ -28,13 +29,6 @@ export class UserService {
     return docData(userDoc, { idField: 'username' }) as Observable<User>;
   }
 
-  // Leer un usuario por email
-  getUserByEmail(email: string): Observable<User> {
-    const userDoc = doc(this.firestore, `users/${email}`);
-    return docData(userDoc, { idField: 'email' }) as Observable<User>;
-  }
-
-
   // Verificar si un usuario existe por username
   async checkUserExistsByUsername(username: string): Promise<boolean> {
     const userDoc = doc(this.firestore, `users/${username}`);
@@ -49,10 +43,6 @@ export class UserService {
     return !querySnapshot.empty;
   }
 
-  // Leer todos los usuarios
-  getAllUsers(): Observable<User[]> {
-    return collectionData(this.usersCollection, { idField: 'username' }) as Observable<User[]>;
-  }
 
 
   // Actualizar un usuario

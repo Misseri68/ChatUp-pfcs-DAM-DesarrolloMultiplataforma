@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {NgClass, NgIf} from "@angular/common";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {UserService} from "../../services/user.service";
-import firebase from "firebase/compat";
-import User = firebase.User;
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -24,7 +23,7 @@ import User = firebase.User;
 export class RegisterComponent {
   registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private userService: UserService) {
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
     this.registerForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(3), this.usernameValidator]],
       email: ['', [Validators.required, Validators.email]],
@@ -46,9 +45,6 @@ export class RegisterComponent {
     return password && password2 && password.value === password2.value ? null : { mismatch: true };
   }
 
-
-
-
   async register() {
     // Lógica de inicio de sesión con email y contraseña
     if (this.registerForm.valid) {
@@ -57,16 +53,22 @@ export class RegisterComponent {
         // Verificar si el usuario ya existe por username
         const usernameExists = await this.userService.checkUserExistsByUsername(username);
         if (usernameExists) {
-          alert("The username is already picked, choose another one.");
+          await Swal.fire( {
+            title: 'Error',
+            text: `The username ${username} already exists, please pick another one.`,
+            icon: 'warning',
+            customClass: 'alert-custom-style'});
           return;
         }
-
         // Verificar si el usuario ya existe por email
         if (await this.userService.checkUserExistsByEmail(email)) {
-          alert("There's already an user with this email.");
+          await Swal.fire( {
+            title: 'Error',
+            text: `The email ${email} is already registered.`,
+            icon: 'warning',
+            customClass: 'alert-custom-style'});
           return;
         }
-
         // Crear el nuevo usuario
         await this.userService.createUser({
           username: username,
@@ -83,9 +85,20 @@ export class RegisterComponent {
           email: email,
           description: "Hi! This is Chat-Up's default description, you can edit it in profile options."
         });
+        await Swal.fire( {
+          title: 'User created successfully!',
+          text: `User  ${username} created successfully. Log In to start chatting up.`,
+          icon: 'success',
+          customClass: 'alert-custom-style'});
+        await this.router.navigate(['/auth']);
 
-        console.log("User was created successfully");
       } catch (error) {
+        await Swal.fire( {
+          title: 'Error',
+          text: `There was an error creating the user. Check the console for more information.`,
+          icon: 'error',
+          customClass: 'alert-custom-style'}
+        );
         console.error("Error creating user:", error);
       }
     }

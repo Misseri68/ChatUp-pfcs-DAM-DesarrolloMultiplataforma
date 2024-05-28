@@ -33,7 +33,7 @@ bottom:0;
 .option-bar button:hover {
   background-color: #050b26;
   border-radius: 3px 10px 3px 10px;
-  border: 1px solid rgb(219, 0, 255);
+  border: 2px solid #ea3b6f;
   width: 40px;
   height:40px;
 }
@@ -45,4 +45,8 @@ bottom:0;
 
 .option-bar i {
   padding-top:10px;
+}
+
+.fa-arrow-right-from-bracket{
+  color: #ea3b6f;
 }

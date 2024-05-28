@@ -92,3 +92,9 @@ h2{
   color: #5cffb6;
 
 }
+
+
+.alert-custom-style {
+  background-color: #051b44; /* Cambia el color de fondo según tu preferencia */
+  color: #00ffbb; /* Cambia el color del texto según tu preferencia */
+}

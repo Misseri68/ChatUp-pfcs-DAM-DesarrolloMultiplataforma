@@ -1,4 +1,33 @@
 
+
 *{
   margin: 0;
+}
+
+.alert-custom-style {
+  background-color: #051b44 !important; /* Color de fondo personalizado */
+  color: rgb(0, 255, 196) !important;           /* Color de texto personalizado */
+  border: 1px solid rgb(98, 0, 255) !important;/* Color de borde personalizado */
+}
+
+.alert-custom-style .swal2-title {
+  color: #00ffc4 !important;
+}
+
+.alert-custom-style .swal2-html-container {
+  color: #ffffff !important;
+}
+
+.alert-custom-style .swal2-confirm {
+  background-color: #6200ff !important;
+  border-color: #00ffb7 !important;
+  color: #ffffff !important;
+}
+
+.alert-custom-style .swal2-icon .swal2-icon-content {
+  color: #ef608b !important;
+}
+
+.alert-custom-style .swal2-icon {
+  border-color: #ef608b !important;
 }

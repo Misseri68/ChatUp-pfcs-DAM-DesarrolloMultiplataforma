@@ -1,16 +1,11 @@
-@if(!chat){
-  <div class="entrada text-center ">
-    <h1 class="mb-3"> Welcome back!</h1>
-    <h3 class="mb-3 fw-light"> Please select a chat to start typing</h3>
-    <h5 class="mb-2 fst-italic fw-lighter"> Or add new friends to start a new chat!</h5>
-  </div>
+<ng-container *ngIf="currentUser$ | async as currentUser">
+@if (chat) {
 
-} @else {
   <div class="chat-header">{{chat.chatName}}</div>
   <div class="chat-content w-100">
 
   @for (message of chat.messages; track message){
-    <div *ngIf="message.sender.toLowerCase() === currentUser.username.toLowerCase(); else notOwnMessage" class="own-message message">
+    <div *ngIf=" currentUser && message.sender.toLowerCase() === currentUser.username.toLowerCase(); else notOwnMessage" class="own-message message">
       <!-- Si el mensaje ha sido enviado por el usuario que está viendo la pantalla:-->
       <div>
         <h5>{{message.sender}}</h5>
@@ -37,9 +32,8 @@
       </span>
     </div>
   </div>
-
-
 }
+</ng-container>
 
 
 

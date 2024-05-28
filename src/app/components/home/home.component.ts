@@ -5,6 +5,8 @@ import {ChatComponent} from "../chat/chat.component";
 import {Router, RouterOutlet} from "@angular/router";
 import {Chat} from "../../model/chat";
 import {Message} from "../../model/message";
+import {AuthService} from "../../services/auth.service";
+import {Observable, Subscription} from "rxjs";
 
 @Component({
   selector: 'app-home',
@@ -15,15 +17,33 @@ import {Message} from "../../model/message";
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router) {}
+  user: User | null = null;
+  private userSubscription: Subscription;
 
-  user! : User ;
   selectedChat! : Chat | undefined;
 
-  ngOnInit(): void {
-    if(!this.user) this.router.navigate(['/auth']);
+
+  constructor(private router: Router, private authService: AuthService) {
+    this.userSubscription = this.authService.currentUser$.subscribe(userObserved => {
+      this.user = userObserved;
+      console.log('Current user:', this.user);
+    });
   }
 
+  user$ : Observable<User | null> = this.authService.currentUser$
+
+
+  ngOnInit(): void {
+    this.authService.getFromLocalStorage().then(() => {
+      if(this.user == null ){
+        this.router.navigate(['/auth']);
+      }else{
+        this.user$.subscribe(user => {
+          console.log('Current user:', user);
+        });
+      }
+    });
+  }
 
   selectChat(chat: Chat)  {
     this.selectedChat = chat;
@@ -46,7 +66,7 @@ export class HomeComponent implements OnInit {
   displayLastMessage(message: Message):string {
     let sender: string;
     if(message!= null || message != undefined){
-      if(message.sender.toLowerCase() === this.user.username.toLowerCase()) sender = 'You: ';
+      if( this.user != null &&  this.user.username.toLowerCase() === message.sender.toLowerCase()) sender = 'You: ';
       else sender = message.sender + ': ';
       return sender + message.text
     }
@@ -92,5 +112,7 @@ export class HomeComponent implements OnInit {
     else return '' + unreads;
   }
 
-  protected readonly console = console;
+  logout() {
+    this.authService.logout();
+  }
 }
