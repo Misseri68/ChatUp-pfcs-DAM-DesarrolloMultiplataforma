@@ -8,11 +8,12 @@ import {Message} from "../../model/message";
 import {AuthService} from "../../services/auth.service";
 import {Observable, Subscription} from "rxjs";
 import {FriendsComponent} from "../Popups/friends/friends.component";
+import {UserInfoComponent} from "../Popups/user-info/user-info.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, NgFor, ChatComponent, RouterOutlet, FriendsComponent],
+  imports: [CommonModule, NgFor, ChatComponent, RouterOutlet, FriendsComponent, UserInfoComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./styles/home.component.css']
 })
@@ -24,6 +25,7 @@ export class HomeComponent implements OnInit {
   user: User | null = null;
   user$ : Observable<User | null> = this.authService.currentUser$
   selectedChat! : Chat | undefined;
+
 
 
   constructor(private router: Router, private authService: AuthService) {

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, from, Observable } from 'rxjs';
+import {BehaviorSubject, filter, from, Observable} from 'rxjs';
 import { User } from "../model/user";
 import {
   collection,
@@ -9,7 +9,8 @@ import {
   Firestore, getDoc,
   getDocs,
   query,
-  where
+  where,
+  onSnapshot
 } from "@angular/fire/firestore";
 import {Router} from "@angular/router";
 
@@ -21,8 +22,9 @@ export class AuthService {
   private currentUserSubject: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
 
   // Observable de BehaviourSubject para permitir que otros componentes se suscriban al estado del usuario actual y reaccionen a cambios.
-  public currentUser$: Observable<User | null> = this.currentUserSubject.asObservable();
-
+  public currentUser$: Observable<User> = this.currentUserSubject.asObservable().pipe(
+    filter((user): user is User => user !== null)
+  );
   // Referencia a la colección 'users' en Firestore (como si fuera una tabla usuarios)
   private usersCollection: CollectionReference<DocumentData>;
 
@@ -44,6 +46,7 @@ export class AuthService {
       // Emite el usuario adquirido del documento, casteado a User, emitiéndoselo a todos los suscriptores de su observable correspondiente.
       this.currentUserSubject.next(currentUser);
       localStorage.setItem('username', JSON.stringify({ username: username }));
+      this.subscribeToUserChanges(username);
       return true;
     } else {
       this.currentUserSubject.next(null); // Emitir null si no se encuentra el usuario
@@ -62,16 +65,24 @@ export class AuthService {
         const currentUser = userDoc.data() as User
         // Emite el usuario adquirido del documento, casteado a User, emitiéndoselo a todos los suscriptores de su observable correspondiente.
         this.currentUserSubject.next(currentUser);
+        this.subscribeToUserChanges(storedUsername);
         this.router.navigate(['/home']);
-
       }
     }
   }
 
   async logout(){
     localStorage.removeItem("username");
+    this.currentUserSubject.next(null)
     this.router.navigate(['/auth']);
   }
 
 
+  private subscribeToUserChanges(username: string) {
+    const userDoc = doc(this.firestore, `users/${username}`);
+    onSnapshot(userDoc, doc => {
+      const userData = doc.data() as User;
+      this.currentUserSubject.next(userData);
+    });
+  }
 }

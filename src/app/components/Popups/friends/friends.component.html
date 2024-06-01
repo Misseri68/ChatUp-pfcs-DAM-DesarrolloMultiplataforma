@@ -1,32 +1,40 @@
 <div class="popup">
-  <button (click)="onClose()" class="close-button"><i class="fa-solid fa-xmark"></i></button>
-  <h3 class="text-center">Friends</h3>
-  <p>You can search and add friends here</p>
-  <div id="friendSearch">
-    <input type="text" #friendInput>
-    <button (click)="searchFriend(friendInput.value)" ><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-    <br class="fs-1">
-    <small>{{searchFriendResponse}}</small>
-  </div>
 
-  <div *ngIf=" user && user?.pendingRequests">
-    <h5>Pending friend requests</h5>
-    <div  *ngFor="let request of user?.pendingRequests">
-      {{request}}
-      <button><i class="fa-solid fa-plus" (click)="acceptFriend(request)"></i></button>
-      <button><i class="fa-solid fa-xmark" (click)="rejectFriend(request)"></i></button>
+    <button (click)="onClose()" class="close-button"><i class="fa-solid fa-xmark"></i></button>
+    <h3 class="text-center">Friends</h3>
+    <p>You can search and add friends here</p>
+    <div id="friendSearch">
+      <input type="text" #friendInput>
+      <button (click)="searchFriend(friendInput.value)" ><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+      <br class="fs-1">
+      <small>{{searchFriendResponse}}</small>
     </div>
-  </div>
+  <ng-container *ngIf="user$ | async as user">
+    <div *ngIf=" user.pendingRequests && user.pendingRequests.length > 0 ">
+      <h5>Pending friend requests</h5>
+      <div  *ngFor="let request of user.pendingRequests">
+        {{request}}
+        <button><i class="fa-solid fa-plus" (click)="acceptFriend(request)"></i></button>
+        <button><i class="fa-solid fa-xmark" (click)="rejectFriend(request)"></i></button>
+      </div>
+    </div>
+  </ng-container>
 
-  @if(friendList.length > 0){
-    <div class="friendList">
+  <ng-container *ngIf="user$ | async as user">
+    <div *ngIf="user.friends && user.friends.length> 0 else noFriends" class="friendList">
       <h5>Friend list</h5>
-      <div *ngFor="let friend of user?.friends">
+      <div *ngFor="let friend of user.friends">
         {{friend}}
         <button><i class="fa-regular fa-comment" (click)="goToChat(friend)"></i></button>
       </div>
     </div>
-  }@else{
-    <p>It looks like you don't have any friends yet... Use the search bar above to add some!</p>
-  }
+  </ng-container>
+
+  <ng-template #noFriends>
+      <p>It looks like you don't have any friends yet... Use the search bar above to add some!</p>
+    </ng-template>
+</div>
+
+<div *ngIf="user$prueba | async as user">
+  {{user.username}}<br> {{user.description}}
 </div>

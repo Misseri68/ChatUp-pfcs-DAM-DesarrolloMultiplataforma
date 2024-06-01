@@ -14,7 +14,6 @@ export class UserService {
 
   constructor(private firestore: Firestore) {
     this.usersCollection = collection(this.firestore, 'users');
-
   }
 
   // Crear un nuevo usuario
@@ -26,7 +25,11 @@ export class UserService {
   // Leer un usuario por username
   getUserByUsername(username: string): Observable<User> {
     const userDoc = doc(this.firestore, `users/${username}`);
-    return docData(userDoc, {idField: 'username'}) as Observable<User>;
+    return docData(userDoc) as Observable<User>;
+  }
+
+  getAllUsers(): Observable<User[]> {
+    return collectionData(this.usersCollection) as Observable<User[]>;
   }
 
   // Verificar si un usuario existe por username
