@@ -24,7 +24,10 @@ export class ChatComponent implements OnInit{
 
   }
 
-
+  displayChatPhoto(chat: Chat): string{
+    if (chat.photo) return chat.photo
+    return 'assets/pictures/default_pfp2.png';
+  }
 
 
 }

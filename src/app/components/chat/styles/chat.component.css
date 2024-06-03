@@ -2,19 +2,38 @@
 @import './scrollbar-textarea.css';
 
 .chat-header{
-  height:60px;
+  height:68px;
   border: solid 1px #7300ff;
+  align-content: center;
 }
 
 .chat-content{
   display:flex;
   flex-direction: column;
   width:100%;
-  height: calc(100vh - 170px); /* Ajusta a la altura deseada */
+  height: calc(100vh - 183px); /* Ajusta a la altura deseada */
   overflow-y: auto; /* Habilita el desplazamiento vertical cuando sea necesario */
   padding: 2em 1em 3em;
 
 }
+
+
+.circle-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden; /* esconde cualquier parte de la imagen que exceda el círculo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid 1px #DB00FFFF;
+}
+
+.circle-icon img {
+  width: 100%;
+  height: auto;
+}
+
 
 .own-message{
   align-self: flex-end;
@@ -40,7 +59,8 @@
 .typebar-container{
   min-height: 40px;
   padding-top:20px;
-  padding-bottom:10px;
+  padding-bottom:20px;
+  bottom:0;
 }
 
 .typebar {

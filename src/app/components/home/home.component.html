@@ -36,7 +36,7 @@
       <div id="chat-list" class="justify-content-center">
         <h4 class="text-lg-center p-3">Messages</h4>
         <!-- cada elemento chat del usuario-->
-        @if( user!=null && user!=undefined && user.chats && user.chats.length>0){
+        @if( user != null && true && user.chats && user.chats.length>0){
 
           <div *ngFor="let chat of user.chats" class="chat-item"  (click)="selectChat(chat)">
             <div class="row align-items-center py-2">

@@ -1,7 +1,16 @@
 <ng-container *ngIf="currentUser$ | async as currentUser">
 @if (chat) {
 
-  <div class="chat-header ms-3 text-white">{{chat.chatName}}</div>
+  <div class="chat-header  text-white">
+    <div class=" row align-items-center ps-3">
+      <div class="d-flex">
+        <div class="circle-icon">
+          <img src="{{displayChatPhoto(chat)}}">
+        </div>
+        <div class="ms-3 d-flex align-items-center mb-0" ><h5 class="mb-0">{{chat.chatName}}</h5></div>
+      </div>
+    </div>
+  </div>
   <div class="chat-content w-100 align-self-center">
 
   @for (message of chat.messages; track message){
