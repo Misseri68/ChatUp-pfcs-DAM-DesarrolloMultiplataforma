@@ -37,6 +37,7 @@
         <h4 class="text-lg-center p-3">Messages</h4>
         <!-- cada elemento chat del usuario-->
         @if( user!=null && user!=undefined && user.chats && user.chats.length>0){
+
           <div *ngFor="let chat of user.chats" class="chat-item"  (click)="selectChat(chat)">
             <div class="row align-items-center py-2">
               <div class="col-auto ms-3">
@@ -64,7 +65,8 @@
           </div>
         }
         @else{
-          <h5 class="text-center">It looks like there are no chats yet... Add a friend and start to chat!</h5>
+          <h5 class="text-center">It looks like there are no chats yet... Add a friend and start to chat!</h5><br>
+
         }
       </div>
 
@@ -79,9 +81,11 @@
               <h1 class="mb-3"> Welcome back!</h1>
               <h3 class="mb-3 fw-light"> Please select a chat to start typing</h3>
               <h5 class="mb-2 fst-italic fw-lighter"> Or add new friends to start a new chat!</h5>
+              <p class="fst-italic fs-6 mt-3">
+                Click this icon here, or in your lateral bar. <i class="fa-solid fa-person-circle-question text-white" (click)="toggleFriends()">
+              </i></p>
             </div>
           }
-
         </ng-container>
       </div>
      </div>
@@ -89,10 +93,9 @@
 </div>
 
 <ng-container *ngIf="user$ | async as user">
-
-<app-friends *ngIf="showFriends" (closePopup)="toggleFriends()"></app-friends>
-<app-friends *ngIf="showFriendInfo" (closePopup)="toggleFriendInfo()"></app-friends>
-<app-friends *ngIf="showFriendInfo" (closePopup)="toggleFriendInfo()"></app-friends>
+  <app-friends *ngIf="showFriends" (closePopup)="toggleFriends()" (chatSelected)="selectedChat=($event)"></app-friends>
+  <app-friends *ngIf="showFriendInfo" (closePopup)="toggleFriendInfo()"></app-friends>
+  <app-friends *ngIf="showFriendInfo" (closePopup)="toggleFriendInfo()"></app-friends>
 </ng-container>
 
 

@@ -76,7 +76,7 @@ export class RegisterComponent {
           friends: [],
           password: password,
           pendingRequests: [],
-          profilePicture: "src/assets/pictures/default_pfp.png",
+          profilePicture: "../../../assets/pictures/default_pfp.png",
           status: false,
           userOptions: {
             keepLoggedIn: false,

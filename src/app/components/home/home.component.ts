@@ -9,6 +9,7 @@ import {AuthService} from "../../services/auth.service";
 import {Observable, Subscription} from "rxjs";
 import {FriendsComponent} from "../Popups/friends/friends.component";
 import {UserInfoComponent} from "../Popups/user-info/user-info.component";
+import {ChatService} from "../../services/chat.service";
 
 @Component({
   selector: 'app-home',
@@ -28,7 +29,7 @@ export class HomeComponent implements OnInit {
 
 
 
-  constructor(private router: Router, private authService: AuthService) {
+  constructor(private router: Router, private authService: AuthService, private chatService: ChatService) {
     this.authService.currentUser$.subscribe(userObserved => {
       this.user = userObserved;
     });

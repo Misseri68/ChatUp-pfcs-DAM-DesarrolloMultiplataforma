@@ -4,7 +4,7 @@ import {Message} from "./message";
 export interface Chat {
   id_chat: string;
   chatName: string;
-  messages: Message[];
+  messages?: Message[];
   photo?: string;
   isDM: boolean;
   participants: string[]

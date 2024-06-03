@@ -1,8 +1,8 @@
 <ng-container *ngIf="currentUser$ | async as currentUser">
 @if (chat) {
 
-  <div class="chat-header">{{chat.chatName}}</div>
-  <div class="chat-content w-100">
+  <div class="chat-header ms-3 text-white">{{chat.chatName}}</div>
+  <div class="chat-content w-100 align-self-center">
 
   @for (message of chat.messages; track message){
     <div *ngIf=" currentUser && message.sender.toLowerCase() === currentUser.username.toLowerCase(); else notOwnMessage" class="own-message message">

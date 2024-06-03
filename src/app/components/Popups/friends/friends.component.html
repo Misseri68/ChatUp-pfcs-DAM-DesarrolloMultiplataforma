@@ -25,7 +25,7 @@
       <h5>Friend list</h5>
       <div *ngFor="let friend of user.friends">
         {{friend}}
-        <button><i class="fa-regular fa-comment" (click)="goToChat(friend)"></i></button>
+        <button><i class="fa-regular fa-comment" (click)="goToChat(user.username, friend)"></i></button>
       </div>
     </div>
   </ng-container>

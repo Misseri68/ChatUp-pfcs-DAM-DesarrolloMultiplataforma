@@ -18,13 +18,13 @@ export class UserService {
 
   // Crear un nuevo usuario
   createUser(user: User): Promise<void> {
-    const userDoc = doc(this.firestore, `users/${user.username}`);
+    const userDoc = doc(this.usersCollection, user.username);
     return setDoc(userDoc, user);
   }
 
   // Leer un usuario por username
   getUserByUsername(username: string): Observable<User> {
-    const userDoc = doc(this.firestore, `users/${username}`);
+    const userDoc = doc(this.usersCollection, username);
     return docData(userDoc) as Observable<User>;
   }
 
@@ -34,7 +34,7 @@ export class UserService {
 
   // Verificar si un usuario existe por username
   async checkUserExistsByUsername(username: string): Promise<boolean> {
-    const userDoc = doc(this.firestore, `users/${username}`);
+    const userDoc = doc(this.usersCollection, username);
     const userSnap = await getDoc(userDoc);
     return userSnap.exists();
   }
@@ -48,13 +48,13 @@ export class UserService {
 
   // Actualizar un usuario
   updateUser(username: string, user: Partial<User>): Promise<void> {
-    const userDoc = doc(this.firestore, `users/${username}`);
+    const userDoc = doc(this.usersCollection, username);
     return updateDoc(userDoc, user);
   }
 
   // Borrar un usuario
   deleteUser(username: string): Promise<void> {
-    const userDoc = doc(this.firestore, `users/${username}`);
+    const userDoc = doc(this.usersCollection, username);
     return deleteDoc(userDoc);
   }
 
