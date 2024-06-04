@@ -1,6 +1,6 @@
 <ng-container *ngIf="currentUser$ | async as currentUser">
-@if (chat) {
-
+@if (selectedChat && chat$!=null) {
+  <ng-container *ngIf="chat$ | async as chat">
   <div class="chat-header  text-white">
     <div class=" row align-items-center ps-3">
       <div class="d-flex">
@@ -37,10 +37,11 @@
       </span>
       <textarea id="expandable-textarea" class="messages-input mx-3 mt-2"></textarea>
       <span class="icon-send">
-        <i class="fa-solid fa-paper-plane me-3"></i>
+        <i class="fa-solid fa-paper-plane me-3" (click)="sendMessage()"></i>
       </span>
     </div>
   </div>
+  </ng-container>
 }
 </ng-container>
 

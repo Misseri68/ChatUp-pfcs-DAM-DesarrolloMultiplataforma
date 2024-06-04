@@ -3,13 +3,16 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #080f2d;
+  background: linear-gradient(180deg, rgba(0, 42, 211, 0.3) 0%, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 0) 70%, rgba(183, 0, 255, 0.12) 100%);
   padding: 20px;
   border: 1px solid rgb(98, 0, 255);
   border-radius: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   color: #00ffb7;
+  min-width: 500px;
+  min-height: 500px;
 }
+
 
 .close-button{
   background: none;
@@ -21,6 +24,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.other-buttons{
+  background: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  cursor: pointer;
+  color: #00ffb7;
+
 }
 
 .fa-xmark{

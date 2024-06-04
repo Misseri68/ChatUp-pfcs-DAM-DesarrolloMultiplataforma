@@ -27,8 +27,6 @@ export class HomeComponent implements OnInit {
   user$ : Observable<User | null> = this.authService.currentUser$
   selectedChat! : Chat | undefined;
 
-
-
   constructor(private router: Router, private authService: AuthService, private chatService: ChatService) {
     this.authService.currentUser$.subscribe(userObserved => {
       this.user = userObserved;

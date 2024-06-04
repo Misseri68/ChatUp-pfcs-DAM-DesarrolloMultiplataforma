@@ -9,8 +9,8 @@
     </button>
   </div>
     <div class="bottom-buttons">
-      <button>
-        <i class="fa-solid fa-person-circle-question text-white" (click)="toggleFriends()"></i>
+      <button (click)="toggleFriends()">
+        <i class="fa-solid fa-person-circle-question text-white"></i>
       </button>
       <button>
         <i class="fa-regular fa-moon text-white"></i>
@@ -18,8 +18,8 @@
       <button>
         <i class="fa-solid fa-gears text-white"></i>
       </button>
-      <button>
-        <i class="fa-solid fa-arrow-right-from-bracket" (click)="logout()">
+      <button (click)="logout()">
+        <i class="fa-solid fa-arrow-right-from-bracket" >
         </i>
       </button>
     </div>
@@ -74,16 +74,16 @@
       <div id="chatbox">
         <ng-container *ngIf="user$ | async as user">
           @if(selectedChat){
-            <app-chat [chat]="selectedChat" [currentUser$]="user$"></app-chat>
+            <app-chat [selectedChat]="selectedChat" [currentUser$]="user$"></app-chat>
           }
           @else{
             <div class="entrada text-center ">
               <h1 class="mb-3"> Welcome back!</h1>
               <h3 class="mb-3 fw-light"> Please select a chat to start typing</h3>
               <h5 class="mb-2 fst-italic fw-lighter"> Or add new friends to start a new chat!</h5>
-              <p class="fst-italic fs-6 mt-3">
+              <p class="fst-italic fs-5 mt-3">
                 Click this icon here, or in your lateral bar. <i class="fa-solid fa-person-circle-question text-white" (click)="toggleFriends()">
-              </i></p>
+              </i><span class="fs-2">&#10554;</span></p>
             </div>
           }
         </ng-container>

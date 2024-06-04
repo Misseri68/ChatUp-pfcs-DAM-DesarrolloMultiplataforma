@@ -106,6 +106,39 @@ export class FriendsComponent {
     ).subscribe();
   }
 
+  unfriend(friendName: string){
+    //TODO popup que te pida confirmacion
+
+    let currentUsername : string;
+    this.user$.pipe(
+      take(1),
+      tap(
+        user =>{
+          if(user && user.friends && user.friends.includes(friendName)){
+            currentUsername = user.username
+            user.friends = user.friends.filter( name => name !== friendName);
+            this.userService.updateUser(currentUsername, user)
+          }
+        }
+      )
+    ).subscribe()
+
+    this.userService.getUserByUsername(friendName).pipe(
+      take(1),
+      tap(
+        friend => {
+          if(friend && friend.friends && friend.friends.includes(currentUsername)){
+            friend.friends = friend.friends.filter(name => name !== currentUsername);
+            this.userService.updateUser(friendName, friend);
+          }
+        }
+      )
+    ).subscribe()
+
+  }
+
+
+
   goToChat(currentUserName: string, friendName: string) {
     console.log(0)
 
@@ -121,7 +154,6 @@ export class FriendsComponent {
             console.log(2)
 
             const newChat = {
-              chat_id: '',
               chatName: `DM with ${friendName} and ${currentUserName}. `,  //TODO
               messages: [],
               photo: '../../../assets/pictures/default_pfp2.png',
@@ -141,21 +173,16 @@ export class FriendsComponent {
                   }
                 })
               ).subscribe();
-              console.log(6);
 
               this.userService.getUserByUsername(friendName).pipe(
                 take(1),
                 tap(friendUser => {
                   if (friendUser != null) {
                     friendUser.chats?.push(createdChat)
-                    console.log(7)
                     this.userService.updateUser(friendName, friendUser);
-                    console.log(8)
                   }
                 })
               ).subscribe();
-              console.log(9)
-
               this.chatSelected.emit()
             }
           }

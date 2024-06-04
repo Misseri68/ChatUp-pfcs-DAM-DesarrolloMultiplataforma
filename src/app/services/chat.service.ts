@@ -22,6 +22,15 @@ export class ChatService{
     this.chatsCollection = collection(this.firestore,'chats');
   }
 
+  async createChat(chat: Omit<Chat, 'id_chat'>): Promise<Chat> {
+    const docRef = await addDoc(this.chatsCollection, chat);
+    const docId = docRef.id;
+    const createdChat: Chat = { ...chat, id_chat: docId };
+    await setDoc(doc(this.chatsCollection, docId), createdChat);
+    return createdChat;
+  }
+
+/*
   createChat(chat: Partial<Chat>): Promise<Chat | null> {
     return addDoc(this.chatsCollection, chat).then(docRef => {
       return getDoc(docRef).then(docSnap => {
@@ -38,22 +47,22 @@ export class ChatService{
       return null;
     });
   }
+  */
 
   getAllChats(): Observable<Chat[]> {
     return collectionData(this.chatsCollection) as Observable<Chat[]>;
   }
 
+  //lazy load
   getChat(chatId: string): Observable<Chat> {
    const chatDoc = doc(this.chatsCollection, chatId);
    return docData(chatDoc) as Observable<Chat>
   }
 
+
+
   getDmChat(participant1: string, participant2: string): Observable<Chat | null> {
-    console.log("Participantes:", participant1, participant2);
-
     const chatQuery = query(this.chatsCollection, where('isDM', '==', true));
-    console.log("Consulta de chat:", chatQuery);
-
     return from(getDocs(chatQuery)).pipe(
       map(snapshot => {
         if (snapshot.empty) {
@@ -61,7 +70,7 @@ export class ChatService{
           return null; // No se encontraron resultados
         }
 
-        console.log("Documentos obtenidos:", snapshot.docs);
+        console.log("Documentos obtenidos: ", snapshot.docs);
 
         const matchingChats = snapshot.docs.filter(doc => {
           const chatData = doc.data() as Chat;
@@ -70,11 +79,8 @@ export class ChatService{
             chatData.participants.includes(participant2);
           return participantsMatch;
         });
-
-        console.log("Chats coincidentes:", matchingChats);
-
         if (matchingChats.length > 0) {
-          console.log("Chat encontrado:", matchingChats[0].data());
+          console.log("Chat encontrado: ", matchingChats[0].data());
           return matchingChats[0].data() as Chat;
         } else {
           console.log("No se encontró un chat que coincida.");
@@ -83,7 +89,7 @@ export class ChatService{
       }),
       catchError(() => {
         console.error("Error al obtener los chats.");
-        return of(null); // Manejo de errores
+        return of(null);
       })
     );
   }
@@ -97,5 +103,10 @@ export class ChatService{
   deleteChat(chatId: string): Promise<void> {
     const chatDoc = doc(this.chatsCollection, chatId);
     return deleteDoc(chatDoc);
+  }
+
+  // @ts-ignore
+  loadChatMessages(id_chat: string): Observable<Chat> {
+
   }
 }

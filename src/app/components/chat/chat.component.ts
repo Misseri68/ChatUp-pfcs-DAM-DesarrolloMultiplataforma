@@ -3,6 +3,7 @@ import {Chat} from "../../model/chat";
 import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
 import {User} from "../../model/user";
 import {Observable} from "rxjs";
+import {ChatService} from "../../services/chat.service";
 
 @Component({
   selector: 'app-chat',
@@ -17,10 +18,16 @@ import {Observable} from "rxjs";
 })
 export class ChatComponent implements OnInit{
 
-  @Input() chat!: Chat;
+  @Input() selectedChat!: Chat;
+  chat$ : Observable<Chat> | null = null
+
   @Input() currentUser$: Observable<User | null> | null = null;
 
+  constructor(private chatService: ChatService) {
+  }
+
   ngOnInit(): void {
+    this.chat$ = this.chatService.loadChatMessages(this.selectedChat.id_chat)
 
   }
 
@@ -28,6 +35,8 @@ export class ChatComponent implements OnInit{
     if (chat.photo) return chat.photo
     return 'assets/pictures/default_pfp2.png';
   }
+
+  sendMessage(){}
 
 
 }
