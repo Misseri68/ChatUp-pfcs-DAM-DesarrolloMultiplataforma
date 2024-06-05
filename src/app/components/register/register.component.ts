@@ -72,7 +72,6 @@ export class RegisterComponent {
         // Crear el nuevo usuario
         await this.userService.createUser({
           username: username,
-          chats: [],
           friends: [],
           password: password,
           pendingRequests: [],

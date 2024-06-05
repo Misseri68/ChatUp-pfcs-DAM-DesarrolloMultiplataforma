@@ -138,8 +138,6 @@ export class FriendsComponent {
 
   }
 
-
-
   goToChat(currentUserName: string, friendName: string) {
     this.chatService.getDmChat(currentUserName, friendName).pipe(
       take(1),
