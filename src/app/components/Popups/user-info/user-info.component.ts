@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, HostListener, Output} from '@angular/core';
 import {Observable} from "rxjs";
 import {User} from "../../../model/user";
 import {AsyncPipe, NgForOf} from "@angular/common";
@@ -21,4 +21,19 @@ export class UserInfoComponent {
     this.users$ = this.userService.getAllUsers();
   }
 
+
+
+
+  //Emitir evento de cierre al padre.
+  @Output() closePopup: EventEmitter<void> = new EventEmitter<void>();
+  onClose() {
+    this.closePopup.emit();
+  }
+
+  //Si se presiona escape se sale del popup.
+  @HostListener('document:keydown', ['$event']) onKeydownHandler(event: KeyboardEvent) {
+    if (event.key === "Escape") {
+      this.closePopup.emit();
+    }
+  }
 }

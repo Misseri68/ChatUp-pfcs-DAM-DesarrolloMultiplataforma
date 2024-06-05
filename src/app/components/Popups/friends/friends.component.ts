@@ -20,10 +20,9 @@ import {Chat} from "../../../model/chat";
 })
 export class FriendsComponent {
 
-  @Output() chatSelected = new EventEmitter<Chat>();
+  @Output() selectedChatId = new EventEmitter<string>();
   searchFriendResponse: string = '';
   user$: Observable<User>;
-  user$prueba: Observable<User> = this.userService.getUserByUsername("TodasPutas");
 
   constructor(private authService: AuthService, private userService: UserService, private chatService: ChatService) {
     this.user$ = this.authService.currentUser$
@@ -87,8 +86,10 @@ export class FriendsComponent {
       take(1),
       tap(
         friendUser => {
-          friendUser.friends?.push(currentUsername)
-          this.userService.updateUser(friendName, friendUser)
+          if(friendUser){
+            friendUser.friends?.push(currentUsername)
+            this.userService.updateUser(friendName, friendUser)
+          }
         })
     ).subscribe();
   }
@@ -140,19 +141,14 @@ export class FriendsComponent {
 
 
   goToChat(currentUserName: string, friendName: string) {
-    console.log(0)
-
     this.chatService.getDmChat(currentUserName, friendName).pipe(
       take(1),
       tap(
         async currentChat => {
           if (currentChat != null) {
-            console.log(1)
-            this.chatSelected.emit(currentChat)
+            this.selectedChatId.emit(currentChat.id_chat)
             this.closePopup.emit()
           } else {
-            console.log(2)
-
             const newChat = {
               chatName: `DM with ${friendName} and ${currentUserName}. `,  //TODO
               messages: [],
@@ -164,30 +160,11 @@ export class FriendsComponent {
 
             const createdChat = await this.chatService.createChat(newChat);
             if(createdChat!=null){
-              this.user$.pipe(
-                take(1),
-                tap(currentUser => {
-                  if (currentUser != null) {
-                    currentUser.chats?.push(createdChat)
-                    this.userService.updateUser(currentUserName, currentUser);
-                  }
-                })
-              ).subscribe();
-
-              this.userService.getUserByUsername(friendName).pipe(
-                take(1),
-                tap(friendUser => {
-                  if (friendUser != null) {
-                    friendUser.chats?.push(createdChat)
-                    this.userService.updateUser(friendName, friendUser);
-                  }
-                })
-              ).subscribe();
-              this.chatSelected.emit()
+              this.selectedChatId.emit(createdChat.id_chat)
             }
           }
-            }
-          )).subscribe()
+        })).subscribe()
+    this.closePopup.emit();
   }
 
   //Emitir evento de cierre al padre.

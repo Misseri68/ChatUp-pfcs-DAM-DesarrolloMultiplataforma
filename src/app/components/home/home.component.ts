@@ -6,7 +6,7 @@ import {Router, RouterOutlet} from "@angular/router";
 import {Chat} from "../../model/chat";
 import {Message} from "../../model/message";
 import {AuthService} from "../../services/auth.service";
-import {Observable, Subscription} from "rxjs";
+import {Observable, Subscription, tap} from "rxjs";
 import {FriendsComponent} from "../Popups/friends/friends.component";
 import {UserInfoComponent} from "../Popups/user-info/user-info.component";
 import {ChatService} from "../../services/chat.service";
@@ -23,59 +23,58 @@ export class HomeComponent implements OnInit {
   showFriendInfo: boolean = false;
   showFriends: boolean = false;
 
-  user: User | null = null;
-  user$ : Observable<User | null> = this.authService.currentUser$
-  selectedChat! : Chat | undefined;
+  username: string | undefined;
+  user$ : Observable<User | null> ;
+  chats$: Observable<Chat[]> | undefined;
+  selectedChatId: string |undefined;
 
   constructor(private router: Router, private authService: AuthService, private chatService: ChatService) {
-    this.authService.currentUser$.subscribe(userObserved => {
-      this.user = userObserved;
-    });
-
+    //Cargamos de local, si no está iniciada la sesión envía a /auth .
+    this.authService.getFromLocalStorage();
+    this.user$ = this.authService.currentUser$;
+    this.user$.pipe(
+      tap(userObserved => {
+        if(userObserved) {
+          this.username = userObserved.username;
+          this.chats$ = this.chatService.getChatsLazy(this.username);
+        }
+        else this.router.navigate(['/auth']);
+      })
+    ).subscribe()
   }
-
 
   ngOnInit(): void {
-    this.authService.getFromLocalStorage().then(() => {
-      if(this.user == null ){
-        this.router.navigate(['/auth']);
-      }else{
-        this.user$.subscribe(user => {
-        });
-      }
-    });
+
   }
 
-  selectChat(chat: Chat)  {
-    this.selectedChat = chat;
+  selectChat(id_chat: string)  {
+    this.selectedChatId = id_chat;
   }
 
 
   //Al presionar escape el chat seleccionado vuelve a undefined.
   @HostListener('document:keydown', ['$event']) onKeydownHandler(event: KeyboardEvent) {
     if (event.key === "Escape") {
-      if(this.selectedChat!=undefined){
-        this.selectedChat = undefined;
-      }
+      this.selectedChatId = undefined;
     }
   }
 
 
   //Lógica para el listado de chats:
-
   displayLastMessage(message: Message):string {
     let sender: string;
     if(message!= null || message != undefined){
-      if( this.user != null &&  this.user.username.toLowerCase() === message.sender.toLowerCase()) sender = 'You: ';
+      if( this.username != null && this.username.toLowerCase() === message.sender.toLowerCase()) sender = 'You: ';
       else sender = message.sender + ': ';
       return sender + message.text
     }
    return "There are no messages yet."
   }
+
   // Método que comprueba si el chat tiene foto, y si no le asigna la foto por defecto.
   displayChatPhoto(chat: Chat): string{
     if (chat.photo) return chat.photo
-    return 'assets/pictures/default_pfp2.png';
+    else return 'assets/pictures/default_pfp2.png';
   }
   /*Método que devolverá un String con la fecha que se pondrá en cada chat del listado de Chats del usuario.
    *  return: 'hh:MM' si el último menasje fue enviado el mismo día que el día actual.
@@ -118,11 +117,9 @@ export class HomeComponent implements OnInit {
   toggleFriends() {
     this.showFriends = !this.showFriends;
   }
-
   toggleFriendInfo() {
     this.showFriendInfo = !this.showFriendInfo;
   }
-
   toggleMyInfo() {
     this.showMyInfo = !this.showMyInfo;
   }

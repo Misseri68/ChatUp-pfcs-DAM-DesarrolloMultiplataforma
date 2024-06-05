@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Chat} from "../../model/chat";
 import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
 import {User} from "../../model/user";
@@ -16,20 +16,26 @@ import {ChatService} from "../../services/chat.service";
   templateUrl: './chat.component.html',
   styleUrl: './styles/chat.component.css'
 })
-export class ChatComponent implements OnInit{
+export class ChatComponent implements OnInit, OnChanges{
 
-  @Input() selectedChat!: Chat;
-  chat$ : Observable<Chat> | null = null
 
-  @Input() currentUser$: Observable<User | null> | null = null;
+  @Input() id_chat :string | undefined;
+
+  chat$ : Observable<Chat> | undefined;
+
+  @Input() currentUsername : string | undefined;
 
   constructor(private chatService: ChatService) {
   }
 
   ngOnInit(): void {
-    this.chat$ = this.chatService.loadChatMessages(this.selectedChat.id_chat)
-
   }
+  ngOnChanges() {
+    if(this.id_chat){
+      this.chat$ = this.chatService.getChatByIdEager(this.id_chat)
+    }
+  }
+
 
   displayChatPhoto(chat: Chat): string{
     if (chat.photo) return chat.photo

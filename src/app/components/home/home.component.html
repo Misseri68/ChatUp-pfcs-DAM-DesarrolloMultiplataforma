@@ -1,5 +1,5 @@
 
-<div id="div-component">
+<div id="div-component" *ngIf="user$ | async as user">
 <!-- div barra opciones -->
 <div class="option-bar">
   <!-- Botón toggle de modo oscuro -->
@@ -36,9 +36,8 @@
       <div id="chat-list" class="justify-content-center">
         <h4 class="text-lg-center p-3">Messages</h4>
         <!-- cada elemento chat del usuario-->
-        @if( user != null && true && user.chats && user.chats.length>0){
-
-          <div *ngFor="let chat of user.chats" class="chat-item"  (click)="selectChat(chat)">
+        <ng-container *ngIf="user && chats$ | async as chats ; else noChats" >
+          <div *ngFor="let chat of chats" class="chat-item"  (click)="selectChat(chat.id_chat)">
             <div class="row align-items-center py-2">
               <div class="col-auto ms-3">
                 <div class="circle-icon">
@@ -54,6 +53,8 @@
                       <!-- Si tiene mensajes sin leer, no se visualizará la hora, se visualizará en cambio un icono con la cuantía de mensajes sin leer, en la etiqueta "ng-template"-->
                       <div class="unread-message" *ngIf="chat.unreadMessages==0; else unreadMessagesTemplate">
                         {{displayTime(chat.lastMessage.date)}} </div>
+                    }@else{
+                      <p class="fst-italic">Start chatting-up with your friend!</p>
                     }
                     <ng-template #unreadMessagesTemplate>
                       <div class="roundednotif"><p>{{displayUnreadNumber(chat.unreadMessages)}}</p></div>
@@ -63,20 +64,20 @@
               </div>
             </div>
           </div>
-        }
-        @else{
+        </ng-container>
+        <ng-template #noChats>
           <h5 class="text-center">It looks like there are no chats yet... Add a friend and start to chat!</h5><br>
 
-        }
+        </ng-template>
+
       </div>
 
       <!--div Chat con mensajes-->
       <div id="chatbox">
         <ng-container *ngIf="user$ | async as user">
-          @if(selectedChat){
-            <app-chat [selectedChat]="selectedChat" [currentUser$]="user$"></app-chat>
-          }
-          @else{
+          @if(selectedChatId && username){
+            <app-chat [id_chat]="selectedChatId"  [currentUsername]="username"></app-chat>
+          } @else{
             <div class="entrada text-center ">
               <h1 class="mb-3"> Welcome back!</h1>
               <h3 class="mb-3 fw-light"> Please select a chat to start typing</h3>
@@ -92,10 +93,10 @@
   </div>
 </div>
 
-<ng-container *ngIf="user$ | async as user">
-  <app-friends *ngIf="showFriends" (closePopup)="toggleFriends()" (chatSelected)="selectedChat=($event)"></app-friends>
+<div class="popups">
+  <app-friends *ngIf="showFriends" (closePopup)="toggleFriends()" (selectedChatId)="selectedChatId=($event)"></app-friends>
+  <app-user-info *ngIf="showFriendInfo" (closePopup)="toggleFriendInfo()"></app-user-info>
   <app-friends *ngIf="showFriendInfo" (closePopup)="toggleFriendInfo()"></app-friends>
-  <app-friends *ngIf="showFriendInfo" (closePopup)="toggleFriendInfo()"></app-friends>
-</ng-container>
+</div>
 
 

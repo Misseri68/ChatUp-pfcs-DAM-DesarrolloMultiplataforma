@@ -8,7 +8,6 @@ export interface User {
   status: boolean;
   userOptions: UserOptions;
   profilePicture?: string;
-  chats?: Chat [];
   friends?: string[];
   pendingRequests?: string[];
   password?: string;

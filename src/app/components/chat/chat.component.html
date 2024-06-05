@@ -1,6 +1,4 @@
-<ng-container *ngIf="currentUser$ | async as currentUser">
-@if (selectedChat && chat$!=null) {
-  <ng-container *ngIf="chat$ | async as chat">
+ <ng-container *ngIf="chat$ | async as chat ; else noChatSelected">
   <div class="chat-header  text-white">
     <div class=" row align-items-center ps-3">
       <div class="d-flex">
@@ -14,8 +12,8 @@
   <div class="chat-content w-100 align-self-center">
 
   @for (message of chat.messages; track message){
-    <div *ngIf=" currentUser && message.sender.toLowerCase() === currentUser.username.toLowerCase(); else notOwnMessage" class="own-message message">
-      <!-- Si el mensaje ha sido enviado por el usuario que está viendo la pantalla:-->
+    <div *ngIf=" currentUsername && message.sender.toLowerCase() === currentUsername.toLowerCase(); else notOwnMessage" class="own-message message">
+      <!-- Si el mensaje ha sido enviado por el usuario que está viendo la pantalla: -->
       <div>
         <h5>{{message.sender}}</h5>
         {{message.text}}
@@ -42,8 +40,10 @@
     </div>
   </div>
   </ng-container>
-}
-</ng-container>
+ <ng-template #noChatSelected>
+
+ </ng-template>
+
 
 
 

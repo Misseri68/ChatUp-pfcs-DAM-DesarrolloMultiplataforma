@@ -1,16 +1,25 @@
+.fondo{
+  height:100%;
+  width:100%;
+  background: rgba(0, 0, 0, 0.89);
+
+}
+
 .popup {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: linear-gradient(180deg, rgba(0, 42, 211, 0.3) 0%, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 0) 70%, rgba(183, 0, 255, 0.12) 100%);
+  background: #04092c linear-gradient(160deg, rgba(0, 42, 211, 0.3) 0%, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 0) 70%, rgba(183, 0, 255, 0.12) 100%);
   padding: 20px;
   border: 1px solid rgb(98, 0, 255);
   border-radius: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   color: #00ffb7;
+  overflow-y: auto;
   min-width: 500px;
   min-height: 500px;
+  max-height:700px;
 }
 
 
@@ -21,7 +30,6 @@
   box-shadow: none;
   cursor: pointer;
   padding: 0; /* Elimina cualquier padding adicional */
-  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -44,4 +52,29 @@ small {
   color: #ea3b6f;
   font-size: 11px;
   text-align: center;
+}
+
+
+
+
+
+
+.popup::-webkit-scrollbar {
+  width: 5px;
+
+}
+
+/* Estilo del control deslizante del scrollbar */
+.popup::-webkit-scrollbar-thumb {
+  background-color: rgb(0, 255, 140);  /* Color del deslizador */
+  border: 1px solid black;
+  border-top:0;
+
+}
+
+/* Estilo del track del scrollbar */
+.popup::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.91);  /* Color del track */
+  border: 1px solid rgba(219, 0, 255, 0.33);
+  border-radius: 2px;  /* Bordes redondeados */
 }
