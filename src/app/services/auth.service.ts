@@ -68,7 +68,9 @@ export class AuthService {
         this.subscribeToUserChanges(storedUsername);
         this.router.navigate(['/home']);
       }
+      else await this.router.navigate(['/auth'])
     }
+    else await this.router.navigate(['/auth'])
   }
 
   async logout(){

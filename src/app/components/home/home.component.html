@@ -83,8 +83,8 @@
               <h3 class="mb-3 fw-light"> Please select a chat to start typing</h3>
               <h5 class="mb-2 fst-italic fw-lighter"> Or add new friends to start a new chat!</h5>
               <p class="fst-italic fs-5 mt-3">
-                Click this icon here, or in your lateral bar. <i class="fa-solid fa-person-circle-question text-white" (click)="toggleFriends()">
-              </i><span class="fs-2">&#10554;</span></p>
+                Click this icon here, or in your lateral bar. <span class="icono"><i class="fa-solid fa-person-circle-question text-white" (click)="toggleFriends()">
+              </i></span><span class="fs-2">&#10554;</span></p>
             </div>
           }
         </ng-container>
@@ -94,7 +94,10 @@
 </div>
 
 <div class="popups">
-  <app-friends *ngIf="showFriends" (closePopup)="toggleFriends()" (selectedChatId)="selectedChatId=($event)"></app-friends>
+  <app-friends *ngIf="showFriends" (closePopup)="toggleFriends()" (selectedChatId)="selectChat($event)">
+    <p>Selected Chat ID: {{ selectedChatId }}</p>
+
+  </app-friends>
   <app-user-info *ngIf="showFriendInfo" (closePopup)="toggleFriendInfo()"></app-user-info>
   <app-friends *ngIf="showFriendInfo" (closePopup)="toggleFriendInfo()"></app-friends>
 </div>

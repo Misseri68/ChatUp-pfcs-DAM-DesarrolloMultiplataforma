@@ -1,14 +1,18 @@
 #chatbox{
   width:100%;
   background: #030d1a;
-  border-bottom: solid 1px #7300ff;
+  border-left: solid 1px #7300ff;
   height: calc(100vh - 30);
   overflow-y: hidden;
   overflow-X: hidden;
-
 }
 
 .entrada{
   margin-top: 4em;
   color: #5cffb6;
+}
+
+i {
+  cursor: pointer;
+  border-bottom: #00ffb7;
 }

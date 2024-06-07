@@ -5,13 +5,15 @@ textarea::-webkit-scrollbar {
 /* Estilo del control deslizante del scrollbar */
 textarea::-webkit-scrollbar-thumb {
   background-color: #7300ff;  /* Color del deslizador */
-  border: 1px solid black;
+  border-left: 1px solid black;
   border-top:0;
 }
 
 /* Estilo del track del scrollbar */
 textarea::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0.91);  /* Color del track */
-  border: 1px solid rgb(0, 255, 140);
+  border-left: 1px solid rgb(0, 255, 140);
+  border-right: 1px solid rgb(0, 255, 140);
+
   border-radius: 2px;  /* Bordes redondeados */
 }

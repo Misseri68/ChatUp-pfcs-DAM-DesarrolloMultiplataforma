@@ -26,7 +26,6 @@ export class RegisterComponent {
   constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
     this.registerForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(3), this.usernameValidator]],
-      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(5)]],
       password2: ['', [Validators.required, Validators.minLength(5)]]
     }, {validator: this.passwordMatchValidator});
@@ -46,9 +45,9 @@ export class RegisterComponent {
   }
 
   async register() {
-    // Lógica de inicio de sesión con email y contraseña
+    // Lógica de inicio de sesión con usuario y contraseña
     if (this.registerForm.valid) {
-      const {username, email, password} = this.registerForm.value;
+      const {username,password} = this.registerForm.value;
       try {
         // Verificar si el usuario ya existe por username
         const usernameExists = await this.userService.checkUserExistsByUsername(username);
@@ -60,15 +59,7 @@ export class RegisterComponent {
             customClass: 'alert-custom-style'});
           return;
         }
-        // Verificar si el usuario ya existe por email
-        if (await this.userService.checkUserExistsByEmail(email)) {
-          await Swal.fire( {
-            title: 'Error',
-            text: `The email ${email} is already registered.`,
-            icon: 'warning',
-            customClass: 'alert-custom-style'});
-          return;
-        }
+
         // Crear el nuevo usuario
         await this.userService.createUser({
           username: username,
@@ -81,7 +72,6 @@ export class RegisterComponent {
             keepLoggedIn: false,
             lightMode: false
           },
-          email: email,
           description: "Hi! This is Chat-Up's default description, you can edit it in profile options."
         });
         await Swal.fire( {

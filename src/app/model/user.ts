@@ -3,7 +3,6 @@ import {UserOptions} from "./useroptions";
 
 export interface User {
   username: string;
-  email: string;
   description: string;
   status: boolean;
   userOptions: UserOptions;

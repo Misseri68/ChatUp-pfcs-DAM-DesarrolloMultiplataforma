@@ -5,24 +5,24 @@
         <div class="circle-icon">
           <img src="{{displayChatPhoto(chat)}}">
         </div>
-        <div class="ms-3 d-flex align-items-center mb-0" ><h5 class="mb-0">{{chat.chatName}}</h5></div>
+        <div class="ms-3 d-flex align-items-center mb-0"><h5 class="mb-0">{{chat.chatName}}</h5></div>
       </div>
     </div>
   </div>
-  <div class="chat-content w-100 align-self-center">
+  <div class="chat-content w-100 align-self-center" #chatContent>
 
   @for (message of chat.messages; track message){
     <div *ngIf=" currentUsername && message.sender.toLowerCase() === currentUsername.toLowerCase(); else notOwnMessage" class="own-message message">
       <!-- Si el mensaje ha sido enviado por el usuario que está viendo la pantalla: -->
       <div>
-        <h5>{{message.sender}}</h5>
-        {{message.text}}
+        <h6 class="mb-1">{{message.sender}}</h6>
+        <p class="ps-2  mt-0 mb-0">{{message.text}} <span class="ms-2"> </span></p>
       </div>
     </div>
     <ng-template #notOwnMessage>
       <div  class="not-own-message message">
-        <h5>{{message.sender}}</h5>
-        <div>{{message.text}}</div>
+        <h6 class="mb-1">{{message.sender}}</h6>
+        <div class="ps-2 mt-0 mb-0">{{message.text}}</div>
       </div>
     </ng-template>
   }
@@ -33,7 +33,7 @@
       <span class="icon-media">
         <i class="fa-solid fa-paperclip ms-3"></i>
       </span>
-      <textarea id="expandable-textarea" class="messages-input mx-3 mt-2"></textarea>
+      <textarea id="expandable-textarea" class="messages-input mx-3 mt-2"  (keydown.enter)="sendMessage()"></textarea>
       <span class="icon-send">
         <i class="fa-solid fa-paper-plane me-3" (click)="sendMessage()"></i>
       </span>

@@ -6,10 +6,11 @@ import {Router, RouterOutlet} from "@angular/router";
 import {Chat} from "../../model/chat";
 import {Message} from "../../model/message";
 import {AuthService} from "../../services/auth.service";
-import {Observable, Subscription, tap} from "rxjs";
+import {filter, map, Observable, of, Subscription, switchMap, tap} from "rxjs";
 import {FriendsComponent} from "../Popups/friends/friends.component";
 import {UserInfoComponent} from "../Popups/user-info/user-info.component";
 import {ChatService} from "../../services/chat.service";
+import { Timestamp } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-home',
@@ -32,25 +33,36 @@ export class HomeComponent implements OnInit {
     //Cargamos de local, si no está iniciada la sesión envía a /auth .
     this.authService.getFromLocalStorage();
     this.user$ = this.authService.currentUser$;
-    this.user$.pipe(
-      tap(userObserved => {
-        if(userObserved) {
-          this.username = userObserved.username;
-          this.chats$ = this.chatService.getChatsLazy(this.username);
-        }
-        else this.router.navigate(['/auth']);
-      })
-    ).subscribe()
   }
 
   ngOnInit(): void {
-
+    this.user$.pipe(
+      tap(userObserved => {
+        if (userObserved) {
+          this.username = userObserved.username;
+        }
+      }),
+      filter(userObserved => !!userObserved && !!this.username), // Espera a que el usuario esté definido
+      switchMap(() => {
+        return this.chatService.getChats(this.username!).pipe(
+          map(chats => {
+            chats.forEach(chat => {
+              // Obtener el último mensaje de cada chat
+              let lastMessage = chat.messages && chat.messages.length > 0 ? chat.messages[chat.messages.length - 1] : undefined;
+              chat.lastMessage = lastMessage;
+            });
+            return chats; // Devolver el arreglo de chats con el último mensaje agregado
+          })
+        );
+      })
+    ).subscribe(chatsWithLastMessage => {
+      this.chats$ = of(chatsWithLastMessage); // Asignar los chats al observable chats$
+    });
   }
 
-  selectChat(id_chat: string)  {
+  selectChat(id_chat: string) {
     this.selectedChatId = id_chat;
   }
-
 
   //Al presionar escape el chat seleccionado vuelve a undefined.
   @HostListener('document:keydown', ['$event']) onKeydownHandler(event: KeyboardEvent) {
@@ -76,12 +88,14 @@ export class HomeComponent implements OnInit {
     if (chat.photo) return chat.photo
     else return 'assets/pictures/default_pfp2.png';
   }
+
   /*Método que devolverá un String con la fecha que se pondrá en cada chat del listado de Chats del usuario.
    *  return: 'hh:MM' si el último menasje fue enviado el mismo día que el día actual.
    *  return: 'yesterday' si el último mensaje fue enviado el dia anterior al día actual.
    *  return: 'dd/MM' si el último mensaje fue anterior al dia anterior del anterior al actual.
    */
-  displayTime(messageDate: Date): string{
+  displayTime(timestamp: Timestamp): string{
+    const messageDate = this.convertTimestampToDate(timestamp);
 
     const today = new Date();
     const yesterday = new Date();
@@ -106,10 +120,18 @@ export class HomeComponent implements OnInit {
       }
     }
   }
+
+  private convertTimestampToDate(timestamp: Timestamp): Date {
+    // Convertir el timestamp a objeto Date
+    const milliseconds = timestamp.seconds * 1000 + Math.round(timestamp.nanoseconds / 1000000);
+    return new Date(milliseconds);
+  }
+
   displayUnreadNumber(unreads: number): string{
     if(unreads>99) return '99⁺';
     else return '' + unreads;
   }
+
   logout() {
     this.authService.logout();
   }

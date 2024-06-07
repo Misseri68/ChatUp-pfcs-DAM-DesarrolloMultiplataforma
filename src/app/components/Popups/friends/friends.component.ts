@@ -48,22 +48,24 @@ export class FriendsComponent {
               //Si el nombre del amigo ya se encuentra en tu lista de amigos:
               this.searchFriendResponse = "The user " + friendName + " is already your friend.";
             }
-            this.userService.getUserByUsername(friendName).pipe(
-              take(1),
-              tap(friendUser => {
-                if (friendUser) {
-                  if (friendUser.pendingRequests?.includes(currentUsername)) {
-                    this.searchFriendResponse = `You already sent a friend request to ${friendName}!`;
+            else{
+              this.userService.getUserByUsername(friendName).pipe(
+                take(1),
+                tap(friendUser => {
+                  if (friendUser) {
+                    if (friendUser.pendingRequests?.includes(currentUsername)) {
+                      this.searchFriendResponse = `You already sent a friend request to ${friendName}!`;
+                    } else {
+                      friendUser.pendingRequests?.push(currentUsername);
+                      this.userService.updateUser(friendName, friendUser);
+                      this.searchFriendResponse = `Request sent to user ${friendName}`;
+                    }
                   } else {
-                    friendUser.pendingRequests?.push(currentUsername);
-                    this.userService.updateUser(friendName, friendUser);
-                    this.searchFriendResponse = `Request sent to user ${friendName}`;
+                    this.searchFriendResponse = `The user ${friendName} was not found.`;
                   }
-                } else {
-                  this.searchFriendResponse = `The user ${friendName} was not found.`;
-                }
-              })
-            ).subscribe();
+                })
+              ).subscribe();
+            }
           }
         })
     ).subscribe();
@@ -144,7 +146,7 @@ export class FriendsComponent {
       tap(
         async currentChat => {
           if (currentChat != null) {
-            this.selectedChatId.emit(currentChat.id_chat)
+            this.selectedChatId.emit(currentChat.id_chat);
             this.closePopup.emit()
           } else {
             const newChat = {
@@ -162,7 +164,6 @@ export class FriendsComponent {
             }
           }
         })).subscribe()
-    this.closePopup.emit();
   }
 
   //Emitir evento de cierre al padre.
@@ -170,6 +171,7 @@ export class FriendsComponent {
   onClose() {
     this.closePopup.emit();
   }
+
 
   //Si se presiona escape se sale del popup.
   @HostListener('document:keydown', ['$event']) onKeydownHandler(event: KeyboardEvent) {
