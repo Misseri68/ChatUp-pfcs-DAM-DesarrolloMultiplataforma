@@ -4,9 +4,11 @@
 @import './scrollbar.css';
 @import './chatbox.css';
 
+
 #div-component {
   display: flex;
   width:100%;
+  overflow:hidden;
 
 }
 
@@ -16,5 +18,16 @@
   height: calc(100vh - 30px);
 }
 
-h4{color: #bcffed
+h4{color: #00ff8b
+}
+
+.popups{
+  background: linear-gradient(159deg, rgba(77, 3, 204, 0.5) 0%, rgba(10, 30, 140, 0.5) 40%, rgba(12, 76, 103, 0.5) 75%, rgba(8, 206, 183, 0.43) 100%);
+  display:block!important;
+  position: fixed!important;
+  z-index: 5!important;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }

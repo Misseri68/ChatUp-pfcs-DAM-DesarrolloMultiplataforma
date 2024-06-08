@@ -1,0 +1,58 @@
+.own-message{
+  max-width: 60%;
+  align-self: flex-end;
+  background: linear-gradient(155deg, rgba(0, 255, 196, 0.25) 0%, rgba(255, 255, 255, 0) 44%, rgba(255, 255, 255, 0) 65%, rgba(221, 0, 255, 0.30)  100%);
+}
+
+.not-own-message{
+  max-width: 60%;
+  align-self:flex-start;
+  background: linear-gradient(159deg, rgba(221, 0, 255, 0.30)  0% , rgba(12, 32, 52, 0) 45%, rgba(255, 255, 255, 0) 65%, rgba(0, 255, 140, 0.25) 100%);
+}
+
+.message {
+  background-color: #030c23;
+  padding: 5px 10px 10px;
+  margin: 7px;
+  border-radius: 8px;
+  color: white;
+  max-width: 45%;
+  min-width: 8%;
+}
+
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  margin-left:5px;
+}
+
+.texto-con-fecha{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.message p {
+  max-width:100%;
+  word-break: break-all;
+  margin-bottom: 0px;
+}
+
+.texto{
+  flex: 1 1 auto;
+}
+
+.date{
+  margin-top:5px;
+  margin-right:5px;
+  padding-left:10px;!important;
+  text-align:right;
+  align-self: flex-end;
+  vertical-align: text-bottom;
+  font-size: xx-small;
+  font-style: italic;
+  align-content: end;
+  flex: 0 0 auto;
+  white-space: nowrap;
+  color: rgba(255, 255, 255, 0.59);
+}

@@ -138,12 +138,16 @@ export class HomeComponent implements OnInit {
 
   toggleFriends() {
     this.showFriends = !this.showFriends;
+    if(this.showFriends==true){
+      this.showFriendInfo=false;
+    }
   }
-  toggleFriendInfo() {
+  checkUserInfo(username:string) {
     this.showFriendInfo = !this.showFriendInfo;
-  }
-  toggleMyInfo() {
-    this.showMyInfo = !this.showMyInfo;
+
+    if(this.showFriendInfo == true){
+      this.showFriends = false;
+    }
   }
 
 }

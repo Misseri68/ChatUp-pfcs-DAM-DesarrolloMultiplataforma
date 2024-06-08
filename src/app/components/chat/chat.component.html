@@ -14,15 +14,24 @@
   @for (message of chat.messages; track message){
     <div *ngIf=" currentUsername && message.sender.toLowerCase() === currentUsername.toLowerCase(); else notOwnMessage" class="own-message message">
       <!-- Si el mensaje ha sido enviado por el usuario que está viendo la pantalla: -->
-      <div>
-        <h6 class="mb-1">{{message.sender}}</h6>
-        <p class="ps-2  mt-0 mb-0">{{message.text}} <span class="ms-2"> </span></p>
+      <h6 class="mb-1 col-12">{{message.sender}}</h6>
+      <div class="contenedor">
+        <div class="texto-con-fecha">
+          <p class="texto">{{message.text}}</p>
+          <p class="date">{{displayTime(message.date)}}</p>
+        </div>
       </div>
+
     </div>
     <ng-template #notOwnMessage>
       <div  class="not-own-message message">
         <h6 class="mb-1">{{message.sender}}</h6>
-        <div class="ps-2 mt-0 mb-0">{{message.text}}</div>
+        <div class="contenedor">
+          <div class="texto-con-fecha">
+            <p class="texto">{{message.text}}</p>
+            <p class="date">{{displayTime(message.date)}}</p>
+          </div>
+        </div>
       </div>
     </ng-template>
   }

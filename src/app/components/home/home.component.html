@@ -4,7 +4,7 @@
 <div class="option-bar">
   <!-- Botón toggle de modo oscuro -->
   <div class="top-buttons">
-    <button class="pfp">
+    <button class="pfp" (click)="checkUserInfo(user.username)">
       <img src="{{user?.profilePicture}}" >
     </button>
   </div>
@@ -83,8 +83,8 @@
               <h3 class="mb-3 fw-light"> Please select a chat to start typing</h3>
               <h5 class="mb-2 fst-italic fw-lighter"> Or add new friends to start a new chat!</h5>
               <p class="fst-italic fs-5 mt-3">
-                Click this icon here, or in your lateral bar. <span class="icono"><i class="fa-solid fa-person-circle-question text-white" (click)="toggleFriends()">
-              </i></span><span class="fs-2">&#10554;</span></p>
+                Click this icon here   <span class="icono"><i class="fa-solid fa-person-circle-question text-white" (click)="toggleFriends()">
+              </i></span><span class="fs-2">&#10554;</span> , or in your lateral bar.</p>
             </div>
           }
         </ng-container>
@@ -93,13 +93,8 @@
   </div>
 </div>
 
-<div class="popups">
-  <app-friends *ngIf="showFriends" (closePopup)="toggleFriends()" (selectedChatId)="selectChat($event)">
-    <p>Selected Chat ID: {{ selectedChatId }}</p>
-
-  </app-friends>
-  <app-user-info *ngIf="showFriendInfo" (closePopup)="toggleFriendInfo()"></app-user-info>
-  <app-friends *ngIf="showFriendInfo" (closePopup)="toggleFriendInfo()"></app-friends>
-</div>
+  <div *ngIf="showMyInfo || showFriendInfo || showFriends" class="bg-opacity-50 w-100 h-100 bg-dark d-block" class="popups"></div>
+  <app-friends *ngIf="showFriends"  (closePopup)="toggleFriends()" (selectedChatId)="selectChat($event)"></app-friends>
+  <app-user-info *ngIf="showFriendInfo" (closePopup)="showFriendInfo=false" [username]="this.username"></app-user-info>
 
 

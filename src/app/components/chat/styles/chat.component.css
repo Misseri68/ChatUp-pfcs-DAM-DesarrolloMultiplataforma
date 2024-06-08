@@ -1,63 +1,19 @@
 @import './scrollbar.css';
 @import './scrollbar-textarea.css';
-
-.chat-header{
-  height:68px;
-  border: solid 1px #7300ff;
-  align-content: center;
-}
+@import './chat-header.css';
+@import './messages.css';
 
 .chat-content{
   background-image: url('../../../../assets/pictures/fondo.png');
-  background-size: cover; /* Asegura que la imagen cubra todo el elemento */
-  background-position: center; /* Centra la imagen */
-  background-repeat: no-repeat; /* No repite la imagen */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   display:flex;
   flex-direction: column;
   width:100%;
-  height: calc(100vh - 183px); /* Ajusta a la altura deseada */
-  overflow-y: auto; /* Habilita el desplazamiento vertical cuando sea necesario */
+  height: calc(100vh - 183px);
+  overflow-y: auto;
   padding: 2em 1em 0em;
-
-}
-
-
-.circle-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  overflow: hidden; /* esconde cualquier parte de la imagen que exceda el círculo */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: solid 1px #DB00FFFF;
-}
-
-.circle-icon img {
-  width: 100%;
-  height: auto;
-}
-
-
-.own-message{
-  align-self: flex-end;
-  background: linear-gradient(155deg, rgba(0, 255, 196, 0.25) 0%, rgba(255, 255, 255, 0) 44%, rgba(255, 255, 255, 0) 65%, rgba(221, 0, 255, 0.30)  100%);
-
-}
-
-.not-own-message{
-  align-self:flex-start;
-  background: linear-gradient(159deg, rgba(221, 0, 255, 0.30)  0% , rgba(12, 32, 52, 0) 45%, rgba(255, 255, 255, 0) 65%, rgba(0, 255, 140, 0.25) 100%);
-}
-
-.message {
-  background-color: #030c23;
-  padding: 5px 10px 10px;
-  margin: 7px;
-  border-radius: 8px;
-  color: white;
-  max-width: 60%;
-  min-width: 7%;
 }
 
 .typebar-container{
@@ -91,12 +47,16 @@
   line-height: 20px;
 }
 
+.message p {
+  white-space: normal;!important;
+  word-wrap: break-word;
+}
+
 textarea{
   width:100%;
   box-sizing: border-box;
   resize: none;
 }
-
 
 i{
   margin-top: 15px;

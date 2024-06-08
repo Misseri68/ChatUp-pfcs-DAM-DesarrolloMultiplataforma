@@ -1,0 +1,23 @@
+
+.chat-header{
+  height:68px;
+  border: solid 1px #7300ff;
+  align-content: center;
+}
+
+
+.circle-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden; /* esconde cualquier parte de la imagen que exceda el círculo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid 1px #DB00FFFF;
+}
+
+.circle-icon img {
+  width: 100%;
+  height: auto;
+}

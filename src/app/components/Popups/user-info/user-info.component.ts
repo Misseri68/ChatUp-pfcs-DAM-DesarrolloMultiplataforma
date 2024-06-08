@@ -1,24 +1,28 @@
-import {Component, EventEmitter, HostListener, Output} from '@angular/core';
+import {Component, EventEmitter, HostListener, Input, Output} from '@angular/core';
 import {Observable} from "rxjs";
 import {User} from "../../../model/user";
-import {AsyncPipe, NgForOf} from "@angular/common";
+import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
 import {UserService} from "../../../services/user.service";
 
 @Component({
   selector: 'app-user-info',
   standalone: true,
-  imports: [
-    NgForOf,
-    AsyncPipe
-  ],
+    imports: [
+        NgForOf,
+        AsyncPipe,
+        NgIf
+    ],
   templateUrl: './user-info.component.html',
   styleUrl: './user-info.component.css'
 })
 export class UserInfoComponent {
-
-  users$: Observable<User[]>;
+  @Input() username: string | undefined;
+   user$: Observable<User> | undefined;
   constructor(private userService: UserService) {
-    this.users$ = this.userService.getAllUsers();
+    if(this.username){
+      console.log("HI")
+      this.user$ = userService.getUserByUsername(this.username)
+    }
   }
 
 
