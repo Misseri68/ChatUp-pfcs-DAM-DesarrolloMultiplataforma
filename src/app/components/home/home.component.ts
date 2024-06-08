@@ -20,7 +20,6 @@ import { Timestamp } from '@angular/fire/firestore';
   styleUrls: ['./styles/home.component.css']
 })
 export class HomeComponent implements OnInit {
-  showMyInfo: boolean = false;
   showFriendInfo: boolean = false;
   showFriends: boolean = false;
 
@@ -28,6 +27,7 @@ export class HomeComponent implements OnInit {
   user$ : Observable<User | null> ;
   chats$: Observable<Chat[]> | undefined;
   selectedChatId: string |undefined;
+  selectedProfile: string | undefined;
 
   constructor(private router: Router, private authService: AuthService, private chatService: ChatService) {
     //Cargamos de local, si no está iniciada la sesión envía a /auth .
@@ -138,16 +138,13 @@ export class HomeComponent implements OnInit {
 
   toggleFriends() {
     this.showFriends = !this.showFriends;
-    if(this.showFriends==true){
-      this.showFriendInfo=false;
-    }
+    this.showFriendInfo = false;
   }
-  checkUserInfo(username:string) {
-    this.showFriendInfo = !this.showFriendInfo;
 
-    if(this.showFriendInfo == true){
-      this.showFriends = false;
-    }
+  toggleFriendInfo(){
+    this.showFriendInfo = !this.showFriendInfo;
+    this.showFriends = false;
   }
+
 
 }

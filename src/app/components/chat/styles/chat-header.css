@@ -2,6 +2,7 @@
 .chat-header{
   height:68px;
   border: solid 1px #7300ff;
+  background: #03071c;
   align-content: center;
 }
 

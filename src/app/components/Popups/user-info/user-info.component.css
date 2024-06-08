@@ -9,15 +9,12 @@
   border-radius: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   color: #00ffb7;
-  overflow-y: auto;
-  width: 50%;
-  height:50%;
-  z-index: 10!important;
+  width: 40%;
+  height: 40%;
+  z-index: 10 !important;
 }
 
-
-
-.close-button{
+.close-button {
   background: none;
   border: none;
   outline: none;
@@ -27,27 +24,48 @@
   align-items: center;
   justify-content: center;
 }
-.other-buttons{
+
+.other-buttons {
   background: none;
   border: none;
   outline: none;
   box-shadow: none;
   cursor: pointer;
   color: #00ffb7;
-
 }
 
-.fa-xmark{
+.fa-xmark {
   color: #ea3b6f;
 }
 
+.full-height {
+  display: flex;
+  height: 90%;
+  align-items: stretch; /* Asegura que ambas columnas ocupen la altura completa */
+}
 
+.pfp-parent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .user-profile-image {
-  position: relative;
-  width: 100px;
-  height: 100px;
+  border-radius: 50%;
+  border: 2px solid #ff00fb;
+  width: 100%; /* Ajusta para ocupar el 100% del contenedor padre */
+  max-width: 150px;
+  height: auto; /* Ajusta para mantener la relación de aspecto */
   overflow: hidden;
+}
+
+.overlay-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease; /* Efecto de transición suave */
+  z-index: 1; /* Asegura que la imagen de superposición esté encima */
 }
 
 .user-profile-image img {
@@ -56,17 +74,45 @@
   object-fit: cover;
 }
 
-.user-profile-image i {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 20px;
-  color: #fff;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+.profile-picture {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
-.user-profile-image i.show {
-  opacity: 1;
+.overlay-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0; /* Comienza con opacidad 0 */
+  transition: opacity 0.3s ease; /* Efecto de transición suave */
+  z-index: 1; /* Asegura que la imagen de superposición esté encima */
+  cursor: pointer;
+}
+
+
+
+.image-container {
+  position: relative; /* Establece la posición relativa para el contenedor */
+  width: 100%; /* Ajusta el ancho al tamaño de la imagen principal */
+}
+
+.user-profile-image {
+  position: relative; /* Asegura que el contenedor padre no colapse */
+}
+
+.image-container:hover .overlay-image {
+  background-color: rgba(0, 18, 66, 0.85);
+  opacity: 0.9; /* Opacidad de la imagen de superposición al hacer hover */
+}
+
+.info-parent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centra verticalmente */
+  height: 100%;
+}
+
+.info-parent p {
+  word-break: break-all;
 }

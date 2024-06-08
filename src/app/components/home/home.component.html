@@ -4,7 +4,7 @@
 <div class="option-bar">
   <!-- Botón toggle de modo oscuro -->
   <div class="top-buttons">
-    <button class="pfp" (click)="checkUserInfo(user.username)">
+    <button class="pfp" (click)="(this.selectedProfile=user.username) && toggleFriendInfo()">
       <img src="{{user?.profilePicture}}" >
     </button>
   </div>
@@ -85,6 +85,7 @@
               <p class="fst-italic fs-5 mt-3">
                 Click this icon here   <span class="icono"><i class="fa-solid fa-person-circle-question text-white" (click)="toggleFriends()">
               </i></span><span class="fs-2">&#10554;</span> , or in your lateral bar.</p>
+              <p>Edit your profile in your top left corner icon.</p>
             </div>
           }
         </ng-container>
@@ -93,8 +94,8 @@
   </div>
 </div>
 
-  <div *ngIf="showMyInfo || showFriendInfo || showFriends" class="bg-opacity-50 w-100 h-100 bg-dark d-block" class="popups"></div>
+  <div *ngIf=" showFriendInfo || showFriends " class="bg-opacity-50 w-100 h-100 bg-dark d-block" class="popups"></div>
   <app-friends *ngIf="showFriends"  (closePopup)="toggleFriends()" (selectedChatId)="selectChat($event)"></app-friends>
-  <app-user-info *ngIf="showFriendInfo" (closePopup)="showFriendInfo=false" [username]="this.username"></app-user-info>
+  <app-user-info *ngIf="showFriendInfo" (closePopup)="toggleFriendInfo()" [username]="this.selectedProfile" [sessionUsername]="this.username"> </app-user-info>
 
 
