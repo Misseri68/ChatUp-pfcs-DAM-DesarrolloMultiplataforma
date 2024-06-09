@@ -58,6 +58,21 @@ export class UserService {
     return deleteDoc(userDoc);
   }
 
+  async  isFriend(username: string, friendname: string) {
+    try {
+      // Obtener el documento del usuario
+      const userDoc = await getDoc(doc(this.usersCollection, username));
 
-
+      if (userDoc.exists()) {
+        // Obtener el array de amigos del usuario
+        const friends: string[] =  userDoc.data()['friends'];
+        return   friends.includes(friendname);
+      } else {
+        return false;
+      }
+    } catch (error) {
+      console.error("Error verifying friend ", error);
+      return false;
+    }
+  }
 }

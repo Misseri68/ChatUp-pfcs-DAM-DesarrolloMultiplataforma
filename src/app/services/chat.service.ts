@@ -41,7 +41,6 @@ export class ChatService{
     const chatsCollection = collection(this.firestore, 'chats');
     const chatQuery = query(chatsCollection, where('participants', 'array-contains', username));
 
-    // Usar collectionData para obtener los datos de forma reactiva
     return collectionData(chatQuery) as Observable<Chat[]>;
   }
 
@@ -85,7 +84,6 @@ export class ChatService{
     return updateDoc(chatDoc, chat);
   }
 
-  // Delete a chat
   deleteChat(chatId: string): Promise<void> {
     const chatDoc = doc(this.chatsCollection, chatId);
     return deleteDoc(chatDoc);

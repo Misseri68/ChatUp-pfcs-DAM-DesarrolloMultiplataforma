@@ -40,8 +40,10 @@
 
 .full-height {
   display: flex;
-  height: 90%;
+  height: 100%;
   align-items: stretch; /* Asegura que ambas columnas ocupen la altura completa */
+  margin-top:-3%;
+  margin-left:5%;
 }
 
 .pfp-parent {
@@ -103,16 +105,19 @@
 
 .image-container:hover .overlay-image {
   background-color: rgba(0, 18, 66, 0.85);
-  opacity: 0.9; /* Opacidad de la imagen de superposición al hacer hover */
+  opacity: 0.9;
 }
 
 .info-parent {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Centra verticalmente */
+  justify-content: center;
   height: 100%;
+  padding-left:15px
 }
 
 .info-parent p {
   word-break: break-all;
+  color:white;
 }
+

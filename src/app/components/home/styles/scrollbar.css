@@ -1,17 +1,15 @@
 #chat-list::-webkit-scrollbar {
-  width: 5px;  /* Ancho del scrollbar */
+  width: 5px;
 }
 
-/* Estilo del control deslizante del scrollbar */
 #chat-list::-webkit-scrollbar-thumb {
-  background-color: rgb(0, 255, 140);  /* Color del deslizador */
+  background-color: rgb(0, 255, 140);
   border: 1px solid black;
   border-top:0;
 }
 
-/* Estilo del track del scrollbar */
 #chat-list::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.91);  /* Color del track */
+  background: rgba(0, 0, 0, 0.91);
   border: 1px solid rgba(219, 0, 255, 0.33);
-  border-radius: 2px;  /* Bordes redondeados */
+  border-radius: 2px;
 }

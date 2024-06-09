@@ -11,6 +11,7 @@ import {FriendsComponent} from "../Popups/friends/friends.component";
 import {UserInfoComponent} from "../Popups/user-info/user-info.component";
 import {ChatService} from "../../services/chat.service";
 import { Timestamp } from '@angular/fire/firestore';
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-home',
@@ -29,7 +30,7 @@ export class HomeComponent implements OnInit {
   selectedChatId: string |undefined;
   selectedProfile: string | undefined;
 
-  constructor(private router: Router, private authService: AuthService, private chatService: ChatService) {
+  constructor(private router: Router, private authService: AuthService, private chatService: ChatService, private userService: UserService) {
     //Cargamos de local, si no está iniciada la sesión envía a /auth .
     this.authService.getFromLocalStorage();
     this.user$ = this.authService.currentUser$;
@@ -85,8 +86,8 @@ export class HomeComponent implements OnInit {
 
   // Método que comprueba si el chat tiene foto, y si no le asigna la foto por defecto.
   displayChatPhoto(chat: Chat): string{
-    if (chat.photo) return chat.photo
-    else return 'assets/pictures/default_pfp2.png';
+
+  return 'assets/pictures/default_pfp2.png'
   }
 
   /*Método que devolverá un String con la fecha que se pondrá en cada chat del listado de Chats del usuario.
@@ -122,7 +123,6 @@ export class HomeComponent implements OnInit {
   }
 
   private convertTimestampToDate(timestamp: Timestamp): Date {
-    // Convertir el timestamp a objeto Date
     const milliseconds = timestamp.seconds * 1000 + Math.round(timestamp.nanoseconds / 1000000);
     return new Date(milliseconds);
   }
@@ -148,3 +148,32 @@ export class HomeComponent implements OnInit {
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+Para displayPhoto():
+let participant;
+    let imageUrl = 'assets/pictures/default_pfp2.png'
+    if (chat.isDM) {
+      participant = chat.participants.filter(user => user != this.username)[0];
+      this.userService.getUserByUsername(participant).pipe(
+        tap(user=>{
+          if(user && user.profilePicture){
+            imageUrl = user.profilePicture;
+          }})
+      ).subscribe()
+    }
+    else {
+      if (chat.photo) return chat.photo
+    }*/

@@ -31,7 +31,6 @@ export class AuthComponent {
 
 
   async login() {
-    // Lógica de inicio de sesión con email y contraseña
     if (this.loginForm.valid) {
       const {username, password} = this.loginForm.value;
 

@@ -3,13 +3,13 @@
   width:450px;
   background: #080f2d;
   color:white;
-  max-height: 100vh; /* Ajusta a la altura deseada */
-  overflow-y: auto; /* Habilita el desplazamiento vertical cuando sea necesario */
+  max-height: 100vh;
+  overflow-y: auto;
 }
 
 .chat-item{
   position: relative;
-  overflow: hidden; /* Esconde los bordes del gradiente */
+  overflow: hidden;
 }
 .chat-item:hover{
   background: rgba(43, 191, 255, 0.43);
@@ -30,7 +30,7 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  overflow: hidden; /* esconde cualquier parte de la imagen que exceda el círculo */
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;

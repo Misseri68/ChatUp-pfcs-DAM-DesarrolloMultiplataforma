@@ -58,13 +58,11 @@ input {
   color: white;
 }
 
-
-/* Estilos para el botón cuando está deshabilitado */
 .disabled-button {
-  background-color: #5d8e93; /* Color de fondo cuando está deshabilitado */
-  color: #666666; /* Color del texto cuando está deshabilitado */
-  cursor: not-allowed; /* Cambiar el cursor a no permitido */
-  opacity: 0.6; /* Hacer el botón un poco translúcido */
+  background-color: #5d8e93;
+  color: #666666;
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
 .register-link {
@@ -90,11 +88,9 @@ br {
 
 h2{
   color: #5cffb6;
-
 }
 
-
 .alert-custom-style {
-  background-color: #051b44; /* Cambia el color de fondo según tu preferencia */
-  color: #00ffbb; /* Cambia el color del texto según tu preferencia */
+  background-color: #051b44;
+  color: #00ffbb;
 }

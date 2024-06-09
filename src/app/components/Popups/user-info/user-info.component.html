@@ -5,16 +5,19 @@
   <div class="row full-height">
     <div class="col-md-3 pfp-parent">
       <div class="user-profile-image ms-3 me-4">
-        <div class="image-container">
+        <div class="image-container" (click)="onImageClick()">
           <img src="{{user.profilePicture}}" alt="{{user.username}}'s profile picture" class="profile-picture"/>
           <img src="assets/pictures/camera-overlay.png" alt="Overlay Image" class="overlay-image"/>
         </div>
       </div>
+      <input type="file" #fileInput (change)="onFileSelected($event)" style="display: none;">
     </div>
-    <div class="col-md-9 info-parent m">
-      <p class="mb-3"><span class="fs-4 mb-4">Name:<br></span> {{user.username}}</p>
-      <p class="mt-3"><span class="fs-4 mb-3">Description:</span><br> {{user.description}}
-        <button *ngIf="username==sessionUsername" (click)="editDescription()" class="close-button">
+    <div class="col-md-9 info-parent ">
+      <h3>Username: </h3>
+      <p class="mb-2 ms-2 fs-5"> {{user.username}}</p>
+      <h3 class="mt-4">Status: </h3>
+      <p class=" ms-2 fs-5" > {{user.description}}
+        <button *ngIf="username==sessionUsername" (click)="editDescription()" class="close-button ms-3">
           <i  class="fa-regular fa-pen-to-square other-buttons"></i>
         </button></p>
     </div>

@@ -1,13 +1,13 @@
-import {Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, OnChanges, OnInit,  ViewChild} from '@angular/core';
 import {Chat} from "../../model/chat";
 import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
-import {User} from "../../model/user";
-import {Observable, take, tap} from "rxjs";
+import {from,  Observable, of, switchMap, take, tap} from "rxjs";
 import {ChatService} from "../../services/chat.service";
 import {FormsModule} from "@angular/forms";
 import {Message} from "../../model/message";
 import {MessageService} from "../../services/message.service";
 import {Timestamp} from "@angular/fire/firestore";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-chat',
@@ -31,7 +31,7 @@ export class ChatComponent implements OnInit, OnChanges{
 
   @Input() currentUsername : string | undefined;
 
-  constructor(private chatService: ChatService, private messageService : MessageService) {
+  constructor(private chatService: ChatService, private messageService : MessageService, private userService: UserService) {
   }
 
   ngOnInit(): void {
@@ -51,6 +51,8 @@ export class ChatComponent implements OnInit, OnChanges{
     if (chat.photo) return chat.photo
     return 'assets/pictures/default_pfp2.png';
   }
+
+
 
   sendMessage() {
     const textarea = document.getElementById('expandable-textarea') as HTMLTextAreaElement;
@@ -112,7 +114,7 @@ export class ChatComponent implements OnInit, OnChanges{
   }
 
   protected convertTimestampToDate(timestamp: Timestamp): Date {
-    // Convertir el timestamp a objeto Date
+    //
     const milliseconds = timestamp.seconds * 1000 + Math.round(timestamp.nanoseconds / 1000000);
     return new Date(milliseconds);
   }
@@ -126,3 +128,27 @@ export class ChatComponent implements OnInit, OnChanges{
   }
 
 }
+
+
+/*
+No leer, intento de método que no funcionó, para futuro.
+isFriend(): Observable<boolean> {
+  if(this.chat$){
+
+    return this.chat$.pipe(
+      switchMap(chat => {
+
+        // Verifica si es un chat directo con exactamente 2 participantes
+        if (chat.isDM && chat.participants.length === 2) {
+          // Devuelve una promesa que resuelve si los participantes son amigos
+          return from(this.userService.isFriend(chat.participants[0], chat.participants[1]));
+        } else {
+          // Si no es un chat directo o no tiene exactamente 2 participantes, devuelve false
+          return of(false);
+        }
+      })
+    );
+  }
+  else return of(false);
+}*/
+

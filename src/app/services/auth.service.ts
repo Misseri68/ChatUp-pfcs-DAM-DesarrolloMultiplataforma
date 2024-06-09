@@ -43,7 +43,6 @@ export class AuthService {
     if (!querySnapshot.empty) {
       const userDoc = querySnapshot.docs[0];
       const currentUser = userDoc.data() as User
-      // Emite el usuario adquirido del documento, casteado a User, emitiéndoselo a todos los suscriptores de su observable correspondiente.
       this.currentUserSubject.next(currentUser);
       localStorage.setItem('username', JSON.stringify({ username: username }));
       this.subscribeToUserChanges(username);
@@ -63,7 +62,6 @@ export class AuthService {
       if (!querySnapshot.empty) {
         const userDoc = querySnapshot.docs[0];
         const currentUser = userDoc.data() as User
-        // Emite el usuario adquirido del documento, casteado a User, emitiéndoselo a todos los suscriptores de su observable correspondiente.
         this.currentUserSubject.next(currentUser);
         this.subscribeToUserChanges(storedUsername);
         this.router.navigate(['/home']);

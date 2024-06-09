@@ -25,7 +25,7 @@
 
 .typebar {
   height:45px;
-  background: #03071c;
+  background: #030d1a;
   position: sticky;
   bottom: 0;
   border-radius: 50px;
@@ -48,7 +48,7 @@
 }
 
 .message p {
-  white-space: normal;!important;
+  white-space: normal;
   word-wrap: break-word;
 }
 

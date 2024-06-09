@@ -110,8 +110,6 @@ export class FriendsComponent {
   }
 
   unfriend(friendName: string){
-    //TODO popup que te pida confirmacion
-
     let currentUsername : string;
     this.user$.pipe(
       take(1),
@@ -137,7 +135,6 @@ export class FriendsComponent {
         }
       )
     ).subscribe()
-
   }
 
   goToChat(currentUserName: string, friendName: string) {
