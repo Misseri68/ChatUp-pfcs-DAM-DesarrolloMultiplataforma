@@ -1,4 +1,4 @@
-# ChatUp
+# ChatUp, PFC FP SUPERIOR DESARROLLO DE APLICACIONES MULTIPLATAFORMA (DAM)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.6.
 
